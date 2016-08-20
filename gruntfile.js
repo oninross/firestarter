@@ -122,6 +122,11 @@ module.exports = function(grunt) {
             mainjs: {
                 src: '_scripts/main.js',
                 dest: 'dist/assets/<%= pkg.name %>/js/main.js'
+            },
+            assets: {
+                files: [
+                    { expand: true, cwd: 'dist/assets',  src: ['**/*'], dest: 'www/assets' }
+                ]
             }
         },
 
@@ -129,8 +134,11 @@ module.exports = function(grunt) {
          * Clean Task
          */
         clean: {
-            build: ['dist/**'],
-            www: [
+            build: [
+                'dist/**',
+                'www/**'
+            ],
+            dist: [
                 'dist/assets/<%= pkg.name %>/css/*.css',
                 '!dist/assets/<%= pkg.name %>/css/*.min.css',
                 'dist/assets/<%= pkg.name %>/js/*.js',
@@ -139,6 +147,16 @@ module.exports = function(grunt) {
                 'dist/assets/<%= pkg.name %>/js/plugins/**',
                 'dist/includes/**',
                 'dist/**/*.php'
+            ],
+            www: [
+                'www/assets/<%= pkg.name %>/css/*.css',
+                '!www/assets/<%= pkg.name %>/css/*.min.css',
+                'www/assets/<%= pkg.name %>/js/*.js',
+                '!www/assets/<%= pkg.name %>/js/*.min.js',
+                'www/assets/<%= pkg.name %>/js/modules/**',
+                'www/assets/<%= pkg.name %>/js/plugins/**',
+                'www/includes/**',
+                'www/**/*.php'
             ]
         },
 
@@ -316,7 +334,8 @@ module.exports = function(grunt) {
         'concat:mainjs',
         'uglify',
         'imagemin',
-        'processhtml'
+        'processhtml',
+        'clean:dist'
     ]);
 
     grunt.registerTask('www', [
@@ -330,7 +349,9 @@ module.exports = function(grunt) {
         'concat:mainjs',
         'uglify',
         'imagemin',
+        'copy:assets',
         'processhtml',
-        'php2html'
+        'php2html',
+        'clean:www'
     ]);
 };
