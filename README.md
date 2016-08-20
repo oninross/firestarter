@@ -28,6 +28,7 @@ To get started, jump to [setup](#setup).
 - Material Design Components
 
 ### Release History
+`v0.0.1` - Minor bug fixes and updates
 `v0.0.0` - Your simple straight-forward base boilerplate for your next project
 
 ### Dependencies

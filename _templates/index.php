@@ -46,6 +46,7 @@
 <li>Material Design Components</li>
 </ul>
 <h3><a id="Release_History_29"></a>Release History</h3>
+<p><code>v0.0.1</code> - Minor bug fixes and updates
 <p><code>v0.0.0</code> - Your simple straight-forward base boilerplate for your next project</p>
 <h3><a id="Dependencies_32"></a>Dependencies</h3>
 <h4><a id="Grunt_Javascript_Task_Runner_33"></a>Grunt Javascript Task Runner</h4>
