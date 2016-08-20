@@ -11,7 +11,7 @@ var RR = (function (parent, $) {
 
     var setup = function () {
         $('body').on('click', '.js-print-table', function () {
-            var $table = $(this).next();
+            var $table = $(this).prev();
 
             localStorage.tablePreview = $table[0].innerHTML;
             window.open('/table-preview/', '_blank').focus();

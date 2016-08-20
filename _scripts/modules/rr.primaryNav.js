@@ -222,7 +222,6 @@ var RR = (function (parent, $) {
             var $eTarget = $(e.target);
 
             if (!$eTarget.hasClass('nav') && !$eTarget.parents('.nav').length) {
-                console.log('click')
                 if ($primaryNav.hasClass('active')) {
                     $primaryNav.trigger('click');
                 }

@@ -144,9 +144,7 @@ module.exports = function(grunt) {
                 'dist/assets/<%= pkg.name %>/js/*.js',
                 '!dist/assets/<%= pkg.name %>/js/*.min.js',
                 'dist/assets/<%= pkg.name %>/js/modules/**',
-                'dist/assets/<%= pkg.name %>/js/plugins/**',
-                'dist/includes/**',
-                'dist/**/*.php'
+                'dist/assets/<%= pkg.name %>/js/plugins/**'
             ],
             www: [
                 'www/assets/<%= pkg.name %>/css/*.css',
