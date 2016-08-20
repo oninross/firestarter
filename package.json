@@ -1,0 +1,29 @@
+{
+    "name": "firestarter",
+    "version": "0.0.0",
+    "devDependencies": {
+        "grunt": "*",
+        "grunt-contrib-clean": "*",
+        "grunt-contrib-concat": "*",
+        "grunt-contrib-copy": "*",
+        "grunt-contrib-cssmin": "*",
+        "grunt-contrib-imagemin": "*",
+        "grunt-contrib-jshint": "*",
+        "grunt-contrib-uglify": "*",
+        "grunt-contrib-watch": "*",
+        "grunt-processhtml": "*",
+        "grunt-php2html": "*",
+        "grunt-shell": "*",
+        "grunt-sync": "*"
+    },
+    "description": "FE Templates",
+    "main": "gruntfile.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/oninross/firestarter.git"
+    },
+    "author": "Nino Ross Rodriguez"
+}

@@ -1,0 +1,88 @@
+@mixin material-btn() {
+    @include transition( all, 0.5s, $easeOutExpo );
+
+    background: $white;
+    border: 0;
+    border-radius: 3px;
+    color: $red;
+    font-size: $default-font-size;
+    overflow: hidden;
+    padding: 10px;
+    position: relative;
+    width: 100%;
+    width: auto;
+
+    &.colored {
+        background: $red;
+        color: $white;
+
+        svg.ripple circle {
+            fill: $white;
+        }
+
+        &:hover {
+            background: darken( $red, 10%);
+        }
+    }
+
+    &.disabled {
+        background: lighten( $grey, 30%);
+        color: lighten( $grey, 10%);
+        cursor: default;
+
+        &:hover {
+            @include material-shadow(0);
+        }
+    }
+
+    &:hover {
+        @include material-shadow(1);
+    }
+
+    svg.ripple circle {
+        fill: $grey;
+    }
+}
+
+@mixin material-cta() {
+    color: $red;
+    display: block;
+    padding: 10px;
+    position: relative;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+@mixin material-fab() {
+    @include material-shadow(2);
+    @include transition( all, 0.5s, $easeOutExpo );
+
+    background: $red;
+    border: 0;
+    border-radius: 50%;
+    color: $white;
+    height: 45px;
+    width: 45px;
+
+    &:hover {
+        @include material-shadow(3);
+    }
+}
+
+@mixin material-shadow($ind) {
+    @if $ind == 0 {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    } @else if $ind == 1 {
+        box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.24);
+    } @else if $ind == 2 {
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    } @else if $ind == 3 {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    } @else if $ind == 4 {
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    } @else if $ind == 5 {
+        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+    }
+}

@@ -1,0 +1,231 @@
+#primary-nav {
+    @extend %clearfix;
+    @include transition( height, 0.5s, $easeOutExpo );
+
+    height: 45px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 320px;
+    z-index: 25;
+
+    ul {
+        @extend %clearfix;
+
+        float: right;
+        margin-bottom: 0;
+        overflow: hidden;
+        padding: 0;
+
+        & > li {
+            opacity: 0;
+            top: -30px;
+        }
+
+        li { float: left; }
+
+        a {
+            @include inline-block;
+
+            color: $white;
+            font-size: 1em;
+            margin-bottom: 0;
+            padding: 10px;
+            position: relative;
+            width: 100%;
+
+            &.active { background: $red; }
+
+            span {
+                position: relative;
+                z-index: 5;
+            }
+        }
+    }
+
+    .nav {
+        @extend %clearfix;
+
+        height: 46px;
+        max-width: 320px;
+    }
+
+    .container {
+        float: none;
+        padding: 56px 10px 0;
+    }
+
+    .menu { float: right; }
+
+    .wrap {
+        @include box-shadow(0, 2px, 5px, 0, rgba(0, 0, 0, 0.26));
+        @extend %clearfix;
+
+        float: left;
+        height: 46px;
+        left: 0;
+        padding: 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 10;
+    }
+
+    .lvl2,
+    .lvl3 {
+        display: none;
+        float: none;
+        margin: 0;
+
+        a {
+            border-bottom: 0;
+            width: 100%;
+        }
+    }
+
+    .lvl1 {
+        @include scale(0.75, top right);
+
+        background: $red;
+        clear: both;
+        list-style: none;
+        opacity: 0;
+        overflow: auto;
+        padding: 0;
+        position: relative;
+        top: 0;
+        visibility: hidden;
+        width: 100%;
+
+        li {
+            border-top: 1px solid darken( $red, 20%);
+            float: none;
+            overflow: hidden;
+            position: relative;
+        }
+
+        a {
+            padding: 10px $gutter;
+
+            &.active { background: $red; }
+        }
+    }
+
+    .lvl2 {
+        li {
+            background: darken( $red, 10%);
+            border-top: 1px solid darken( $red, 20%);
+        }
+
+        a { padding: 12px 20px 12px 30px; }
+    }
+
+    .lvl3 {
+        li {
+            background: darken( $red, 20%);
+            border-top: 1px solid darken( $red, 30%);
+        }
+
+        a { padding: 12px 20px 12px 40px; }
+    }
+}
+
+.header {
+    height: 46px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.logo {
+    background: darken( $red, 10% );
+    padding: 8px $gutter;
+    position: absolute;
+    width: 100%;
+    z-index: 25;
+
+    h1 {
+        margin: 0;
+    }
+
+    a {
+        font-size: 0.8em;
+        color: $white;
+    }
+
+    .container {
+        padding: 0;
+    }
+}
+
+.sub-nav {
+    background: none;
+    border: 0;
+    color: $white;
+    display: block;
+    height: 48px;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 48px;
+    z-index: 5;
+
+    &.icon-arrow {
+        &:before,
+        &:after {
+            @include transition( all, 0.5s, $easeOutExpo );
+
+            background: $white;
+            content: "";
+            display: block;
+            height: 8px;
+            position: absolute;
+            margin: auto;
+            top: 20px;
+            width: 2px;
+        }
+
+        &:before {
+            @include rotate(-45deg);
+
+            left: 21px;
+        }
+
+        &:after {
+            @include rotate(45deg);
+
+            right: 21px;
+        }
+
+        &.active {
+            &:before {
+                @include rotate(-135deg);
+            }
+            &:after {
+                @include rotate(135deg);
+            }
+        }
+    }
+}
+
+.menu {
+    background: none;
+    border: 0;
+    height: 46px;
+    padding: 8px;
+    width: 46px;
+
+    .line {
+        @include transition( all, 0.5s, $easeOutExpo );
+
+        background: $white;
+        display: block;
+        height: 2px;
+        margin: 2px auto;
+        position: relative;
+        top: 0;
+        width: 15px;
+    }
+}

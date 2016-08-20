@@ -1,0 +1,8 @@
+// Select
+.material-select-wrapper {
+    &.native {
+        select {
+            display: none !important;
+        }
+    }
+}
