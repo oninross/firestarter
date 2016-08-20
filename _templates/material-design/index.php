@@ -27,72 +27,16 @@
 		<h3>Normal Buttons</h3>
 
 		<div class="wrap">
-			<div class="col-3">
-				<button class="btn default">Button</button>
+			<div class="col-4">
+				<button class="btn">Button</button>
 			</div>
 
-			<div class="col-3">
-				<button class="btn colored">Colored</button>
-			</div>
-
-			<div class="col-3">
+			<div class="col-4">
 				<button class="btn disabled">Disabled</button>
 			</div>
 
-			<div class="col-3">
+			<div class="col-4">
 				<a href="#" class="cta">Link</a>
-			</div>
-		</div>
-
-		<h3>Flat Buttons</h3>
-
-		<div class="wrap">
-			<div class="col-3">
-				<button class="btn flat default">Button</button>
-			</div>
-
-			<div class="col-3">
-				<button class="btn flat colored">Colored</button>
-			</div>
-
-			<div class="col-3">
-				<button class="btn flat disabled">Disabled</button>
-			</div>
-
-			<div class="col-3">
-				<a href="#" class="flat cta">Link</a>
-			</div>
-		</div>
-
-		<h3>Raised Buttons</h3>
-
-		<div class="wrap">
-			<div class="col-3">
-				<button class="btn default raised">Button</button>
-			</div>
-
-			<div class="col-3">
-				<button class="btn colored raised">Colored</button>
-			</div>
-
-			<div class="col-3">
-				<button class="btn disabled raised">Disabled</button>
-			</div>
-
-			<div class="col-3">
-				<a href="#" class="cta raised">Link</a>
-			</div>
-		</div>
-
-		<h3>Floating Action Buttons</h3>
-
-		<div class="wrap">
-			<div class="col-3">
-				<button class="menu action material-menu">
-					<span class="line top"></span>
-					<span class="line mid"></span>
-					<span class="line bot"></span>
-				</button>
 			</div>
 		</div>
 	</section>

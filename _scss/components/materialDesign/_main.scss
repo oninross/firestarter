@@ -385,6 +385,30 @@ input[type="checkbox"]{
     width: 75%;
 }
 
+.shadow-z0 {
+    @include material-shadow(0);
+}
+
+.shadow-z1 {
+    @include material-shadow(1);
+}
+
+.shadow-z2 {
+    @include material-shadow(2);
+}
+
+.shadow-z3 {
+    @include material-shadow(3);
+}
+
+.shadow-z4 {
+    @include material-shadow(4);
+}
+
+.shadow-z5 {
+    @include material-shadow(5);
+}
+
 
 // Loader
 .path {
