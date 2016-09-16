@@ -21,8 +21,6 @@ let debounce = function(func, wait, immediate) {
 	};
 }
 
-export { bp, debounce };
-
 /*
  * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
  *
@@ -54,3 +52,5 @@ jQuery.extend(jQuery.easing, {
         return c / 2 * (-Math.pow(2, -10 * --t) + 2) + b;
     }
 });
+
+export { bp, debounce };

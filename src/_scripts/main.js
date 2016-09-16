@@ -6,7 +6,11 @@
 import $ from 'jquery';
 import 'lazyload';
 import 'TweenMax';
-import Link from '../_modules/link/link';
+import PrimaryNav from '../_modules/primary-nav/primary-nav';
+
+import './_material';
+
+import { debounce } from './_helper';
 
 // Variable declaration
 var $window = $(window),
@@ -16,7 +20,7 @@ var $window = $(window),
     lastScrollTop = 0;
 
 $(() => {
-    new Link(); // Activate Link modules logic
+    new PrimaryNav();   // Activate Primary NAv modules logic
 
     ////////////////////////////
     // Set framerate to 60fps //
@@ -115,6 +119,7 @@ $(() => {
             window.open('/table-preview/', '_blank').focus();
         });
     })();
+
 
 
     /////////////////////

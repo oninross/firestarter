@@ -1,3 +1,5 @@
+include ../_modules/primary-nav/primary-nav
+
 //- Custom Configuration
 block config
   //- Setup site's base URL to match the "baseUrl" key within `package.json`
@@ -56,6 +58,13 @@ body
     <!--[if lt IE 9]>
     <p class='browsehappy'>You are using an <strong>outdated</strong> browser. Please <a href='http://browsehappy.com/'>upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+
+    header.header
+        .logo
+            .container
+                h1
+                    a(href="/")|Firestarter
+        +primary-nav
 
     main#main
         block content
