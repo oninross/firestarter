@@ -1,7 +1,0 @@
-.header {
-    @include transition( top, 1s, $easeOutExpo );
-
-    .top-nav {
-        ul { padding-right: 0; }
-    }
-}
