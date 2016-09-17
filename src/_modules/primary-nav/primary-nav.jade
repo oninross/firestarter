@@ -5,16 +5,22 @@ mixin primary-nav(spec)
     nav.nav
       ul.lvl1
         - var primarynav = site.data.primarynav
+
         each lvl1, index in primarynav
-          li
-            if lvl1.link == '#'
-              a.no-link(href='#')=lvl1.label
-            else
-              a(href=lvl1.link)=lvl1.label
-                - var primaryNavLvl2 = lvl1.lvl2
-                if primaryNavLvl2.length != null
+          - var primarynavLvl2 = lvl1.lvl2
+            li
+              if lvl1.link == '#'
+                a.no-link(href='#')=lvl1.label
+                if primarynavLvl2 != null
                   ul.lvl2
-                    each lvl2, index in primaryNavLvl2
+                    each lvl2, index in primarynavLvl2
+                      li
+                        a(href=lvl2.link)=lvl2.label
+              else
+                a(href=lvl1.link)=lvl1.label
+                if primarynavLvl2 != null
+                  ul.lvl2
+                    each lvl2, index in primarynavLvl2
                       li
                         a(href=lvl2.link)=lvl2.label
 

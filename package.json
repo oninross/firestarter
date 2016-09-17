@@ -2,6 +2,7 @@
   "name": "firestarter",
   "version": "0.0.1",
   "dependencies": {
+    "browserify-shim": "^3.8.12",
     "dot": "^1.0.3",
     "gsap": "^1.19.0",
     "jquery": "~2.2.0",
