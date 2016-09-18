@@ -47,8 +47,6 @@
 }
 
 .container {
-    @extend %clearfix;
-
     height: 100%;
     margin: auto;
     max-width: 960px;
@@ -57,6 +55,8 @@
     width: 100%;
 
     .wrap {
+        @extend %clearfix;
+
         margin: 0 (-$gutter);
         padding: 0;
     }
