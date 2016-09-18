@@ -1,0 +1,168 @@
+{
+	"IcoMoonType": "selection",
+	"icons": [
+		{
+			"icon": {
+				"paths": [
+					"M810.667 273.707l-60.373-60.373-238.293 238.293-238.293-238.293-60.373 60.373 238.293 238.293-238.293 238.293 60.373 60.373 238.293-238.293 238.293 238.293 60.373-60.373-238.293-238.293z"
+				],
+				"attrs": [],
+				"isMulticolor": false,
+				"grid": 24,
+				"tags": [
+					"ic_close_48px"
+				]
+			},
+			"attrs": [],
+			"properties": {
+				"order": 7,
+				"id": 708,
+				"prevSize": 24,
+				"code": 59648,
+				"name": "cross"
+			},
+			"setIdx": 0,
+			"setId": 1,
+			"iconIdx": 0
+		},
+		{
+			"icon": {
+				"paths": [
+					"M316.373 350.293l195.627 195.627 195.627-195.627 60.373 60.373-256 256-256-256z"
+				],
+				"attrs": [],
+				"isMulticolor": false,
+				"grid": 24,
+				"tags": [
+					"ic_keyboard_arrow_down_48px"
+				]
+			},
+			"attrs": [],
+			"properties": {
+				"order": 6,
+				"id": 707,
+				"prevSize": 24,
+				"code": 59649,
+				"name": "chevron-down"
+			},
+			"setIdx": 0,
+			"setId": 1,
+			"iconIdx": 1
+		},
+		{
+			"icon": {
+				"paths": [
+					"M366.293 702.293l195.627-195.627-195.627-195.627 60.373-60.373 256 256-256 256z"
+				],
+				"attrs": [],
+				"isMulticolor": false,
+				"grid": 24,
+				"tags": [
+					"ic_keyboard_arrow_right_48px"
+				]
+			},
+			"attrs": [],
+			"properties": {
+				"order": 5,
+				"id": 706,
+				"prevSize": 24,
+				"code": 59650,
+				"name": "chevron-right"
+			},
+			"setIdx": 0,
+			"setId": 1,
+			"iconIdx": 2
+		},
+		{
+			"icon": {
+				"paths": [
+					"M384 692l452-454 60 60-512 512-238-238 58-60z"
+				],
+				"attrs": [
+					{}
+				],
+				"isMulticolor": false,
+				"tags": [
+					"done"
+				],
+				"defaultCode": 57994,
+				"grid": 24
+			},
+			"attrs": [
+				{}
+			],
+			"properties": {
+				"order": 2,
+				"id": 650,
+				"prevSize": 24,
+				"code": 57994,
+				"name": "done",
+				"ligatures": "done"
+			},
+			"setIdx": 0,
+			"setId": 1,
+			"iconIdx": 3
+		},
+		{
+			"icon": {
+				"paths": [
+					"M768 128v170h-512v-170h512zM810 512q18 0 31-12t13-30-13-31-31-13-30 13-12 31 12 30 30 12zM682 810v-212h-340v212h340zM810 342q52 0 90 38t38 90v256h-170v170h-512v-170h-170v-256q0-52 38-90t90-38h596z"
+				],
+				"attrs": [
+					{}
+				],
+				"isMulticolor": false,
+				"tags": [
+					"print"
+				],
+				"defaultCode": 58049,
+				"grid": 24
+			},
+			"attrs": [
+				{}
+			],
+			"properties": {
+				"order": 1,
+				"id": 705,
+				"prevSize": 24,
+				"code": 58049,
+				"name": "print",
+				"ligatures": "print"
+			},
+			"setIdx": 0,
+			"setId": 1,
+			"iconIdx": 4
+		}
+	],
+	"height": 1024,
+	"metadata": {
+		"name": "icomoon"
+	},
+	"preferences": {
+		"showGlyphs": true,
+		"showQuickUse": true,
+		"showQuickUse2": true,
+		"showSVGs": true,
+		"fontPref": {
+			"prefix": "icon-",
+			"metadata": {
+				"fontFamily": "icomoon"
+			},
+			"metrics": {
+				"emSize": 1024,
+				"baseline": 6.25,
+				"whitespace": 50
+			},
+			"embed": false
+		},
+		"imagePref": {
+			"prefix": "icon-",
+			"png": true,
+			"useClassSelector": true,
+			"color": 4473924,
+			"bgColor": 16777215
+		},
+		"historySize": 100,
+		"showCodes": true
+	}
+}

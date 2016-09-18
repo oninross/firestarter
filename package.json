@@ -8,7 +8,8 @@
     "jquery": "~2.2.0",
     "jquery-lazyload": "^1.9.7",
     "malihu-custom-scrollbar-plugin": "^3.1.5",
-    "normalize.css": "~3.0.3"
+    "normalize.css": "~3.0.3",
+    "scrollmonitor": "^1.0.12"
   },
   "devDependencies": {
     "babelify": "~7.3.0",
@@ -74,7 +75,8 @@
     "lazyload": "./node_modules/jquery-lazyload/jquery.lazyload.js",
     "TweenMax": "./node_modules/gsap/src/uncompressed/TweenMax.js",
     "TimelineMax": "./node_modules/gsap/src/uncompressed/plugins/ScrollToPlugin.js",
-    "mCustomScrollbar": "./node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"
+    "mCustomScrollbar": "./node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
+    "scrollMonitor": "./node_modules/scrollmonitor/scrollmonitor.js"
   },
   "browserify-shim": {
     "jquery": "jQuery"

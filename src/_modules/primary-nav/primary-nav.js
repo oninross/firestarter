@@ -2,7 +2,6 @@
 
 import { debounce } from '../../_scripts/_helper';
 
-
 export default class PrimaryNav {
     constructor() {
         let el = $('#primary-nav'),

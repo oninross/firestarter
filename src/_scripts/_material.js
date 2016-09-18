@@ -4,6 +4,9 @@ let $body = $('body'),
     $window = $(window),
     isMobileDevice = $window.width() < 1024 ? 1 : 0;
 
+import scrollMonitor from 'scrollMonitor';
+import mCustomScrollbar from 'mCustomScrollbar';
+
 import { debounce } from './_helper';
 
 /////////////////////////////
@@ -349,7 +352,7 @@ let toaster = function (msg) {
 ///////////////////
 let inc = 0;
 let ripple = function (e, el) {
-    if ($('.no-svg').length) {
+    if ($('.no-svg').length || el.find('svg').length) {
         return false;
     }
 
