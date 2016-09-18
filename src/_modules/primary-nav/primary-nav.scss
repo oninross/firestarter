@@ -7,7 +7,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    width: 320px;
+    width: 100%;
     z-index: 25;
 
     @include desktop {
@@ -19,30 +19,50 @@
     ul {
         @extend %clearfix;
 
+        background: $white;
         float: right;
         margin: 0 $gutter;
         margin-bottom: 0;
         overflow: hidden;
         padding: 0;
 
-        & > li {
-            opacity: 0;
-            top: -30px;
-        }
+        // & > li {
+        //     opacity: 0;
+        //     top: -30px;
+        // }
 
-        li { float: left; }
+        li {
+            // float: left;
+            @include transition(all, 0.75s, $easeOutExpo);
+
+            -webkit-transform: translateY(-30px); /* Safari */
+                -ms-transform: translateY(-30px); /* IE 9 */
+                    transform: translateY(-30px);
+
+            @for $i from 1 through 10 {
+                &:nth-child(#{$i}) {
+                    -webkit-transition-delay: 0.1s * $i, 0.1s * $i;
+                            transition-delay: 0.1s * $i, 0.1s * $i;
+                }
+            }
+
+            opacity: 0;
+            position: relative;
+        }
 
         a {
             @include inline-block;
 
-            color: $white;
+            color: $black;
             font-size: 1em;
             margin-bottom: 0;
             padding: 10px;
             position: relative;
             width: 100%;
 
-            &.active { background: $red; }
+            &.active {
+                background: $red;
+            }
 
             span {
                 position: relative;
@@ -51,11 +71,24 @@
         }
     }
 
+    // .wrap {
+    //     &:after {
+    //         background: rgba(0, 0, 0, 0.5);
+    //         content: '';
+    //         height: 100%;
+    //         left: 0;
+    //         position: absolute;
+    //         top: 0;
+    //         width: 100%;
+    //         z-index: 10;
+    //     }
+    // }
+
     .nav {
         @extend %clearfix;
 
-        height: 46px;
-        max-width: 320px;
+        height: 45px;
+        width: 100%;
 
         @include desktop {
             height: 100%;
@@ -83,27 +116,54 @@
             border-bottom: 0;
             width: 100%;
         }
+
+        .sub-nav {
+            &.icon-arrow {
+                &:before,
+                &:after {
+                    background: $white;
+                }
+            }
+        }
     }
 
     .lvl1 {
-        @include scale(0.75, top right);
+        @include transition(transform, 0.5s, $easeOutExpo);
 
-        background: $red;
+        -webkit-transform: translateX(100%); /* Safari */
+            -ms-transform: translateX(100%); /* IE 9 */
+                transform: translateX(100%);
+
         clear: both;
         list-style: none;
-        opacity: 0;
+        margin: 0;
+        max-width: 320px;
         overflow: auto;
         padding: 0;
         position: relative;
         top: 0;
-        visibility: hidden;
         width: 100%;
 
+        &.active {
+            -webkit-transform: none; /* Safari */
+                -ms-transform: none; /* IE 9 */
+                    transform: none;
+
+            & > li {
+                -webkit-transform: none; /* Safari */
+                    -ms-transform: none; /* IE 9 */
+                        transform: none;
+
+                opacity: 1;
+            }
+        }
+
+        & > li {
+            border-bottom: 1px solid $grey;
+        }
+
         li {
-            border-top: 1px solid darken( $red, 20%);
             float: none;
-            overflow: hidden;
-            position: relative;
         }
 
         a {
@@ -117,7 +177,7 @@
 
             background: none;
             height: auto !important;
-            opacity: 1;
+            // opacity: 1;
             visibility: visible;
 
             &:first-child {
@@ -129,28 +189,34 @@
             & > li {
                 border-top: 0;
                 float: left;
-                opacity: 1;
-                top: 0;
+                // opacity: 1;
+                // top: 0;
             }
         }
     }
 
     .lvl2 {
         li {
-            background: darken( $red, 10%);
-            border-top: 1px solid darken( $red, 20%);
+            background: darken( $grey, 10%);
+            border-top: 1px solid darken( $grey, 20%);
         }
 
-        a { padding: 12px 20px 12px 30px; }
+        a {
+            color: $white;
+            padding: 12px 20px 12px 30px;
+        }
     }
 
     .lvl3 {
         li {
-            background: darken( $red, 20%);
-            border-top: 1px solid darken( $red, 30%);
+            background: darken( $grey, 20%);
+            border-top: 1px solid darken( $grey, 30%);
         }
 
-        a { padding: 12px 20px 12px 40px; }
+        a {
+            color: $white;
+            padding: 12px 20px 12px 40px;
+        }
     }
 
     @include desktop {
@@ -164,6 +230,8 @@
 }
 
 .header {
+    @include material-shadow(1);
+
     height: 46px;
     position: fixed;
     top: 0;
@@ -221,12 +289,12 @@
     border: 0;
     color: $white;
     display: block;
-    height: 48px;
+    height: 45px;
     padding: 0;
     position: absolute;
     right: 0;
     top: 0;
-    width: 48px;
+    width: 45px;
     z-index: 5;
 
     &.icon-arrow {
@@ -234,7 +302,7 @@
         &:after {
             @include transition( all, 0.5s, $easeOutExpo );
 
-            background: $white;
+            background: $grey;
             content: "";
             display: block;
             height: 8px;
@@ -247,13 +315,13 @@
         &:before {
             @include rotate(-45deg);
 
-            left: 21px;
+            left: 19px;
         }
 
         &:after {
             @include rotate(45deg);
 
-            right: 21px;
+            right: 19px;
         }
 
         &.active {

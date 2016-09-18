@@ -44,32 +44,18 @@ export default class PrimaryNav {
 
         TweenMax.killTweensOf($dropdownList);
 
+        checkNavHeight();
+
         $primaryNav.on('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
 
             var $this = $(this);
 
+            $this.toggleClass('active');
+            $lvl1.toggleClass('active');
+
             if ($this.hasClass('active')) {
-                $this.removeClass('active');
-                $set.find('.icon-arrow.active').removeClass('active');
-
-                tl.reverse();
-
-                TweenMax.to($lvl1, 0.25, {
-                    autoAlpha: 0,
-                    scale: 0.75,
-                    ease: Expo.easeOut,
-                    onComplete: function () {
-                        TweenMax.set($lvl1.find('> li'), { opacity: 0, top: -30 });
-
-                        $lvl2.hide();
-                        $lvl3.hide();
-                    }
-                });
-            } else {
-                $this.addClass('active');
-
                 tl.play();
 
                 $lvl1.slideDown({
@@ -78,20 +64,38 @@ export default class PrimaryNav {
                     queue: false
                 });
 
-                TweenMax.to($lvl1, 0.25, {
-                    scale: 1,
-                    autoAlpha: 1,
-                    ease: Expo.easeOut,
-                    onComplete: function () {
-                        TweenMax.staggerTo($lvl1.find('> li'), 1, {
-                            opacity: 1,
-                            top: 0,
-                            ease: Expo.easeOut
-                        }, 0.05);
+                // TweenMax.to($lvl1, 0.25, {
+                //     scale: 1,
+                //     autoAlpha: 1,
+                //     ease: Expo.easeOut,
+                //     onComplete: function () {
+                //         TweenMax.staggerTo($lvl1.find('> li'), 1, {
+                //             opacity: 1,
+                //             top: 0,
+                //             ease: Expo.easeOut
+                //         }, 0.05);
 
-                        checkNavHeight();
-                    }
-                });
+                //         checkNavHeight();
+                //     }
+                // });
+            } else {
+                $set.find('.icon-arrow.active').removeClass('active');
+
+                tl.reverse();
+
+
+
+                // TweenMax.to($lvl1, 0.25, {
+                //     autoAlpha: 0,
+                //     scale: 0.75,
+                //     ease: Expo.easeOut,
+                //     onComplete: function () {
+                //         TweenMax.set($lvl1.find('> li'), { opacity: 0, top: -30 });
+
+                //         $lvl2.hide();
+                //         $lvl3.hide();
+                //     }
+                // });
             }
         });
 
@@ -122,8 +126,6 @@ export default class PrimaryNav {
                                 opacity: 0,
                                 top: -30
                             });
-
-                            checkNavHeight();
                         }
                     });
                 } else {
@@ -138,8 +140,6 @@ export default class PrimaryNav {
                                 opacity: 0,
                                 top: -30
                             });
-
-                            checkNavHeight();
                         }
                     });
                 }
@@ -167,8 +167,7 @@ export default class PrimaryNav {
                 $next.slideDown({
                     duration: 750,
                     easing: 'easeOutExpo',
-                    queue: false,
-                    complete: checkNavHeight
+                    queue: false
                 });
 
                 TweenMax.staggerTo($next.find('> li'), 1, {
@@ -253,8 +252,6 @@ export default class PrimaryNav {
 
                 $('.js-sub-nav.active').trigger('click');
             }
-
-            checkNavHeight();
         }, 250));
 
         $window.on('scroll', debounce(function () {
@@ -269,15 +266,9 @@ export default class PrimaryNav {
             var $lvl1 = $('#primary-nav .lvl1'),
                 $visibleArea = $window.outerHeight() - $('.header').outerHeight();
 
-            if ($lvl1.outerHeight() > $visibleArea) {
-                $lvl1.css({
-                    height: $visibleArea
-                });
-            } else {
-                $lvl1.css({
-                    height: 'auto'
-                });
-            }
+            $lvl1.css({
+                height: $visibleArea
+            });
         };
     }
 }
