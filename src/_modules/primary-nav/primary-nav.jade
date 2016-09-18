@@ -14,66 +14,25 @@ mixin primary-nav(spec)
                 if primarynavLvl2 != null
                   ul.lvl2
                     each lvl2, index in primarynavLvl2
-                      li
-                        a(href=lvl2.link)=lvl2.label
+                      - var primarynavLvl3 = lvl2.lvl3
+                        li
+                          a(href=lvl2.link)=lvl2.label
+                          if primarynavLvl3 != null
+                            ul.lvl3
+                              each lvl3, index in primarynavLvl3
+                                li
+                                  a(href=lvl3.link)=lvl3.label
+
               else
                 a(href=lvl1.link)=lvl1.label
-                if primarynavLvl2 != null
-                  ul.lvl2
-                    each lvl2, index in primarynavLvl2
-                      li
-                        a(href=lvl2.link)=lvl2.label
-
-        //- li
-        //-   a(href='/standard/') Standard Content
-        //- li
-        //-   a(href='/grid/') Grid System
-        //- li
-        //-   a(href='/material-design/') Material Design
-        //- li
-        //-   a.no-link(href='#') Dropdown Level 1
-        //-   ul.lvl2
-        //-     li
-        //-       a(href='#go-to-some-link') Dropdown Level 2
-        //-       ul.lvl3
-        //-         li
-        //-           a(href='#') Dropdown Level 3
-        //-         li
-        //-           a(href='#') Dropdown Level 3
-        //-         li
-        //-           a(href='#') Dropdown Level 3
-        //-         li
-        //-           a(href='#') Dropdown Level 3
-        //-     li
-        //-       a(href='#go-to-some-link') Dropdown Level 2
-        //-       ul.lvl3
-        //-         li
-        //-           a(href='#') Dropdown Level 3
-        //-         li
-        //-           a(href='#') Dropdown Level 3
-        //-         li
-        //-           a(href='#') Dropdown Level 3
-        //-         li
-        //-           a(href='#') Dropdown Level 3
-        //-     li
-        //-       a(href='#go-to-some-link') Dropdown Level 2
-        //-       ul.lvl3
-        //-         li
-        //-           a(href='#') Dropdown Level 3
-        //-         li
-        //-           a(href='#') Dropdown Level 3
-        //-         li
-        //-           a(href='#') Dropdown Level 3
-        //-         li
-        //-           a(href='#') Dropdown Level 3
-        //-     li
-        //-       a(href='#go-to-some-link') Dropdown Level 2
-        //-       ul.lvl3
-        //-         li
-        //-           a(href='#') Dropdown Level 3
-        //-         li
-        //-           a(href='#') Dropdown Level 3
-        //-         li
-        //-           a(href='#') Dropdown Level 3
-        //-         li
-        //-           a(href='#') Dropdown Level 3
+                  if primarynavLvl2 != null
+                    ul.lvl2
+                      each lvl2, index in primarynavLvl2
+                        - var primarynavLvl3 = lvl2.lvl3
+                          li
+                            a(href=lvl2.link)=lvl2.label
+                            if primarynavLvl3 != null
+                              ul.lvl3
+                                each lvl3, index in primarynavLvl3
+                                  li
+                                    a(href=lvl3.link)=lvl3.label
