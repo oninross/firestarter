@@ -79,7 +79,8 @@
     "scrollMonitor": "./node_modules/scrollmonitor/scrollmonitor.js"
   },
   "browserify-shim": {
-    "jquery": "jQuery"
+    "jquery": "jQuery",
+    "mCustomScrollbar": "mCustomScrollbar"
   },
   "engines": {
     "node": ">=0.12.0"
