@@ -26,26 +26,21 @@
         overflow: hidden;
         padding: 0;
 
-        // & > li {
-        //     opacity: 0;
-        //     top: -30px;
-        // }
-
-        li {
-            // float: left;
-            @include transition(all, 0.75s, $easeOutExpo);
-
-            -webkit-transform: translateY(-30px); /* Safari */
-                -ms-transform: translateY(-30px); /* IE 9 */
-                    transform: translateY(-30px);
-
+        & > li {
             @for $i from 1 through 10 {
                 &:nth-child(#{$i}) {
                     -webkit-transition-delay: 0.1s * $i, 0.1s * $i;
                             transition-delay: 0.1s * $i, 0.1s * $i;
                 }
             }
+        }
 
+        li {
+            @include transition(all, 0.75s, $easeOutExpo);
+
+            -webkit-transform: translateY(-30px); /* Safari */
+                -ms-transform: translateY(-30px); /* IE 9 */
+                    transform: translateY(-30px);
             opacity: 0;
             position: relative;
         }
@@ -112,6 +107,16 @@
         float: none;
         margin: 0;
 
+        &.active {
+            & > li {
+                -webkit-transform: none; /* Safari */
+                    -ms-transform: none; /* IE 9 */
+                        transform: none;
+
+                opacity: 1;
+            }
+        }
+
         a {
             border-bottom: 0;
             width: 100%;
@@ -137,7 +142,7 @@
         clear: both;
         list-style: none;
         margin: 0;
-        max-width: 320px;
+        max-width: 300px;
         overflow: auto;
         padding: 0;
         position: relative;
@@ -177,7 +182,6 @@
 
             background: none;
             height: auto !important;
-            // opacity: 1;
             visibility: visible;
 
             &:first-child {
@@ -189,15 +193,14 @@
             & > li {
                 border-top: 0;
                 float: left;
-                // opacity: 1;
-                // top: 0;
             }
         }
     }
 
     .lvl2 {
+        background: darken( $grey, 10%);
+
         li {
-            background: darken( $grey, 10%);
             border-top: 1px solid darken( $grey, 20%);
         }
 
@@ -208,8 +211,9 @@
     }
 
     .lvl3 {
+        background: darken( $grey, 20%);
+
         li {
-            background: darken( $grey, 20%);
             border-top: 1px solid darken( $grey, 30%);
         }
 

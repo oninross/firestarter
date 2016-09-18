@@ -59,43 +59,31 @@ export default class PrimaryNav {
                 tl.play();
 
                 $lvl1.slideDown({
-                    duration: 750,
+                    duration: 500,
                     easing: 'easeOutExpo',
                     queue: false
                 });
-
-                // TweenMax.to($lvl1, 0.25, {
-                //     scale: 1,
-                //     autoAlpha: 1,
-                //     ease: Expo.easeOut,
-                //     onComplete: function () {
-                //         TweenMax.staggerTo($lvl1.find('> li'), 1, {
-                //             opacity: 1,
-                //             top: 0,
-                //             ease: Expo.easeOut
-                //         }, 0.05);
-
-                //         checkNavHeight();
-                //     }
-                // });
             } else {
-                $set.find('.icon-arrow.active').removeClass('active');
+                $set
+                    .removeClass('active')
+                    .find('.icon-arrow.active')
+                        .removeClass('active');
+
+                $lvl2
+                    .slideUp({
+                        duration: 500,
+                        easing: 'easeOutExpo',
+                        queue: false
+                    });
+
+                $lvl3
+                    .slideUp({
+                        duration: 500,
+                        easing: 'easeOutExpo',
+                        queue: false
+                    });
 
                 tl.reverse();
-
-
-
-                // TweenMax.to($lvl1, 0.25, {
-                //     autoAlpha: 0,
-                //     scale: 0.75,
-                //     ease: Expo.easeOut,
-                //     onComplete: function () {
-                //         TweenMax.set($lvl1.find('> li'), { opacity: 0, top: -30 });
-
-                //         $lvl2.hide();
-                //         $lvl3.hide();
-                //     }
-                // });
             }
         });
 
@@ -106,7 +94,9 @@ export default class PrimaryNav {
 
             if ($this.hasClass('active')) {
                 if ($next.hasClass('lvl2')) {
-                    $set.find('.icon-arrow.active').removeClass('active');
+                    $set
+                        .find('.icon-arrow.active')
+                            .removeClass('active');
 
                     $this.removeClass('active')
                         .next().find('.icon-arrow.active')
@@ -117,30 +107,18 @@ export default class PrimaryNav {
                         easing: 'easeOutExpo'
                     });
 
-                    $next.slideUp({
+                    $next.removeClass('active').slideUp({
                         duration: 500,
                         easing: 'easeOutExpo',
-                        queue: false,
-                        complete: function () {
-                            TweenMax.set($lvl2.find('li'), {
-                                opacity: 0,
-                                top: -30
-                            });
-                        }
+                        queue: false
                     });
                 } else {
                     $this.removeClass('active');
 
-                    $next.slideUp({
-                        duration: 750,
+                    $next.removeClass('active').slideUp({
+                        duration: 500,
                         easing: 'easeOutExpo',
-                        queue: false,
-                        complete: function () {
-                            TweenMax.set($next.find('li'), {
-                                opacity: 0,
-                                top: -30
-                            });
-                        }
+                        queue: false
                     });
                 }
             } else {
@@ -148,33 +126,31 @@ export default class PrimaryNav {
                     $lvl1
                         .find('.icon-arrow.active')
                             .removeClass('active')
-                            .next().slideUp({
-                                duration: 750,
+                            .next().removeClass('active').slideUp({
+                                duration: 500,
                                 easing: 'easeOutExpo'
                             });
                 } else if ($grandParent.hasClass('lvl2')) {
                     $lvl2
                         .find('.icon-arrow.active')
                             .removeClass('active')
-                            .next().slideUp({
-                                duration: 750,
+                            .next().removeClass('active').slideUp({
+                                duration: 500,
                                 easing: 'easeOutExpo'
                             });
                 }
 
                 $this.addClass('active');
 
+                setTimeout(function () {
+                    $next.addClass('active');
+                }, 200);
+
                 $next.slideDown({
-                    duration: 750,
+                    duration: 500,
                     easing: 'easeOutExpo',
                     queue: false
                 });
-
-                TweenMax.staggerTo($next.find('> li'), 1, {
-                    opacity: 1,
-                    top: 0,
-                    ease: Expo.easeOut
-                }, 0.1);
             }
         });
 
@@ -231,7 +207,9 @@ export default class PrimaryNav {
 
             if (isMobileDevice) {
                 $primaryNav.removeClass('active');
-                $set.find('.icon-arrow.active').removeClass('active');
+                $set
+                    .find('.icon-arrow.active')
+                    .removeClass('active');
 
                 tl.reverse();
 
@@ -239,16 +217,12 @@ export default class PrimaryNav {
                     scale: 0,
                     ease: Expo.easeOut,
                     onComplete: function () {
-                        TweenMax.set($lvl1.find('> li'), { opacity: 0, top: -30 });
-
                         $lvl2.hide();
                         $lvl3.hide();
                     }
                 });
             } else {
                 $lvl1.show();
-                TweenMax.set($lvl1, { scale: 1 });
-                TweenMax.set($lvl1.find('li'), { opacity: 1, top: 0 });
 
                 $('.js-sub-nav.active').trigger('click');
             }
