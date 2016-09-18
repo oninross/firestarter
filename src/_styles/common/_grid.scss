@@ -57,7 +57,10 @@
     .wrap {
         @extend %clearfix;
 
-        margin: 0 (-$gutter);
         padding: 0;
+
+        @include desktop {
+            margin: 0 (-$gutterTablet);
+        }
     }
 }

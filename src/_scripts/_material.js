@@ -182,8 +182,6 @@ $.fn.materialize = function () {
 };
 
 $(() => {
-    console.log('setup material')
-
     // Ripple Effect
     var $rippleEffect = $('button, .cta');
 

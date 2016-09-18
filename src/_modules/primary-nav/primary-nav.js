@@ -5,8 +5,6 @@ import { debounce } from '../../_scripts/_helper';
 
 export default class PrimaryNav {
     constructor() {
-        console.log('setup primaryNav')
-
         let el = $('#primary-nav'),
             primaryNavMarkup = '<button class="menu js-mobile-menu"><span class="line top"></span><span class="line mid"></span><span class="line bot"></span></button>',
             subNavMarkup = '<button class="sub-nav js-sub-nav icon-arrow"><span class="vh">Sub-navigation</span></button>',
