@@ -158,27 +158,27 @@ export default class PrimaryNav {
             }
 
             ripple(e, $this);
-        }).on('mouseover', '.lvl1 li', function () {
+        }).on('mouseenter', '.lvl1 li', function () {
             var $this = $(this),
-                $lvl2Dropdown = $this.find('.lvl2');
+                $next = $this.find('> .lvl2');
 
             if (!isMobileDevice) {
-                $lvl2Dropdown.slideDown({
-                    duration: 500,
-                    easing: 'easeOutExpo',
-                    queue: false
-                });
+                $next.slideDown({
+                        duration: 500,
+                        easing: 'easeOutExpo',
+                        queue: false
+                    });
             }
-        }).on('mouseout', '.lvl1 li', function () {
+        }).on('mouseleave', '.lvl1 li', function () {
             var $this = $(this),
-                $lvl2Dropdown = $this.find('.lvl2');
+                $next = $this.find('> .lvl2');
 
             if (!isMobileDevice) {
-                $lvl2Dropdown.slideUp({
-                    duration: 500,
-                    easing: 'easeOutExpo',
-                    queue: false
-                });
+                $next.slideUp({
+                        duration: 500,
+                        easing: 'easeOutExpo',
+                        queue: false
+                    });
             }
         });
 

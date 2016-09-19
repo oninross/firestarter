@@ -12,6 +12,7 @@
 
     @include desktop {
         background: $red;
+        height: auto;
         position: static;
         width: 100%;
 
@@ -97,7 +98,7 @@
         width: 100%;
 
         @include desktop {
-            height: 45px;
+            height: auto;
             margin: auto;
             max-width: 990px;
         }
@@ -183,6 +184,7 @@
                 -ms-transform: none; /* IE 9 */
                     transform: none;
 
+            float: none;
             max-width: none;
         }
 
@@ -205,11 +207,8 @@
 
             @include desktop {
                 border-bottom: 0;
+                overflow: visible;
             }
-        }
-
-        li {
-            float: none;
         }
 
         a {
@@ -221,7 +220,7 @@
         @include desktop {
             background: none;
             height: auto !important;
-            visibility: visible;
+            overflow: visible;
 
             &:first-child {
                 & > a {
@@ -238,6 +237,11 @@
 
     .lvl2 {
         background: darken( $grey, 10%);
+
+        @include desktop {
+            position: absolute;
+            width: 200px;
+        }
 
         li {
             border-top: 1px solid darken( $grey, 20%);
@@ -282,7 +286,7 @@
     }
 
     @include desktop {
-        height: 46px;
+        height: auto;
 
         &.hide { top: -92px !important; }
 
