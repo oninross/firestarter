@@ -1,0 +1,38 @@
+mixin primary-nav(spec)
+  - spec = spec || {}
+
+  #primary-nav
+    nav.nav
+      ul.lvl1
+        - var primarynav = site.data.primarynav
+
+        each lvl1, index in primarynav
+          - var primarynavLvl2 = lvl1.lvl2
+            li
+              if lvl1.link == '#'
+                a.no-link(href='#')=lvl1.label
+                if primarynavLvl2 != null
+                  ul.lvl2
+                    each lvl2, index in primarynavLvl2
+                      - var primarynavLvl3 = lvl2.lvl3
+                        li
+                          a(href=lvl2.link)=lvl2.label
+                          if primarynavLvl3 != null
+                            ul.lvl3
+                              each lvl3, index in primarynavLvl3
+                                li
+                                  a(href=lvl3.link)=lvl3.label
+
+              else
+                a(href=lvl1.link)=lvl1.label
+                  if primarynavLvl2 != null
+                    ul.lvl2
+                      each lvl2, index in primarynavLvl2
+                        - var primarynavLvl3 = lvl2.lvl3
+                          li
+                            a(href=lvl2.link)=lvl2.label
+                            if primarynavLvl3 != null
+                              ul.lvl3
+                                each lvl3, index in primarynavLvl3
+                                  li
+                                    a(href=lvl3.link)=lvl3.label
