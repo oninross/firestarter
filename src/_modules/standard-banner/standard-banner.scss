@@ -1,0 +1,14 @@
+// standard-banner styles
+.standard-banner {
+    color: $white;
+    height: 150px;
+    margin-bottom: 20px;
+
+    h1 {
+        margin-top: 20px;
+    }
+
+    @include tablet {
+         height: 180px;
+    }
+}
