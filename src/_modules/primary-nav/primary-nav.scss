@@ -44,6 +44,7 @@
             will-change: transform;
 
             opacity: 0;
+            overflow: hidden;
             position: relative;
 
             @include desktop {

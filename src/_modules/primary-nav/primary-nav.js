@@ -1,5 +1,6 @@
 'use strict';
 
+import { ripple } from '../../_scripts/_material';
 import { debounce } from '../../_scripts/_helper';
 
 export default class PrimaryNav {
@@ -165,7 +166,7 @@ export default class PrimaryNav {
 
             $next.trigger('click');
 
-            RR.materialDesign.ripple(e, $this);
+            ripple(e, $this);
         }).on('click', '.lvl2 a', function (e) {
             var $this = $(this),
                 $next = $this.next();
@@ -174,7 +175,7 @@ export default class PrimaryNav {
                 $next.trigger('click');
             }
 
-            RR.materialDesign.ripple(e, $this);
+            ripple(e, $this);
         }).on('mouseover', '.lvl1 a', function () {
             var $this = $(this),
                 $next = $this.next();
