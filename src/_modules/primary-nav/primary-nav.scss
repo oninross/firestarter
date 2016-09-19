@@ -6,21 +6,30 @@
     height: 45px;
     position: absolute;
     right: 0;
-    top: 0;
+    top: 45px;;
     width: 100%;
-    z-index: 25;
+    z-index: 5;
 
     @include desktop {
         background: $red;
         position: static;
         width: 100%;
+
+        .sub-nav,
+        .lvl2,
+        .lvl3 {
+            display: none;
+        }
+    }
+
+    &.active {
+        z-index: 25;
     }
 
     ul {
         @extend %clearfix;
 
         background: $white;
-        float: right;
         margin: 0 $gutter;
         margin-bottom: 0;
         overflow: hidden;
@@ -81,19 +90,6 @@
         }
     }
 
-    // .wrap {
-    //     &:after {
-    //         background: rgba(0, 0, 0, 0.5);
-    //         content: '';
-    //         height: 100%;
-    //         left: 0;
-    //         position: absolute;
-    //         top: 0;
-    //         width: 100%;
-    //         z-index: 10;
-    //     }
-    // }
-
     .nav {
         @extend %clearfix;
 
@@ -101,13 +97,14 @@
         width: 100%;
 
         @include desktop {
-            height: 100%;
+            height: 45px;
             margin: auto;
             max-width: 990px;
         }
 
         &:after {
             @include transition(opacity, 0.5s, $easeOutExpo);
+
             background: rgba(0, 0, 0, 0.5);
             content: '';
             height: inherit;
@@ -131,21 +128,9 @@
         padding: 56px 10px 0;
     }
 
-    .menu {
-        @include transition(background-color, 0.5s, $easeOutExpo);
-
-        background-color: transparent;
-        float: right;
-
-        &.active {
-            background-color: $white;
-        }
-    }
-
     .lvl2,
     .lvl3 {
         display: none;
-        float: none;
         margin: 0;
 
         &.active {
@@ -182,6 +167,7 @@
               will-change: transform;
 
         clear: both;
+        float: right;
         list-style: none;
         margin: 0;
         max-width: 300px;
@@ -275,22 +261,13 @@
             padding: 12px 20px 12px 40px;
         }
     }
-
-    @include desktop {
-        .menu,
-        .sub-nav,
-        .lvl2,
-        .lvl3 {
-            display: none;
-        }
-    }
 }
 
 .header {
     @include material-shadow(1);
 
     background: darken( $red, 10% );
-    height: 46px;
+    height: 45px;
     position: fixed;
     top: 0;
     width: 100%;
@@ -305,10 +282,12 @@
     }
 
     @include desktop {
+        height: 46px;
+
         &.hide { top: -92px !important; }
 
         &.compact {
-            &.hide { top: -46px !important; }
+            &.hide { top: -45px !important; }
         }
     }
 }
@@ -316,8 +295,15 @@
 .logo {
     padding: 8px $gutter;
     position: absolute;
-    width: 100%;
     z-index: 25;
+
+    @include desktop {
+        position: relative;
+
+        h1 {
+            margin-left: $gutter;
+        }
+    }
 
     h1 {
         margin: 0;
@@ -330,13 +316,9 @@
 
     .container {
         padding: 0;
-    }
 
-    @include desktop {
-        position: static;
-
-        h1 {
-            margin-left: $gutter;
+        @include desktop {
+            padding: 0 $gutter;
         }
     }
 }
@@ -393,21 +375,59 @@
 }
 
 .menu {
-    background: none;
+    @include transition(background-color, 0.5s, $easeOutExpo);
+
+    background-color: transparent;
     border: 0;
-    height: 46px;
+    height: 45px;
     padding: 8px;
-    width: 46px;
-    position: relative;
-    z-index: 25;
+    width: 45px;
+    position: absolute;
+    right: 0;
+    z-index: 10;
+
+    @include desktop {
+        display: none;
+    }
+
+    &.active {
+        background-color: $white;
+        z-index: 30;
+
+        .top {
+            -webkit-transform: translateY(4px) rotate(225deg); /* Safari */
+                -ms-transform: translateY(4px) rotate(225deg); /* IE 9 */
+                    transform: translateY(4px) rotate(225deg);
+
+            background-color: $black;
+        }
+
+        .bot {
+            -webkit-transform: translateY(-4px) rotate(-225deg); /* Safari */
+                -ms-transform: translateY(-4px) rotate(-225deg); /* IE 9 */
+                    transform: translateY(-4px) rotate(-225deg);
+
+            background-color: $black;
+        }
+
+        .mid {
+            opacity: 0;
+        }
+    }
 
     .line {
         @include transition( all, 0.5s, $easeOutExpo );
+
+        -webkit-transform: none; /* Safari */
+            -ms-transform: none; /* IE 9 */
+                transform: none;
+        will-change: transform;
 
         background: $white;
         display: block;
         height: 2px;
         margin: 2px auto;
+        opacity: 1;
         position: relative;
         top: 0;
         width: 15px;

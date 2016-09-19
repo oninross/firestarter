@@ -17,27 +17,12 @@ export default class PrimaryNav {
             $window = $(window),
             isMobileDevice = $window.width() < 1024 ? true : false;
 
-        el.prepend(primaryNavMarkup);
+        el.before(primaryNavMarkup);
 
         // Insert Subnav Markup after Level 1 menu items
         $lvl1.find('ul').each(function () {
             $(this).before(subNavMarkup);
         });
-
-        // TimelineMax the menu-icon animation for easier control on Touch/Mouse Events
-        var tl = new TimelineMax();
-
-        tl.to(el.find('.top'), 0.2, { backgroundColor: '#000', top: 4, ease: Expo.easeInOut });
-        tl.to(el.find('.bot'), 0.2, { backgroundColor: '#000', top: -4, ease: Expo.easeInOut }, '-=0.2');
-        tl.to(el.find('.mid'), 0.2, { backgroundColor: '#000', ease: Expo.easeInOut }, '-=0.2');
-
-        tl.to(el.find('.mid'), 0.2, { opacity: 0, ease: Expo.easeInOut });
-        tl.to(el.find('.top'), 0.2, { rotation: 45, ease: Expo.easeInOut }, '-=0.2');
-        tl.to(el.find('.bot'), 0.2, { rotation: -45, ease: Expo.easeInOut }, '-=0.2');
-
-
-        // Stop the Timeline at 0 else the animation will play after initiation
-        tl.pause();
 
         // Declare Eventlisteners
         $dropdownList = el.find('ul li');
@@ -55,13 +40,12 @@ export default class PrimaryNav {
 
             var $this = $(this);
 
+            el.toggleClass('active');
             $this.toggleClass('active');
             $nav.toggleClass('active');
             $lvl1.toggleClass('active');
 
             if ($this.hasClass('active')) {
-                tl.play();
-
                 $lvl1.slideDown({
                     duration: 500,
                     easing: 'easeOutExpo',
@@ -86,8 +70,6 @@ export default class PrimaryNav {
                         easing: 'easeOutExpo',
                         queue: false
                     });
-
-                tl.reverse();
             }
         });
 
@@ -176,19 +158,27 @@ export default class PrimaryNav {
             }
 
             ripple(e, $this);
-        }).on('mouseover', '.lvl1 a', function () {
+        }).on('mouseover', '.lvl1 li', function () {
             var $this = $(this),
-                $next = $this.next();
+                $lvl2Dropdown = $this.find('.lvl2');
 
-            if (!isMobileDevice && !$next.hasClass('active')) {
-                $next.trigger('click');
+            if (!isMobileDevice) {
+                $lvl2Dropdown.slideDown({
+                    duration: 500,
+                    easing: 'easeOutExpo',
+                    queue: false
+                });
             }
-        }).on('mouseout', '.lvl1 a', function () {
+        }).on('mouseout', '.lvl1 li', function () {
             var $this = $(this),
-                $next = $this.next();
+                $lvl2Dropdown = $this.find('.lvl2');
 
-            if (!isMobileDevice && !$next.hasClass('active')) {
-                $next.trigger('click');
+            if (!isMobileDevice) {
+                $lvl2Dropdown.slideUp({
+                    duration: 500,
+                    easing: 'easeOutExpo',
+                    queue: false
+                });
             }
         });
 
@@ -214,8 +204,6 @@ export default class PrimaryNav {
                 $set
                     .find('.icon-arrow.active')
                     .removeClass('active');
-
-                tl.reverse();
 
                 TweenMax.to($lvl1, 0.25, {
                     scale: 0,

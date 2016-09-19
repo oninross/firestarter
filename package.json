@@ -74,7 +74,6 @@
     "doT": "./node_modules/doT/doT.js",
     "lazyload": "./node_modules/jquery-lazyload/jquery.lazyload.js",
     "TweenMax": "./node_modules/gsap/src/uncompressed/TweenMax.js",
-    "TimelineMax": "./node_modules/gsap/src/uncompressed/plugins/ScrollToPlugin.js",
     "mCustomScrollbar": "./node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
     "scrollMonitor": "./node_modules/scrollmonitor/scrollmonitor.js"
   },
