@@ -196,36 +196,6 @@ $(() => {
         }
     });
 
-    // Hamburger Menu
-    var $materialMenu = $('.material-menu');
-
-    // TimelineMax the menu-icon animation for easier control on Touch/Mouse Events
-    var tl = new TimelineMax();
-
-    tl.to('.material-menu .top', 0.2, { top: 4, ease: Expo.easeInOut });
-    tl.to('.material-menu .bot', 0.2, { top: -4, ease: Expo.easeInOut }, '-=0.2');
-
-    tl.to('.material-menu .mid', 0.2, { opacity: 0, ease: Expo.easeInOut });
-    tl.to('.material-menu .top', 0.2, { rotation: 45, ease: Expo.easeInOut }, '-=0.2');
-    tl.to('.material-menu .bot', 0.2, { rotation: -45, ease: Expo.easeInOut }, '-=0.2');
-
-
-    // Stop the Timeline at 0 else the animation will play after initiation
-    tl.pause();
-
-    $materialMenu.on('click', function () {
-        var $this = $(this);
-
-        $this.toggleClass('active');
-
-        if ($this.hasClass('active')) {
-            tl.reverse();
-        } else {
-            tl.play();
-        }
-    });
-
-
     // Floating Label Input Box
     $('.floating-input').each(function () {
         var $this = $(this);

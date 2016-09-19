@@ -1,5 +1,6 @@
 'use strict';
 
+import { ripple } from '../../_scripts/_material';
 import { debounce } from '../../_scripts/_helper';
 
 export default class PrimaryNav {
@@ -8,6 +9,7 @@ export default class PrimaryNav {
             primaryNavMarkup = '<button class="menu js-mobile-menu"><span class="line top"></span><span class="line mid"></span><span class="line bot"></span></button>',
             subNavMarkup = '<button class="sub-nav js-sub-nav icon-arrow"><span class="vh">Sub-navigation</span></button>',
             $dropdownList,
+            $nav = el.find('.nav'),
             $lvl1 = el.find('.lvl1'),
             $lvl2 = el.find('.lvl2'),
             $lvl3 = el.find('.lvl3'),
@@ -15,26 +17,12 @@ export default class PrimaryNav {
             $window = $(window),
             isMobileDevice = $window.width() < 1024 ? true : false;
 
-        el.prepend(primaryNavMarkup);
+        el.before(primaryNavMarkup);
 
         // Insert Subnav Markup after Level 1 menu items
         $lvl1.find('ul').each(function () {
             $(this).before(subNavMarkup);
         });
-
-        // TimelineMax the menu-icon animation for easier control on Touch/Mouse Events
-        var tl = new TimelineMax();
-
-        tl.to(el.find('.top'), 0.2, { top: 4, ease: Expo.easeInOut });
-        tl.to(el.find('.bot'), 0.2, { top: -4, ease: Expo.easeInOut }, '-=0.2');
-
-        tl.to(el.find('.mid'), 0.2, { opacity: 0, ease: Expo.easeInOut });
-        tl.to(el.find('.top'), 0.2, { rotation: 45, ease: Expo.easeInOut }, '-=0.2');
-        tl.to(el.find('.bot'), 0.2, { rotation: -45, ease: Expo.easeInOut }, '-=0.2');
-
-
-        // Stop the Timeline at 0 else the animation will play after initiation
-        tl.pause();
 
         // Declare Eventlisteners
         $dropdownList = el.find('ul li');
@@ -52,12 +40,12 @@ export default class PrimaryNav {
 
             var $this = $(this);
 
+            el.toggleClass('active');
             $this.toggleClass('active');
+            $nav.toggleClass('active');
             $lvl1.toggleClass('active');
 
             if ($this.hasClass('active')) {
-                tl.play();
-
                 $lvl1.slideDown({
                     duration: 500,
                     easing: 'easeOutExpo',
@@ -82,8 +70,6 @@ export default class PrimaryNav {
                         easing: 'easeOutExpo',
                         queue: false
                     });
-
-                tl.reverse();
             }
         });
 
@@ -162,7 +148,7 @@ export default class PrimaryNav {
 
             $next.trigger('click');
 
-            RR.materialDesign.ripple(e, $this);
+            ripple(e, $this);
         }).on('click', '.lvl2 a', function (e) {
             var $this = $(this),
                 $next = $this.next();
@@ -171,20 +157,28 @@ export default class PrimaryNav {
                 $next.trigger('click');
             }
 
-            RR.materialDesign.ripple(e, $this);
-        }).on('mouseover', '.lvl1 a', function () {
+            ripple(e, $this);
+        }).on('mouseenter', '.lvl1 li', function () {
             var $this = $(this),
-                $next = $this.next();
+                $next = $this.find('> .lvl2');
 
-            if (!isMobileDevice && !$next.hasClass('active')) {
-                $next.trigger('click');
+            if (!isMobileDevice) {
+                $next.slideDown({
+                        duration: 500,
+                        easing: 'easeOutExpo',
+                        queue: false
+                    });
             }
-        }).on('mouseout', '.lvl1 a', function () {
+        }).on('mouseleave', '.lvl1 li', function () {
             var $this = $(this),
-                $next = $this.next();
+                $next = $this.find('> .lvl2');
 
-            if (!isMobileDevice && !$next.hasClass('active')) {
-                $next.trigger('click');
+            if (!isMobileDevice) {
+                $next.slideUp({
+                        duration: 500,
+                        easing: 'easeOutExpo',
+                        queue: false
+                    });
             }
         });
 
@@ -192,7 +186,7 @@ export default class PrimaryNav {
         $body.on('click', function (e) {
             var $eTarget = $(e.target);
 
-            if (!$eTarget.hasClass('nav') && !$eTarget.parents('.nav').length) {
+            if ($eTarget.hasClass('nav active') && !$eTarget.parents('.nav').length) {
                 if ($primaryNav.hasClass('active')) {
                     $primaryNav.trigger('click');
                 }
@@ -210,8 +204,6 @@ export default class PrimaryNav {
                 $set
                     .find('.icon-arrow.active')
                     .removeClass('active');
-
-                tl.reverse();
 
                 TweenMax.to($lvl1, 0.25, {
                     scale: 0,

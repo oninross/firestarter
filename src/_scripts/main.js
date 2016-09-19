@@ -9,8 +9,6 @@ import 'TweenMax';
 
 import PrimaryNav from '../_modules/primary-nav/primary-nav';
 
-import './_material';
-
 import { debounce } from './_helper';
 
 // Variable declaration
