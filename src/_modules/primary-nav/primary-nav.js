@@ -8,6 +8,7 @@ export default class PrimaryNav {
             primaryNavMarkup = '<button class="menu js-mobile-menu"><span class="line top"></span><span class="line mid"></span><span class="line bot"></span></button>',
             subNavMarkup = '<button class="sub-nav js-sub-nav icon-arrow"><span class="vh">Sub-navigation</span></button>',
             $dropdownList,
+            $nav = el.find('.nav'),
             $lvl1 = el.find('.lvl1'),
             $lvl2 = el.find('.lvl2'),
             $lvl3 = el.find('.lvl3'),
@@ -25,8 +26,9 @@ export default class PrimaryNav {
         // TimelineMax the menu-icon animation for easier control on Touch/Mouse Events
         var tl = new TimelineMax();
 
-        tl.to(el.find('.top'), 0.2, { top: 4, ease: Expo.easeInOut });
-        tl.to(el.find('.bot'), 0.2, { top: -4, ease: Expo.easeInOut }, '-=0.2');
+        tl.to(el.find('.top'), 0.2, { backgroundColor: '#000', top: 4, ease: Expo.easeInOut });
+        tl.to(el.find('.bot'), 0.2, { backgroundColor: '#000', top: -4, ease: Expo.easeInOut }, '-=0.2');
+        tl.to(el.find('.mid'), 0.2, { backgroundColor: '#000', ease: Expo.easeInOut }, '-=0.2');
 
         tl.to(el.find('.mid'), 0.2, { opacity: 0, ease: Expo.easeInOut });
         tl.to(el.find('.top'), 0.2, { rotation: 45, ease: Expo.easeInOut }, '-=0.2');
@@ -53,6 +55,7 @@ export default class PrimaryNav {
             var $this = $(this);
 
             $this.toggleClass('active');
+            $nav.toggleClass('active');
             $lvl1.toggleClass('active');
 
             if ($this.hasClass('active')) {
@@ -192,7 +195,7 @@ export default class PrimaryNav {
         $body.on('click', function (e) {
             var $eTarget = $(e.target);
 
-            if (!$eTarget.hasClass('nav') && !$eTarget.parents('.nav').length) {
+            if ($eTarget.hasClass('nav active') && !$eTarget.parents('.nav').length) {
                 if ($primaryNav.hasClass('active')) {
                     $primaryNav.trigger('click');
                 }
