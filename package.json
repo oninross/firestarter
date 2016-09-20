@@ -97,9 +97,10 @@
       "//": "Directories relative to `source` directory",
       "modules": "_modules",
       "layouts": "_layouts",
-      "images": "_images",
-      "styles": "_styles",
-      "scripts": "_scripts",
+      "images": "_assets/firestarter/images",
+      "css": "_assets/firestarter/css",
+      "fonts": "_assets/firestarter/css/fonts",
+      "scripts": "_assets/firestarter/scripts",
       "data": "_data"
     },
     "entries": {
