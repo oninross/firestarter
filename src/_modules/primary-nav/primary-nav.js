@@ -205,14 +205,10 @@ export default class PrimaryNav {
                     .find('.icon-arrow.active')
                     .removeClass('active');
 
-                TweenMax.to($lvl1, 0.25, {
-                    scale: 0,
-                    ease: Expo.easeOut,
-                    onComplete: function () {
-                        $lvl2.hide();
-                        $lvl3.hide();
-                    }
-                });
+                $nav.removeClass('active');
+                $lvl1.removeClass('active');
+                $lvl2.hide();
+                $lvl3.hide();
             } else {
                 $lvl1.show();
 
