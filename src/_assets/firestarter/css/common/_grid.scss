@@ -8,6 +8,7 @@
 
 [class^="col-"], [class*=" col-"] {
     margin-bottom: 20px;
+    padding: 0 $gutter;
     width: 100%;
 
     &:last-child {
@@ -50,6 +51,8 @@
 }
 
 .container {
+    @extend %clearfix;
+
     height: 100%;
     margin: auto;
     max-width: 960px;
@@ -65,11 +68,10 @@
     .wrap {
         @extend %clearfix;
 
-        @include tablet {
-            margin: 0 (-$gutterTablet);
-        }
+        margin: 0 (-$gutter);
+        padding: 0;
 
-        @include desktop {
+        @include tablet {
             margin: 0 (-$gutterTablet);
         }
     }
