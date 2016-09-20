@@ -96,7 +96,7 @@ $(() => {
 
             if ($this.length && !$this.parent().hasClass('table-wrapper') && $this.isTableWide()) {
                 $this
-                    .after('<button class="btn-print js-print-table">View Table</button>')
+                    .after('<button class="btn-print-table js-print-table">View Table</button>')
                     .wrap('<div class="table-wrapper"></div>');
             }
         });

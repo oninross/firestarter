@@ -100,7 +100,7 @@
       "images": "_assets/firestarter/images",
       "css": "_assets/firestarter/css",
       "fonts": "_assets/firestarter/css/fonts",
-      "scripts": "_assets/firestarter/scripts",
+      "js": "_assets/firestarter/js",
       "data": "_data"
     },
     "entries": {
