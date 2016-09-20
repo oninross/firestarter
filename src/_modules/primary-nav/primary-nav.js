@@ -1,7 +1,7 @@
 'use strict';
 
-import { ripple } from '../../_assets/firestarter/scripts/_material';
-import { debounce } from '../../_assets/firestarter/scripts/_helper';
+import { ripple } from '../../_assets/firestarter/js/_material';
+import { debounce } from '../../_assets/firestarter/js/_helper';
 
 export default class PrimaryNav {
     constructor() {

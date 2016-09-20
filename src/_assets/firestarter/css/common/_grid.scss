@@ -8,8 +8,11 @@
 
 [class^="col-"], [class*=" col-"] {
     margin-bottom: 20px;
-    padding: 0 $gutter;
     width: 100%;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
 
     @include tablet {
         float: left;
@@ -55,13 +58,15 @@
     width: 100%;
     z-index: 1;
 
+    @include desktop {
+        padding: 0 $gutterTablet;
+    }
+
     .wrap {
         @extend %clearfix;
 
-        padding: 0;
-
-        .wrap {
-            margin: 0 (-$gutter);
+        @include tablet {
+            margin: 0 (-$gutterTablet);
         }
 
         @include desktop {
