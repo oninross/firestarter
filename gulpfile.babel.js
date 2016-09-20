@@ -48,6 +48,7 @@ gulp.task('default', ['clean'], () => {
 // Build production-ready code
 gulp.task('build', [
   'copy',
+  'copyFonts',
   'imagemin',
   'jade',
   'sass',
@@ -58,6 +59,7 @@ gulp.task('build', [
 gulp.task('serve', [
   'imagemin',
   'copy',
+  'copyFonts',
   'jade',
   'sass',
   'browserify',

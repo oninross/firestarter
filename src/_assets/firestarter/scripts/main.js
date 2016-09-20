@@ -7,7 +7,7 @@ import $ from 'jquery';
 import 'lazyload';
 import 'TweenMax';
 
-import PrimaryNav from '../_modules/primary-nav/primary-nav';
+import PrimaryNav from '../../../_modules/primary-nav/primary-nav';
 
 import { debounce } from './_helper';
 

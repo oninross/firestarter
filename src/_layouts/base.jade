@@ -21,15 +21,15 @@ head
 
   title Firestarter
 
-  meta(name='description', content= 'A new Yeogurt application')
+  meta(name='description', content= 'A quick, easy front-end framework and setup for any project')
   meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
 
   link(rel='manifest', href='manifest.json')
   meta(name='mobile-web-app-capable', content='yes')
   meta(name='apple-mobile-web-app-capable', content='yes')
-  meta(name='msapplication-TileColor', content='#54606e')
+  meta(name='msapplication-TileColor', content='#990000')
   meta(name='msapplication-TileImage', content='images/favicon/ms-icon-144x144.png')
-  meta(name='theme-color', content='#54606e')
+  meta(name='theme-color', content='#990000')
 
   link(rel='apple-touch-icon', sizes='57x57', href='images/favicon/apple-icon-57x57.png')
   link(rel='apple-touch-icon', sizes='60x60', href='images/favicon/apple-icon-60x60.png')
@@ -52,7 +52,7 @@ head
   link(rel='stylesheet', type='text/css', href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic')
 
   block stylesheets
-    link(rel='stylesheet', href= baseUrl + 'styles/main.css')
+    link(rel='stylesheet', href= baseUrl + 'assets/firestarter/css/main.css')
 
 body
   <!--[if lt IE 9]>
@@ -73,7 +73,7 @@ body
   block scripts
     script(id='toaster-template', type='text/template').
 
-    script(src= baseUrl + 'scripts/main.js')
+    script(src= baseUrl + 'assets/firestarter/scripts/main.js')
       .toaster(class='toaster{{= it.ind }}')
         .container
           p {{! it.message}}
