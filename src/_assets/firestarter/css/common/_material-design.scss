@@ -16,7 +16,6 @@
     @include transition( all, 1s, $easeOutExpo );
 
     opacity: 0;
-    padding: 15px;
     position: relative;
     top: 150px;
 
@@ -34,6 +33,10 @@
         border-radius: 2px;
         min-height: 100px;
         padding: 15px;
+    }
+
+    @include tablet {
+        margin-bottom: 30px;
     }
 }
 
