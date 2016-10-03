@@ -6,6 +6,7 @@
 import $ from 'jquery';
 import 'lazyload';
 import 'TweenMax';
+import 'doT';
 
 import PrimaryNav from '../../../_modules/primary-nav/primary-nav';
 
@@ -88,11 +89,11 @@ $(() => {
     ////////////////////////////
     (function () {
         $.fn.isTableWide = function () {
-            return $(this).parent().width() < this.width();
+            return $(this).parent().width() < $(this).width();
         };
 
-        $('table').each(function () {
-            var $this = $(this);
+        $('table').each(function (i, v) {
+            var $this = $(v);
 
             if ($this.length && !$this.parent().hasClass('table-wrapper') && $this.isTableWide()) {
                 $this

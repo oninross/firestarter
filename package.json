@@ -79,7 +79,8 @@
   },
   "browserify-shim": {
     "jquery": "jQuery",
-    "mCustomScrollbar": "mCustomScrollbar"
+    "mCustomScrollbar": "mCustomScrollbar",
+    "doT": "doT"
   },
   "engines": {
     "node": ">=0.12.0"

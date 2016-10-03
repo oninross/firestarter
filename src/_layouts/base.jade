@@ -78,7 +78,7 @@ body
     script(src= baseUrl + 'assets/firestarter/js/main.js')
 
     if !isTablePreview
-      script(id='toaster-template', type='text/template').
+      script(id='toaster-template', type='text/template')
         .toaster(class='toaster{{= it.ind }}')
           .container
             p {{! it.message}}
