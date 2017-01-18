@@ -6,14 +6,14 @@
 }
 
 .sr-only {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	border: 0;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }
 
 // Use in conjunction with .sr-only to only display content when it's focused.
@@ -21,14 +21,14 @@
 // Credit: HTML5 Boilerplate
 
 .sr-only-focusable {
-	&:active,	&:focus {
-		position: static;
-		width: auto;
-		height: auto;
-		margin: 0;
-		overflow: visible;
-		clip: auto;
-	}
+    &:active,   &:focus {
+        position: static;
+        width: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        clip: auto;
+    }
 }
 
 %clearfix {
@@ -36,91 +36,91 @@
 }
 
 @mixin mobile {
-	@media (max-width: #{$bpMaxMobile}) {
-		@content;
-	}
+    @media (max-width: #{$bpMaxMobile}) {
+        @content;
+    }
 }
 
 @mixin tablet {
-	@media screen and (min-width: $bpMinTablet), print {
-		@content;
-	}
+    @media screen and (min-width: $bpMinTablet), print {
+        @content;
+    }
 }
 
 @mixin desktop {
-	@media screen and (min-width: $bpMinDesktop), print {
-		@content;
-	}
+    @media screen and (min-width: $bpMinDesktop), print {
+        @content;
+    }
 }
 
 @mixin large-desktop {
-	@media screen and (min-width: $bpMaxDesktop), print {
-		@content;
-	}
+    @media screen and (min-width: $bpMaxDesktop), print {
+        @content;
+    }
 }
 
 
 @mixin smallMobile {
-	@media (max-width: #{$bpSmallMobile}) {
-		@content;
-	}
+    @media (max-width: #{$bpSmallMobile}) {
+        @content;
+    }
 }
 
 @mixin no-desktop {
-	@media (max-width: #{$bpMinDesktop} - 1px) {
-		@content;
-	}
+    @media (max-width: #{$bpMinDesktop} - 1px) {
+        @content;
+    }
 }
 
 .desktop-only {
-	display: none !important;
-	@include desktop {
-		display: block !important;
-	}
+    display: none !important;
+    @include desktop {
+        display: block !important;
+    }
 }
 
 .tablet-only {
-	display: none !important;
-	@include tablet {
-		display: block !important;
-	}
+    display: none !important;
+    @include tablet {
+        display: block !important;
+    }
 }
 
 .mobile-only {
-	display: none !important;
-	@include mobile {
-		display: block !important;
-	}
+    display: none !important;
+    @include mobile {
+        display: block !important;
+    }
 }
 
 .no-desktop {
-	@include desktop {
-		display: none !important;
-	}
+    @include desktop {
+        display: none !important;
+    }
 }
 
 .no-tablet {
-	@include tablet {
-		display: none !important;
-	}
+    @include tablet {
+        display: none !important;
+    }
 }
 
 .no-mobile {
-	@include mobile {
-		display: none !important;
-	}
+    @include mobile {
+        display: none !important;
+    }
 }
 
 .column-break {
-	margin-bottom: 100vh !important;
+    margin-bottom: 100vh !important;
 }
 
 .align-left {
-	text-align: left !important;
+    text-align: left !important;
 }
 
 .align-right {
-	text-align: right !important;
+    text-align: right !important;
 }
 
 .pull-left {

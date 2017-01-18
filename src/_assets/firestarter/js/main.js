@@ -6,6 +6,7 @@
 import $ from 'jquery';
 import 'lazyload';
 import 'TweenMax';
+import 'doT';
 
 import PrimaryNav from '../../../_modules/primary-nav/primary-nav';
 
@@ -88,11 +89,11 @@ $(() => {
     ////////////////////////////
     (function () {
         $.fn.isTableWide = function () {
-            return $(this).parent().width() < this.width();
+            return $(this).parent().width() < $(this).width();
         };
 
-        $('table').each(function () {
-            var $this = $(this);
+        $('table').each(function (i, v) {
+            var $this = $(v);
 
             if ($this.length && !$this.parent().hasClass('table-wrapper') && $this.isTableWide()) {
                 $this
@@ -155,4 +156,38 @@ $(() => {
 
 
     console.log("I'm a firestarter!");
+});
+
+
+// Simple Service Worker to make App Install work (OPTIONAL)
+window.addEventListener('load', function() {
+    var outputElement = document.getElementById('output');
+
+    navigator.serviceWorker.register('/service-worker.js', { scope: './' })
+        .then(function(r) {
+          console.log('registered service worker');
+      })
+    .catch(function(whut) {
+        console.error('uh oh... ');
+        console.error(whut);
+    });
+
+    window.addEventListener('beforeinstallprompt', function(e) {
+        outputElement.textContent = 'beforeinstallprompt Event fired';
+    });
+});
+
+window.addEventListener('beforeinstallprompt', function(e) {
+    outputElement.textContent = 'beforeinstallprompt Event fired';
+
+    // e.userChoice will return a Promise. For more details read: http://www.html5rocks.com/en/tutorials/es6/promises/
+    e.userChoice.then(function(choiceResult) {
+        console.log(choiceResult.outcome);
+
+        if (choiceResult.outcome == 'dismissed') {
+            console.log('User cancelled homescreen install');
+        } else {
+            console.log('User added to homescreen');
+        }
+    });
 });

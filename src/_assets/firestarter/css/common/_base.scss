@@ -7,7 +7,7 @@ html {
 
 body {
     background: $material-background;
-    font: 62.5%/1.618 'Roboto', sans-serif;
+    font: 62.5%/1.618 'Helvetica', 'Arial', sans-serif;
     margin: 0 !important;
 }
 
@@ -16,8 +16,8 @@ address {
     word-break: break-word;
     font-weight: bold;
     line-height: 1;
-    margin-top: 10px;
-    margin-bottom: 30px;
+    margin-top: 30px;
+    margin-bottom: 10px;
 
     a {
         font-size: 1em;
@@ -51,25 +51,29 @@ h6 {
 }
 
 menu, ol, ul {
-    font-size: $default-font-size;
+    // font-size: $default-font-size;
     margin-bottom: 20px;
     padding: 0 0 0 40px;
 
-    * {
-        font-size: 1em;
-    }
+    li {
+        font-size: $default-font-size;
 
-    a, p, ol, ul {
-        font-size: 1em;
+        li {
+            font-size: 1em;
+        }
+
+        a {
+            font-size: 1em;
+        }
     }
 }
 
 ol, ul {
     margin: auto;
 
-    code, kbd, pre, samp {
-        font-size: inherit;
-    }
+    // code, kbd, pre, samp {
+    //     font-size: inherit;
+    // }
 }
 
 dl {
@@ -81,9 +85,7 @@ table {
     border: 1px solid $grey;
     border-collapse: collapse;
     border-spacing: 0;
-    font-size: $default-font-size;
     margin-bottom: 20px;
-    max-width: 100%;
     width: 100%;
 
     tr:nth-child(even) {
@@ -98,12 +100,21 @@ table {
     th {
         background: darken( $grey, 10% );
         color: $white;
+        font-size: 1.8em;
         text-align: left;
     }
 
-    menu, ol, ul, p, a {
+    td {
+        font-size: $default-font-size;
+    }
+
+    p {
         font-size: 1em;
     }
+
+    // menu, ol, ul, p, a {
+    //     font-size: 1em;
+    // }
 }
 
 code,
@@ -111,15 +122,15 @@ kbd,
 pre,
 samp,
 cite {
-    font-size: $default-font-size;
+    // font-size: $default-font-size;
 
-    code,
-    kbd,
-    pre,
-    samp,
-    cite {
-        font-size: 1em;
-    }
+    // code,
+    // kbd,
+    // pre,
+    // samp,
+    // cite {
+    //     font-size: 1em;
+    // }
 }
 
 img {
@@ -135,20 +146,25 @@ img {
     }
 }
 
-address,
-blockquote {
+address {
     font-size: $default-font-size;
     margin: 0 0 10px;
     word-break: break-word;
+}
+
+blockquote {
+    font-size: 1.8em;
+    font-weight: $light;
+    line-height: 1.25;
 }
 
 p {
     font-size: $default-font-size;
     word-break: break-word;
 
-    code, kbd, pre, samp, cite {
-        font-size: inherit;
-    }
+    // code, kbd, pre, samp, cite {
+    //     font-size: inherit;
+    // }
 
     a {
         font-size: 1em;
@@ -158,7 +174,6 @@ p {
 a {
     @include transition( all, 0.5s, $easeOutExpo );
 
-    color: $red;
     font-size: $default-font-size;
     margin-bottom: 10px;
     text-decoration: none;
@@ -204,24 +219,24 @@ button {
     opacity: 1;
 }
 
-::-webkit-scrollbar {
-    height: 5px;
-    width: 5px;
-}
+// ::-webkit-scrollbar {
+//     height: 5px;
+//     width: 5px;
+// }
 
-::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.26);
-}
+// ::-webkit-scrollbar-thumb {
+//     background: rgba(0, 0, 0, 0.26);
+// }
 
-::-webkit-scrollbar-corner {
-    background: 0;
-}
+// ::-webkit-scrollbar-corner {
+//     background: 0;
+// }
 
 
 .btn {
     @include transition( all, 0.5s, $easeOutExpo );
 
-    background: $red;
+    background: $black;
     border: 0;
     border-radius: 3px;
     color: $white;
@@ -233,7 +248,7 @@ button {
     width: auto;
 
     &:hover {
-        background: darken( $red, 10%);
+        background: lighten( $black, 10%);
     }
 
     &.disabled {
@@ -291,7 +306,7 @@ Layout
 
     li {
         display: inline-block;
-        font-size: 1em;
+        // font-size: 1em;
 
         a {
             text-decoration: none;
@@ -305,14 +320,13 @@ Layout
             @extend %icomoon;
 
             content: "\e902";
-            font-size: 1.2em;
+            // font-size: 1.2em;
             margin: 0 10px;
             position: relative;
             top: 3px;
         }
 
         &:last-child {
-            color: $red;
             font-weight: bold;
 
             &:after {
@@ -324,7 +338,7 @@ Layout
 
 .table-wrapper {
     border: 1px solid $grey;
-    font-size: 1em !important;
+    // font-size: 1em !important;
     margin: 20px 0;
     overflow-x: auto;
     overflow-y: hidden;
