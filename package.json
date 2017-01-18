@@ -1,6 +1,6 @@
 {
   "name": "firestarter",
-  "version": "0.0.1",
+  "version": "1.1.2",
   "dependencies": {
     "browserify-shim": "^3.8.12",
     "dot": "^1.0.3",
@@ -38,6 +38,7 @@
     "vinyl-buffer": "~1.0.0",
     "gulp-util": "~3.0.7",
     "gulp": "~3.9.0",
+    "gulp-bump": "^2.4.0",
     "browser-sync": "~2.13.0",
     "gulp-jade": "~1.1.0",
     "jade": "~1.11.0",
