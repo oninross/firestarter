@@ -3,6 +3,7 @@
 // dependencies
 import gulp from 'gulp';
 import bump from 'gulp-bump';
+import del from 'del';
 
 /**
  * Bumping version number and tagging the repository with it.
@@ -20,9 +21,9 @@ import bump from 'gulp-bump';
 
 export default function(gulp, plugins, args, config, taskTarget, browserSync) {
 
-    function inc(importance) {
+    function pack(importance) {
         // get all the files to bump version in
-        return gulp.src(['./package.json', './src/service-worker.js'])
+        return gulp.src(['./package.json'])
             // bump the version number in those files
             .pipe(bump({type: importance}))
 
@@ -30,8 +31,30 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
             .pipe(gulp.dest('./'));
     }
 
-    gulp.task('patch', function() { return inc('patch'); });
-    gulp.task('feature', function() { return inc('minor'); });
-    gulp.task('release', function() { return inc('major'); });
+    function sw(importance) {
+        // get all the files to bump version in
+        return gulp.src(['./src/service-worker.js'])
+            // bump the version number in those files
+            .pipe(bump({type: importance}))
+
+            // save it back to filesystem
+            .pipe(gulp.dest('./src'));
+    }
+
+    gulp.task('patch', function() {
+        pack('patch');
+        sw('patch');
+    });
+
+    gulp.task('feature', function() {
+        pack('minor');
+        sw('minor');
+    });
+
+    gulp.task('release', function() {
+        pack('major');
+        sw('major');
+    });
+
 
 }
