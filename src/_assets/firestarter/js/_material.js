@@ -1,20 +1,20 @@
 'use strict';
 
-let $body = $('body'),
-    $window = $(window),
-    isMobileDevice = $window.width() < 1024 ? 1 : 0;
-
 import scrollMonitor from 'scrollMonitor';
 import mCustomScrollbar from 'mCustomScrollbar';
 
-import { debounce } from './_helper';
+import { debounce, isMobile } from './_helper';
+
+let $body = $('body'),
+    $window = $(window),
+    isMobileDevice = isMobile();
 
 /////////////////////////////
 // Select Box Materializer //
 /////////////////////////////
 $.fn.materialize = function () {
     return this.each(function () {
-        var $this = $(this),
+        let $this = $(this),
             $label = $('<span class = "material-label"/>'),
             $arrow = $('<span class = "icon icon-chevron-down"/>'),
             $wrapper = $('<div class = "material-select-wrapper js-material-drop"/>'),
@@ -39,7 +39,7 @@ $.fn.materialize = function () {
         markup += '<div class="card-wrapper"><ul>';
 
         $this.find('option').each(function () {
-            var $that = $(this);
+            let $that = $(this);
 
             if ($that.is(':selected')) {
                 markup += '<li class="active"><button>' + $that.text() + '</button></li>';
@@ -53,7 +53,7 @@ $.fn.materialize = function () {
         $this.after(markup);
 
         $this.parent().on('click', '.material-label', function () {
-            var $this = $(this),
+            let $this = $(this),
                 $parent = $this.parent(),
                 $card = $this.parent().find('.card-wrapper');
 
@@ -74,7 +74,7 @@ $.fn.materialize = function () {
                     }
                 });
             } else {
-                var activeInd = $card.find('.active').index(),
+                let activeInd = $card.find('.active').index(),
                     materialDropPos = $('.material-select-wrapper .card-wrapper li').outerHeight() * activeInd;
 
                 TweenMax.to($card, 0.25, {
@@ -100,7 +100,7 @@ $.fn.materialize = function () {
         }).on('click', 'button', function (e) {
             e.preventDefault();
 
-            var $this = $(this),
+            let $this = $(this),
                 $cardWrapper = $this.parents('.card-wrapper'),
                 $materialSelectWrapper = $this.parents('.material-select-wrapper'),
                 $parent = $this.parent(),
@@ -139,7 +139,7 @@ $.fn.materialize = function () {
         });
 
         $body.on('click', function (e) {
-            var $eTarget = $(e.target),
+            let $eTarget = $(e.target),
                 $materialSelectWrapper = $('.material-select-wrapper'),
                 $cardWrapper = $('.material-select-wrapper .card-wrapper');
 
@@ -186,10 +186,10 @@ $.fn.materialize = function () {
 
 $(() => {
     // Ripple Effect
-    var $rippleEffect = $('button, .cta');
+    let $rippleEffect = $('button, .cta');
 
     $rippleEffect.on('click', function (e) {
-        var $this = $(this);
+        let $this = $(this);
 
         if (!$this.hasClass('disabled')) {
             ripple(e, $this);
@@ -198,18 +198,18 @@ $(() => {
 
     // Floating Label Input Box
     $('.floating-input').each(function () {
-        var $this = $(this);
+        let $this = $(this);
 
         $this
             .wrap('<div class="floating"></div>')
             .before('<span class="placeholder">' + $this.attr('placeholder') + '</span>')
             .attr('placeholder', '')
             .on('focus', function () {
-                var $this = $(this);
+                let $this = $(this);
 
                 $this.parent().addClass('focus');
             }).on('blur', function () {
-                var $this = $(this);
+                let $this = $(this);
 
                 if ($this.val() === '') {
                     $this.parent().removeClass('focus');
@@ -228,7 +228,7 @@ $(() => {
 
     // Progress Bar
     $('.progress').each(function () {
-        var $this = $(this),
+        let $this = $(this),
             $progressBar = $this.find('.progress-bar');
 
         if ($progressBar.data('value') !== undefined) {
@@ -239,12 +239,12 @@ $(() => {
     $('.material').materialize();
 
     // cards
-    var $card = $('.card');
+    let $card = $('.card');
     if ($card.length) {
         $card.each(function (i, el) {
-            var $this = $(el);
+            let $this = $(el);
 
-            var cardWatcher = scrollMonitor.create(el);
+            let cardWatcher = scrollMonitor.create(el);
             cardWatcher.enterViewport (function () {
                 $this.addClass('show', this.isInViewport);
                 $this.removeClass('up', this.isAboveViewport);
@@ -260,7 +260,7 @@ $(() => {
     }
 
     $window.on('resize', debounce(function () {
-        isMobileDevice = $window.width() < 1024 ? true : false;
+        isMobileDevice = isMobile();
     }, 250));
 });
 
@@ -272,7 +272,7 @@ $(() => {
 let toasterInd = 0;
 let toaster = function (msg) {
     // Alert Toaster
-    var popupAlert = doT.template($('#toaster-template').html()),
+    let popupAlert = doT.template($('#toaster-template').html()),
         obj = {
             ind: toasterInd,
             message: msg
@@ -284,7 +284,7 @@ let toaster = function (msg) {
 
     $('.toaster-wrap').append(popupAlert(obj));
 
-    var toaster = '.toaster' + toasterInd;
+    let toaster = '.toaster' + toasterInd;
 
     TweenMax.to(toaster, 0.75, {
         scale: 1,
@@ -327,11 +327,15 @@ let ripple = function (e, el) {
     }
 
     // create SVG element
-    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+    let svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
         g = document.createElementNS('http://www.w3.org/2000/svg', 'g'),
         circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle'),
         x = e.offsetX,
         y = e.offsetY;
+
+    if (x == undefined) {
+        return false;
+    }
 
     svg.setAttributeNS(null, 'class', 'ripple ripple' + inc);
     g.setAttributeNS(null, 'transform', 'translate(' + x + ', ' + y + ')');
@@ -341,7 +345,7 @@ let ripple = function (e, el) {
     g.appendChild(circle);
     el.append(svg);
 
-    var $ripple = el.find('.ripple' + inc);
+    let $ripple = el.find('.ripple' + inc);
     TweenMax.from($ripple.find('circle'), 1.5, {
         attr: { r: 0 },
         opacity: 0.75,

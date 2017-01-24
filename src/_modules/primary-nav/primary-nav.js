@@ -1,7 +1,7 @@
 'use strict';
 
 import { ripple } from '../../_assets/firestarter/js/_material';
-import { debounce } from '../../_assets/firestarter/js/_helper';
+import { debounce, isMobile, easeOutExpo } from '../../_assets/firestarter/js/_helper';
 
 export default class PrimaryNav {
     constructor() {
@@ -15,7 +15,7 @@ export default class PrimaryNav {
             $lvl3 = el.find('.lvl3'),
             $set = $lvl1.add($lvl2).add($lvl3),
             $window = $(window),
-            isMobileDevice = $window.width() < 1024 ? true : false;
+            isMobileDevice = isMobile();
 
         el.before(primaryNavMarkup);
 
@@ -27,7 +27,7 @@ export default class PrimaryNav {
         // Declare Eventlisteners
         $dropdownList = el.find('ul li');
 
-        var $primaryNav = $('.js-mobile-menu'),
+        let $primaryNav = $('.js-mobile-menu'),
             $subNav = $('.js-sub-nav');
 
         TweenMax.killTweensOf($dropdownList);
@@ -38,7 +38,7 @@ export default class PrimaryNav {
             e.preventDefault();
             e.stopPropagation();
 
-            var $this = $(this);
+            let $this = $(this);
 
             el.toggleClass('active');
             $this.toggleClass('active');
@@ -46,35 +46,21 @@ export default class PrimaryNav {
             $lvl1.toggleClass('active');
 
             if ($this.hasClass('active')) {
-                $lvl1.slideDown({
-                    duration: 500,
-                    easing: 'easeOutExpo',
-                    queue: false
-                });
+                $lvl1.slideDown(easeOutExpo);
             } else {
                 $set
                     .removeClass('active')
                     .find('.icon-arrow.active')
                         .removeClass('active');
 
-                $lvl2
-                    .slideUp({
-                        duration: 500,
-                        easing: 'easeOutExpo',
-                        queue: false
-                    });
+                $lvl2.slideUp(easeOutExpo);
 
-                $lvl3
-                    .slideUp({
-                        duration: 500,
-                        easing: 'easeOutExpo',
-                        queue: false
-                    });
+                $lvl3.slideUp(easeOutExpo);
             }
         });
 
         $subNav.on('touchend, click', function () {
-            var $this = $(this),
+            let $this = $(this),
                 $grandParent = $this.parent().parent(),
                 $next = $this.next();
 
@@ -88,42 +74,25 @@ export default class PrimaryNav {
                         .next().find('.icon-arrow.active')
                         .removeClass('active');
 
-                    $lvl3.slideUp({
-                        duration: 500,
-                        easing: 'easeOutExpo'
-                    });
+                    $lvl3.slideUp(easeOutExpo);
 
-                    $next.removeClass('active').slideUp({
-                        duration: 500,
-                        easing: 'easeOutExpo',
-                        queue: false
-                    });
+                    $next.removeClass('active').slideUp(easeOutExpo);
                 } else {
                     $this.removeClass('active');
 
-                    $next.removeClass('active').slideUp({
-                        duration: 500,
-                        easing: 'easeOutExpo',
-                        queue: false
-                    });
+                    $next.removeClass('active').slideUp(easeOutExpo);
                 }
             } else {
                 if ($grandParent.hasClass('lvl1')) {
                     $lvl1
                         .find('.icon-arrow.active')
                             .removeClass('active')
-                            .next().removeClass('active').slideUp({
-                                duration: 500,
-                                easing: 'easeOutExpo'
-                            });
+                            .next().removeClass('active').slideUp(easeOutExpo);
                 } else if ($grandParent.hasClass('lvl2')) {
                     $lvl2
                         .find('.icon-arrow.active')
                             .removeClass('active')
-                            .next().removeClass('active').slideUp({
-                                duration: 500,
-                                easing: 'easeOutExpo'
-                            });
+                            .next().removeClass('active').slideUp(easeOutExpo);
                 }
 
                 $this.addClass('active');
@@ -132,25 +101,21 @@ export default class PrimaryNav {
                     $next.addClass('active');
                 }, 200);
 
-                $next.slideDown({
-                    duration: 500,
-                    easing: 'easeOutExpo',
-                    queue: false
-                });
+                $next.slideDown(easeOutExpo);
             }
         });
 
         // Primary Nav Mouse Listeners
         el.on('click', '.no-link', function (e) {
             e.preventDefault();
-            var $this = $(this),
+            let $this = $(this),
                 $next = $this.next();
 
             $next.trigger('click');
 
             ripple(e, $this);
         }).on('click', '.lvl2 a', function (e) {
-            var $this = $(this),
+            let $this = $(this),
                 $next = $this.next();
 
             if ($this.attr('src') === '#' && $this.parent().hasClass('no-link')) {
@@ -159,32 +124,24 @@ export default class PrimaryNav {
 
             ripple(e, $this);
         }).on('mouseenter', '.lvl1 li', function () {
-            var $this = $(this),
+            let $this = $(this),
                 $next = $this.find('> .lvl2');
 
             if (!isMobileDevice) {
-                $next.slideDown({
-                        duration: 500,
-                        easing: 'easeOutExpo',
-                        queue: false
-                    });
+                $next.slideDown(easeOutExpo);
             }
         }).on('mouseleave', '.lvl1 li', function () {
-            var $this = $(this),
+            let $this = $(this),
                 $next = $this.find('> .lvl2');
 
             if (!isMobileDevice) {
-                $next.slideUp({
-                        duration: 500,
-                        easing: 'easeOutExpo',
-                        queue: false
-                    });
+                $next.slideUp(easeOutExpo);
             }
         });
 
-        var $body = $('body');
+        let $body = $('body');
         $body.on('click', function (e) {
-            var $eTarget = $(e.target);
+            let $eTarget = $(e.target);
 
             if ($eTarget.hasClass('nav active') && !$eTarget.parents('.nav').length) {
                 if ($primaryNav.hasClass('active')) {
@@ -197,7 +154,7 @@ export default class PrimaryNav {
 
         // Window Listener
         $window.on('resize', debounce(function () {
-            isMobileDevice = $window.width() < 1024 ? true : false;
+            isMobileDevice = isMobile();
 
             if (isMobileDevice) {
                 $primaryNav.removeClass('active');
@@ -217,7 +174,7 @@ export default class PrimaryNav {
         }, 250));
 
         $window.on('scroll', debounce(function () {
-            isMobileDevice = $window.width() < 1024 ? true : false;
+            isMobileDevice = isMobile();
 
             if (!isMobileDevice) {
                 $('.js-sub-nav.active').trigger('click');
@@ -225,7 +182,7 @@ export default class PrimaryNav {
         }, 250));
 
         function checkNavHeight() {
-            var $lvl1 = $('#primary-nav .lvl1'),
+            let $lvl1 = $('#primary-nav .lvl1'),
                 $visibleArea = $window.outerHeight() - $('.header').outerHeight();
 
             $lvl1.css({

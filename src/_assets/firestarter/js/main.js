@@ -7,16 +7,17 @@ import $ from 'jquery';
 import 'lazyload';
 import 'TweenMax';
 import 'doT';
+import './_modernizr';
 
 import PrimaryNav from '../../../_modules/primary-nav/primary-nav';
 
-import { debounce } from './_helper';
+import { debounce, isMobile } from './_helper';
 
 // Variable declaration
-var $window = $(window),
+let $window = $(window),
     $body = $('body'),
     $header = $('.header'),
-    isMobileDevice = $window.width() < 768 ? true : false,
+    isMobileDevice = isMobile(),
     lastScrollTop = 0;
 
 $(() => {
@@ -42,23 +43,23 @@ $(() => {
     // Placeholder Alternative //
     /////////////////////////////
     (function () {
-        var $inputText = $('input[type="text"]');
+        let $inputText = $('input[type="text"]');
 
         if ($('.no-placeholder').length) {
             $inputText
                 .each(function () {
-                    var $this = $(this);
+                    let $this = $(this);
                     $this.addClass('blur').attr('value', $this.attr('placeholder'));
                 })
                 .on('focus', function () {
-                    var $this = $(this);
+                    let $this = $(this);
 
                     if ($this.val() == $this.attr('placeholder')) {
                         $this.val('').removeClass('blur');
                     }
                 })
                 .on('blur', function () {
-                    var $this = $(this);
+                    let $this = $(this);
                     if ($this.val() == '') {
                         $this.val($this.attr('placeholder')).addClass('blur');
                     }
@@ -74,7 +75,7 @@ $(() => {
     (function () {
         if ($('.no-bgsizecover').length) {
             $('.backstretch').each(function () {
-                var $this = $(this),
+                let $this = $(this),
                     $dataOriginal = $this.data('original');
 
                 $this.backstretch($dataOriginal);
@@ -93,7 +94,7 @@ $(() => {
         };
 
         $('table').each(function (i, v) {
-            var $this = $(v);
+            let $this = $(v);
 
             if ($this.length && !$this.parent().hasClass('table-wrapper') && $this.isTableWide()) {
                 $this
@@ -102,7 +103,7 @@ $(() => {
             }
         });
 
-        var $tablePreview = $('.table-preview');
+        let $tablePreview = $('.table-preview');
         if ($tablePreview.length) {
             $('meta[name="viewport"]').attr('content', 'user-scalable=yes');
             $tablePreview.append(localStorage.tablePreview);
@@ -113,7 +114,7 @@ $(() => {
         }
 
         $('body').on('click', '.js-print-table', function () {
-            var $table = $(this).prev();
+            let $table = $(this).prev();
 
             localStorage.tablePreview = $table[0].innerHTML;
             window.open('/table-preview/', '_blank').focus();
@@ -129,10 +130,10 @@ $(() => {
         $window.on('resize scroll', debounce(toggleHeader, 250));
 
         function toggleHeader() {
-            var st = $(this).scrollTop(),
+            let st = $(this).scrollTop(),
                 $headerHeight = $header.height();
 
-            isMobileDevice = $window.width() < 1024 ? 1 : 0;
+            isMobileDevice = isMobile();
 
             if (!isMobileDevice) {
                 if (st > lastScrollTop) {
@@ -160,28 +161,28 @@ $(() => {
 
 
 // Simple Service Worker to make App Install work (OPTIONAL)
-window.addEventListener('load', function() {
-    var outputElement = document.getElementById('output');
+window.addEventListener('load', function () {
+    let outputElement = document.getElementById('output');
 
     navigator.serviceWorker.register('/service-worker.js', { scope: './' })
-        .then(function(r) {
-          console.log('registered service worker');
-      })
-    .catch(function(whut) {
+        .then(function (r) {
+            console.log('registered service worker');
+        })
+    .catch(function (whut) {
         console.error('uh oh... ');
         console.error(whut);
     });
 
-    window.addEventListener('beforeinstallprompt', function(e) {
+    window.addEventListener('beforeinstallprompt', function (e) {
         outputElement.textContent = 'beforeinstallprompt Event fired';
     });
 });
 
-window.addEventListener('beforeinstallprompt', function(e) {
+window.addEventListener('beforeinstallprompt', function (e) {
     outputElement.textContent = 'beforeinstallprompt Event fired';
 
     // e.userChoice will return a Promise. For more details read: http://www.html5rocks.com/en/tutorials/es6/promises/
-    e.userChoice.then(function(choiceResult) {
+    e.userChoice.then(function (choiceResult) {
         console.log(choiceResult.outcome);
 
         if (choiceResult.outcome == 'dismissed') {
