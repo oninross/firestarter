@@ -33,18 +33,6 @@
     }
 }
 
-@mixin border-radius($dimension) {
-    -webkit-border-radius: $dimension;
-       -moz-border-radius: $dimension;
-            border-radius: $dimension;
-}
-
-@mixin box-shadow($horizontalOffset, $verticalOffset, $blurRadius, $spreadRadius, $color) {
-    -webkit-box-shadow: $horizontalOffset $verticalOffset $blurRadius $spreadRadius $color;
-        -moz-box-shadow: $horizontalOffset $verticalOffset $blurRadius $spreadRadius $color;
-            box-shadow: $horizontalOffset $verticalOffset $blurRadius $spreadRadius $color;
-}
-
 @mixin inline-block() {
     display: inline-block;
     *display: inline;
@@ -75,9 +63,9 @@
 }
 
 @mixin normalise-list() {
-    padding: 0;
-    margin: 0;
     list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 @mixin sprite($x, $y, $h, $w) {
@@ -88,9 +76,7 @@
 
 //CSS3 element rotation
 @mixin rotate ($angle: 90deg, $origin: center) {
-    -webkit-transform: rotate($angle); //* Safari and Chrome */
-        -ms-transform: rotate($angle); //* IE 9 */
-            transform: rotate($angle);
+    transform: rotate($angle);
 
     @if ($origin != center) {
         @include origin($origin);
@@ -99,9 +85,7 @@
 
 //CSS3 element scale
 @mixin scale ($scale: 1, $origin: center) {
-    -webkit-transform: scale($scale);
-        -ms-transform: scale($scale);
-            transform: scale($scale);
+    transform: scale($scale);
 
     @if ($origin != center) {
         @include origin($origin);
@@ -109,9 +93,7 @@
 }
 
 @mixin origin ($origin: 0px 0px) {
-    -webkit-transform-origin: $origin;
-        -ms-transform-origin: $origin;
-            transform-origin: $origin;
+    transform-origin: $origin;
 }
 
 // Absolute Center
@@ -125,11 +107,7 @@
 }
 
 @mixin centering-the-unknown() {
-    -webkit-transform: translate(-50%,-50%);
-      -moz-transition: translate(-50%,-50%);
-        -ms-transform: translate(-50%,-50%);
-        -o-transition: translate(-50%,-50%);
-            transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
     left: 50%;
     margin: auto;
     position: absolute;
@@ -138,11 +116,7 @@
 }
 
 @mixin vertically-centering-the-unknown() {
-    -webkit-transform: translate(0,-50%);
-      -moz-transition: translate(0,-50%);
-        -ms-transform: translate(0,-50%);
-        -o-transition: translate(0,-50%);
-            transform: translate(0,-50%);
+    transform: translate(0,-50%);
     position: absolute;
     top: 50%;
 }
