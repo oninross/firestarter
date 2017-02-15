@@ -9,7 +9,7 @@ import 'TweenMax';
 import 'doT';
 import './_modernizr';
 
-import PrimaryNav from '../../../_modules/primary-nav/primary-nav';
+import Navigation from '../../../_modules/navigation/navigation';
 
 import { debounce, isMobile } from './_helper';
 
@@ -21,7 +21,7 @@ let $window = $(window),
     lastScrollTop = 0;
 
 $(() => {
-    new PrimaryNav();   // Activate Primary NAv modules logic
+    new Navigation();   // Activate Primary NAv modules logic
 
     ////////////////////////////
     // Set framerate to 60fps //

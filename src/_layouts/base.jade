@@ -1,4 +1,4 @@
-include ../_modules/primary-nav/primary-nav
+include ../_modules/header/header
 
 //- Custom Configuration
 block config
@@ -59,12 +59,7 @@ body
     <![endif]-->
 
     if !isTablePreview
-        header.header
-            .logo
-                .container
-                    h1
-                        a(href="/")|Firestarter
-            +primary-nav
+        +header()
 
     if isTablePreview
         block content

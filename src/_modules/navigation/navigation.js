@@ -3,9 +3,9 @@
 import { ripple } from '../../_assets/firestarter/js/_material';
 import { debounce, isMobile, easeOutExpo } from '../../_assets/firestarter/js/_helper';
 
-export default class PrimaryNav {
+export default class Navigation {
     constructor() {
-        let el = $('#primary-nav'),
+        let el = $('#navigation'),
             primaryNavMarkup = '<button class="menu js-mobile-menu"><span class="line top"></span><span class="line mid"></span><span class="line bot"></span></button>',
             subNavMarkup = '<button class="sub-nav js-sub-nav icon-arrow"><span class="vh">Sub-navigation</span></button>',
             $dropdownList,
@@ -182,7 +182,7 @@ export default class PrimaryNav {
         }, 250));
 
         function checkNavHeight() {
-            let $lvl1 = $('#primary-nav .lvl1'),
+            let $lvl1 = $('#navigation .lvl1'),
                 $visibleArea = $window.outerHeight() - $('.header').outerHeight();
 
             $lvl1.css({
