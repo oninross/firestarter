@@ -1,7 +1,7 @@
 // primary-nav styles
 #primary-nav {
+    @include transition(height, $animTime, $easeOutExpo);
     @extend %clearfix;
-    @include transition( height, 0.5s, $easeOutExpo );
 
     height: 45px;
     position: absolute;
@@ -39,8 +39,7 @@
         & > li {
             @for $i from 1 through 10 {
                 &:nth-child(#{$i}) {
-                    -webkit-transition-delay: 0.1s * $i, 0.1s * $i;
-                            transition-delay: 0.1s * $i, 0.1s * $i;
+                    transition-delay: 0.1s * $i, 0.1s * $i;
                 }
             }
         }
@@ -48,20 +47,14 @@
         li {
             @include transition(all, 0.75s, $easeOutExpo);
 
-            -webkit-transform: translateY(-30px); /* Safari */
-                -ms-transform: translateY(-30px); /* IE 9 */
-                    transform: translateY(-30px);
-            will-change: transform;
-
             opacity: 0;
             overflow: hidden;
             position: relative;
+            transform: translateY(-30px);
+            will-change: transform;
 
             @include desktop {
-                -webkit-transform: none; /* Safari */
-                    -ms-transform: none; /* IE 9 */
-                        transform: none;
-
+                transform: none;
                 opacity: 1;
             }
         }
@@ -98,7 +91,7 @@
         width: 100%;
 
         &:after {
-            @include transition(opacity, 0.5s, $easeOutExpo);
+            @include transition(opacity, $animTime, $easeOutExpo);
 
             background: rgba(0, 0, 0, 0.5);
             content: '';
@@ -138,10 +131,7 @@
 
         &.active {
             & > li {
-                -webkit-transform: none; /* Safari */
-                    -ms-transform: none; /* IE 9 */
-                        transform: none;
-
+                transform: none;
                 opacity: 1;
             }
         }
@@ -162,13 +152,9 @@
     }
 
     .lvl1 {
-        @include transition(all, 0.5s, $easeOutExpo);
         @include material-shadow(0);
+        @include transition(all, $animTime, $easeOutExpo);
 
-        -webkit-transform: translateX(100%); /* Safari */
-            -ms-transform: translateX(100%); /* IE 9 */
-                transform: translateX(100%);
-              will-change: transform;
 
         clear: both;
         float: right;
@@ -179,14 +165,13 @@
         padding: 0;
         position: relative;
         top: 0;
+        transform: translateX(100%);
+        will-change: transform;
         width: 100%;
         z-index: 10;
 
         @include desktop {
-            -webkit-transform: none; /* Safari */
-                -ms-transform: none; /* IE 9 */
-                    transform: none;
-
+            transform: none;
             float: none;
             max-width: none;
         }
@@ -194,14 +179,10 @@
         &.active {
             @include material-shadow(2);
 
-            -webkit-transform: none; /* Safari */
-                -ms-transform: none; /* IE 9 */
-                    transform: none;
+            transform: none;
 
             & > li {
-                -webkit-transform: none; /* Safari */
-                    -ms-transform: none; /* IE 9 */
-                        transform: none;
+                transform: none;
 
                 opacity: 1;
             }
@@ -285,7 +266,7 @@
     z-index: 10;
 
     @include tablet {
-        @include transition( top, 1s, $easeOutExpo );
+        @include transition(top, 1s, $easeOutExpo);
 
         .top-nav {
             ul { padding-right: 0; }
@@ -346,7 +327,7 @@
     &.icon-arrow {
         &:before,
         &:after {
-            @include transition( all, 0.5s, $easeOutExpo );
+            @include transition(all, $animTime, $easeOutExpo);
 
             background: $grey;
             content: "";
@@ -359,30 +340,29 @@
         }
 
         &:before {
-            @include rotate(-45deg);
-
             left: 19px;
+            transform: rotate(-45deg);
         }
 
         &:after {
-            @include rotate(45deg);
-
             right: 19px;
+            transform: rotate(45deg);
         }
 
         &.active {
             &:before {
-                @include rotate(-135deg);
+                transform: rotate(-135deg);
             }
+
             &:after {
-                @include rotate(135deg);
+                transform: rotate(135deg);
             }
         }
     }
 }
 
 .menu {
-    @include transition(background-color, 0.5s, $easeOutExpo);
+    @include transition(background-color, $animTime, $easeOutExpo);
 
     background-color: transparent;
     border: 0;
@@ -398,19 +378,13 @@
         z-index: 30;
 
         .top {
-            -webkit-transform: translateY(4px) rotate(225deg); /* Safari */
-                -ms-transform: translateY(4px) rotate(225deg); /* IE 9 */
-                    transform: translateY(4px) rotate(225deg);
-
             background-color: $black;
+            transform: translateY(4px) rotate(225deg);
         }
 
         .bot {
-            -webkit-transform: translateY(-4px) rotate(-225deg); /* Safari */
-                -ms-transform: translateY(-4px) rotate(-225deg); /* IE 9 */
-                    transform: translateY(-4px) rotate(-225deg);
-
             background-color: $black;
+            transform: translateY(-4px) rotate(-225deg);
         }
 
         .mid {
@@ -419,13 +393,6 @@
     }
 
     .line {
-        @include transition( all, 0.5s, $easeOutExpo );
-
-        -webkit-transform: none; /* Safari */
-            -ms-transform: none; /* IE 9 */
-                transform: none;
-        will-change: transform;
-
         background: $white;
         display: block;
         height: 2px;
@@ -433,6 +400,9 @@
         opacity: 1;
         position: relative;
         top: 0;
+        transform: none;
+        @include transition(all, $animTime, $easeOutExpo);
+        will-change: transform;
         width: 15px;
     }
 

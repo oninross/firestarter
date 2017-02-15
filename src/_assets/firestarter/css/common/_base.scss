@@ -16,7 +16,7 @@ address {
     word-break: break-word;
     font-weight: bold;
     line-height: 1;
-    margin-top: 30px;
+    margin: 0;
     margin-bottom: 10px;
 
     a {
@@ -172,11 +172,10 @@ p {
 }
 
 a {
-    @include transition( all, 0.5s, $easeOutExpo );
-
     font-size: $default-font-size;
     margin-bottom: 10px;
     text-decoration: none;
+@include     transition(all, $animTime, $easeOutExpo);
 }
 
 hr {
@@ -184,6 +183,9 @@ hr {
 }
 
 button {
+    overflow: hidden;
+    position: relative;
+
     &:focus {
         outline: 0;
     }
@@ -234,17 +236,14 @@ button {
 
 
 .btn {
-    @include transition( all, 0.5s, $easeOutExpo );
+    @include transition(all, $animTime, $easeOutExpo);
 
     background: $black;
     border: 0;
     border-radius: 3px;
     color: $white;
     font-size: $default-font-size;
-    overflow: hidden;
     padding: 10px;
-    position: relative;
-    width: 100%;
     width: auto;
 
     &:hover {
@@ -259,6 +258,10 @@ button {
 
     svg.ripple circle {
         fill: $white;
+    }
+
+    @include tablet {
+        width: auto;
     }
 }
 
@@ -361,7 +364,7 @@ Layout
 }
 
 .btn-print-table {
-    @include transition( position, 0.5s, $easeOutExpo );
+    @include transition(position, $animTime, $easeOutExpo);
     @extend .btn;
 
     font-size: $default-font-size;
