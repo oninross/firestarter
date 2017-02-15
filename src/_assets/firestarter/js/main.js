@@ -9,7 +9,9 @@ import 'TweenMax';
 import 'doT';
 import './_modernizr';
 
+import Header from '../../../_modules/header/header';
 import Navigation from '../../../_modules/navigation/navigation';
+import TablePreview from '../../../_modules/table-preview/table-preview';
 
 import { debounce, isMobile } from './_helper';
 
@@ -21,7 +23,9 @@ let $window = $(window),
     lastScrollTop = 0;
 
 $(() => {
-    new Navigation();   // Activate Primary NAv modules logic
+    new Header();       // Activate Header modules logic
+    new Navigation();   // Activate Primary Nav modules logic
+    new TablePreview();   // Activate Table Preview modules logic
 
     ////////////////////////////
     // Set framerate to 60fps //
@@ -66,95 +70,6 @@ $(() => {
                 });
         }
     })();
-
-
-
-    ////////////////////////////////////
-    //Background-size: cover Fallback //
-    ////////////////////////////////////
-    (function () {
-        if ($('.no-bgsizecover').length) {
-            $('.backstretch').each(function () {
-                let $this = $(this),
-                    $dataOriginal = $this.data('original');
-
-                $this.backstretch($dataOriginal);
-            });
-        }
-    })();
-
-
-
-    ////////////////////////////
-    // Magical Table wrapping //
-    ////////////////////////////
-    (function () {
-        $.fn.isTableWide = function () {
-            return $(this).parent().width() < $(this).width();
-        };
-
-        $('table').each(function (i, v) {
-            let $this = $(v);
-
-            if ($this.length && !$this.parent().hasClass('table-wrapper') && $this.isTableWide()) {
-                $this
-                    .after('<button class="btn-print-table js-print-table">View Table</button>')
-                    .wrap('<div class="table-wrapper"></div>');
-            }
-        });
-
-        let $tablePreview = $('.table-preview');
-        if ($tablePreview.length) {
-            $('meta[name="viewport"]').attr('content', 'user-scalable=yes');
-            $tablePreview.append(localStorage.tablePreview);
-
-            $(window).bind('beforeunload', function () {
-                localStorage.tablePreview = null;
-            });
-        }
-
-        $('body').on('click', '.js-print-table', function () {
-            let $table = $(this).prev();
-
-            localStorage.tablePreview = $table[0].innerHTML;
-            window.open('/table-preview/', '_blank').focus();
-        });
-    })();
-
-
-
-    /////////////////////
-    // Header Toggling //
-    /////////////////////
-    (function () {
-        $window.on('resize scroll', debounce(toggleHeader, 250));
-
-        function toggleHeader() {
-            let st = $(this).scrollTop(),
-                $headerHeight = $header.height();
-
-            isMobileDevice = isMobile();
-
-            if (!isMobileDevice) {
-                if (st > lastScrollTop) {
-                    // scroll down
-                    if (st > $headerHeight) {
-                        $header.addClass('hide').removeClass('compact');
-                    }
-                } else {
-                    // scroll up
-                    if (st <= $headerHeight) {
-                        $header.removeClass('compact hide');
-                    } else {
-                        $header.addClass('compact');
-                    }
-                }
-            }
-
-            lastScrollTop = st;
-        };
-    })();
-
 
     console.log("I'm a firestarter!");
 });
