@@ -41,6 +41,7 @@ export default class TablePreview {
 
         function isLeftOrRight(el, tableResponsive, trTotalWidth) {
             var tableResponsiveScrollLeft = tableResponsive.scrollLeft();
+
             tableResponsiveScrollLeft > 0 ? el.addClass('left') : el.removeClass('left'),
             tableResponsiveScrollLeft < trTotalWidth ? el.addClass('right') : el.removeClass('right')
         };
