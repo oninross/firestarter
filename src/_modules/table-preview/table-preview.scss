@@ -1,31 +1,100 @@
 // table-preview styles
-.table-wrapper {
-    border: 1px solid $grey;
-    // font-size: 1em !important;
-    margin: 20px 0;
-    overflow-x: auto;
-    overflow-y: hidden;
-    position: relative;
+.table {
+    &-wrap {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 20px;
+        padding: 6px 0;
+        border-left: 1px solid rgba(0, 0, 0, 0);
+        border-right: 1px solid rgba(0, 0, 0, 0);
 
-    &.no-scrollbar {
-        border: 0;
-        overflow-x: visible;
-        overflow-y: visible;
+        &:before,
+        &:after {
+            position: absolute;
+            top: 0;
+            width: 50px;
+            height: 100%;
+            content: '';
+            opacity: 0;
+            transition: opacity ease-in-out .3s;
+        }
+
+        &:before {
+            right: 100%;
+            border-radius: 0 10px 10px 0 / 0 50% 50% 0;
+            box-shadow: 4px 0 10px black;
+        }
+
+        &:after {
+            left: 100%;
+            border-radius: 10px 0 0 10px / 50% 0 0 50%;
+            box-shadow: -4px 0 10px black;
+        }
+
+        &.left,
+        &.right {
+            transition: border ease-in-out .3s;
+        }
+
+        &.left {
+            border-left: 1px solid #f4f4f4;
+
+            &:before {
+                opacity: .25;
+            }
+        }
+
+        &.right {
+            border-right: 1px solid #f4f4f4;
+
+            &:after {
+                opacity: .25;
+            }
+        }
     }
 
-    table {
+    &-responsive {
         border: 0;
         margin-bottom: 0;
-
-        th,
-        td {
-            min-width: 75px;
-        }
+        width: 100%;
+        margin-bottom: 15px;
+        overflow-y: hidden;
+        overflow-x: scroll;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        border: 1px solid #dadada;
+        -webkit-overflow-scrolling: touch;
     }
 }
 
+// .table-wrapper {
+//     border: 1px solid $grey;
+//     // font-size: 1em !important;
+//     margin: 20px 0;
+//     overflow-x: auto;
+//     overflow-y: hidden;
+//     position: relative;
+
+//     &.no-scrollbar {
+//         border: 0;
+//         overflow-x: visible;
+//         overflow-y: visible;
+//     }
+
+//     table {
+//         border: 0;
+//         margin-bottom: 0;
+
+//         th,
+//         td {
+//             min-width: 75px;
+//         }
+//     }
+// }
+
 .btn-print-table {
     @include transition(position, $animTime, $easeOutExpo);
+
     @extend .btn;
 
     font-size: $default-font-size;
