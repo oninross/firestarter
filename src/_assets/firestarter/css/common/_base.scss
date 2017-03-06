@@ -7,8 +7,16 @@ html {
 
 body {
     background: $material-background;
-    font: 62.5%/1.618 'Helvetica', 'Arial', sans-serif;
+    font: 62.5%/1.618 sans-serif;
+    font-family:
+/* 1 */ -apple-system, BlinkMacSystemFont,
+/* 2 */ "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+/* 3 */ "Helvetica Neue", sans-serif;
     margin: 0 !important;
+
+    @include tablet {
+        font-family: 'HelveticaNeue';
+    }
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -16,7 +24,7 @@ address {
     word-break: break-word;
     font-weight: bold;
     line-height: 1;
-    margin-top: 30px;
+    margin: 0;
     margin-bottom: 10px;
 
     a {
@@ -172,11 +180,10 @@ p {
 }
 
 a {
-    @include transition( all, 0.5s, $easeOutExpo );
-
     font-size: $default-font-size;
     margin-bottom: 10px;
     text-decoration: none;
+@include     transition(all, $animTime, $easeOutExpo);
 }
 
 hr {
@@ -184,6 +191,9 @@ hr {
 }
 
 button {
+    overflow: hidden;
+    position: relative;
+
     &:focus {
         outline: 0;
     }
@@ -234,17 +244,14 @@ button {
 
 
 .btn {
-    @include transition( all, 0.5s, $easeOutExpo );
+    @include transition(all, $animTime, $easeOutExpo);
 
     background: $black;
     border: 0;
     border-radius: 3px;
     color: $white;
     font-size: $default-font-size;
-    overflow: hidden;
     padding: 10px;
-    position: relative;
-    width: 100%;
     width: auto;
 
     &:hover {
@@ -259,6 +266,10 @@ button {
 
     svg.ripple circle {
         fill: $white;
+    }
+
+    @include tablet {
+        width: auto;
     }
 }
 
@@ -335,44 +346,3 @@ Layout
         }
     }
 }
-
-.table-wrapper {
-    border: 1px solid $grey;
-    // font-size: 1em !important;
-    margin: 20px 0;
-    overflow-x: auto;
-    overflow-y: hidden;
-    position: relative;
-
-    &.no-scrollbar {
-        border: 0;
-        overflow-x: visible;
-        overflow-y: visible;
-    }
-
-    table {
-        margin-bottom: 0;
-
-        th,
-        td {
-            min-width: 75px;
-        }
-    }
-}
-
-.btn-print-table {
-    @include transition( position, 0.5s, $easeOutExpo );
-    @extend .btn;
-
-    font-size: $default-font-size;
-    max-width: 200px;
-    padding: 10px;
-    width: 100%;
-
-    @include desktop {
-        display: none;
-    }
-}
-
-
-

@@ -13,7 +13,7 @@
 
 // Cards
 .card {
-    @include transition( all, 1s, $easeOutExpo );
+    @include transition(all, 1s, $easeOutExpo);
 
     opacity: 0;
     position: relative;
@@ -47,7 +47,7 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 textarea {
-    @include transition( all, 0.5s, $easeOutExpo );
+    @include transition(all, $animTime, $easeOutExpo);
 
     background: $material-background;
     border: none;
@@ -75,7 +75,7 @@ textarea {
     position: relative;
 
     .placeholder {
-        @include transition( all, 0.5s, $easeOutExpo );
+        @include transition(all, $animTime, $easeOutExpo);
 
         font-size: $default-font-size;
         position: absolute;
@@ -83,7 +83,8 @@ textarea {
     }
 
     .hint {
-        @include transition( all, 0.5s, $easeOutExpo );
+        @include transition(all, $animTime, $easeOutExpo);
+
         display: block;
         opacity: 0;
         padding: 5px 0;
@@ -119,12 +120,12 @@ label {
 
     &.radio-button {
         &:before {
-            @include transition( all, 0.5s, $easeOutExpo );
-            @include inline-block;
+            @include transition(all, $animTime, $easeOutExpo);
 
             border: 2px solid $grey;
             border-radius: 50%;
             content: "";
+            display: inline-block;
             height: 18px;
             left: 0;
             margin-right: 20px;
@@ -133,8 +134,7 @@ label {
         }
 
         &:after {
-            @include transition( all, 0.5s, $easeOutExpo );
-            @include scale(0.0);
+            @include transition(all, $animTime, $easeOutExpo);
 
             background: transparent;
             border-radius: 50%;
@@ -145,18 +145,18 @@ label {
             margin: auto;
             position: absolute;
             top: 0;
+            transform: scale(0);
             width: 18px;
         }
     }
 
     &.checkbox {
         &:before {
-            @include transition( all, 0.5s, $easeOutExpo );
-            @include inline-block;
+            @include transition(all, $animTime, $easeOutExpo);
 
             content: "";
             border: 2px solid $grey;
-            border-radius: 3px;
+            display: inline-block;
             height: 20px;
             left: 0;
             position: absolute;
@@ -164,19 +164,19 @@ label {
         }
 
         &:after {
-            @include transition( all, 0.5s, $easeOutExpo );
-            @include scale(0);
-            @include inline-block;
+            @include transition(all, $animTime, $easeOutExpo);
             @extend %icomoon;
 
             color: transparent;
             content: "\e28a";
+            display: inline-block;
             font-size: 1em;
             height: 10px;
             left: 2px;
             margin: auto;
             position: absolute;
             top: 6px;
+            transform: scale(0);
             width: 10px;
 
         }
@@ -192,9 +192,8 @@ input[type="radio"]{
     &:checked + label {
         &:before { border: 2px solid $black; }
         &:after {
-            @include scale (0.45);
-
             background: $black;
+            transform: scale(0.45);
         }
     }
 }
@@ -207,11 +206,10 @@ input[type="checkbox"]{
         }
 
         &:after {
-            @include scale (1);
-
             color: $white;
             left: 1px;
             top: 1px;
+            transform: scale(1);
         }
     }
 }
@@ -225,7 +223,7 @@ input[type="checkbox"]{
     width: 100%;
 
     .progress-bar {
-        @include transition( width, 0.5s, $easeInOutExpo );
+        @include transition(all, $animTime, $easeOutExpo);
 
         background: $black;
         height: 100%;
@@ -290,8 +288,6 @@ input[type="checkbox"]{
     }
 
     .card-wrapper {
-        @include origin (right top);
-        @include scale(0);
         @include material-shadow(1);
 
         background: $white;
@@ -302,6 +298,8 @@ input[type="checkbox"]{
         position: absolute;
         right: 0;
         top: 0;
+        transform: scale(0);
+        transform-origin: right top;
         visibility: hidden;
         width: 50%;
         z-index: 5;
@@ -348,7 +346,7 @@ input[type="checkbox"]{
         }
 
         button {
-            @include transition( all, 0.5s, $easeOutExpo );
+            @include transition(all, $animTime, $easeOutExpo);
 
             background: none;
             border: 0;
@@ -414,13 +412,6 @@ input[type="checkbox"]{
 
 .shadow-z5 {
     @include material-shadow(5);
-}
-
-@include tablet {
-    // Buttons and CTAs
-    .btn {
-        width: auto;
-    }
 }
 
 
@@ -490,13 +481,14 @@ input[type="checkbox"]{
 
 .toaster {
     @include material-shadow(1);
-    @include scale(0, left bottom);
 
     background: #323232;
     border-radius: 4px;
     color: $white;
     margin-bottom: 10px;
     padding: 20px;
+    transform: scale(0.25);
+    transform-origin: left buttom;
 
     &:only-child,
     &:last-child {

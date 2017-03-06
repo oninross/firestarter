@@ -1,12 +1,7 @@
-@mixin font-size($size, $unit) {
-    @if $unit == rem {
-        font-size: ($size)+px;
-        font-size: ($size/10)+rem;
-    } @else if $unit == em {
-        font-size: ($size/10)+em;
-    } @else if $unit == px {
-        font-size: ($size)+px;
-    }
+@mixin transition($type, $duration, $easing) {
+    transition-property: $type;
+    transition-duration: $duration;
+    transition-timing-function: $easing;
 }
 
 @mixin background-gradient($color1, $color2, $direction) {
@@ -14,41 +9,12 @@
     background-repeat: repeat-x;
 
     @if $direction == vertical {
-        background: -ms-linear-gradient(top, $color1 0%, $color2 100%); /* IE10 Consumer Preview */
-        background: -moz-linear-gradient(top, $color1 0%, $color2 100%); /* Opera */
-        background: -o-linear-gradient(top, $color1 0%, $color2 100%);
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0, $color1), color-stop(1, $color2));/* Webkit (Safari/Chrome 10) */
-        background: -webkit-linear-gradient(top, $color1 0%, $color2 100%); /* Webkit (Chrome 11+) */
-        background: linear-gradient(to bottom, $color1 0%, $color2 100%); /* W3C Markup, IE10 Release Preview */
+        background: linear-gradient(to bottom, $color1 0%, $color2 100%);
     } @else if $direction == diagonal {
-        background: -webkit-linear-gradient(left top, $color1, $color2); /* For Safari */
-        background: -o-linear-gradient(bottom right, $color1, $color2); /* For Opera 11.1 to 12.0 */
-        background: -moz-linear-gradient(bottom right, $color1, $color2); /* For Firefox 3.6 to 15 */
-        background: linear-gradient(to bottom right, $color1, $color2); /* Standard syntax (must be last) */
+        background: linear-gradient(to bottom right, $color1, $color2);
     } @else if $direction == horizontal {
-        background: -webkit-linear-gradient(left, $color1, $color2); /* For Safari */
-        background: -o-linear-gradient(right, $color1, $color2); /* For Opera 11.1 to 12.0 */
-        background: -moz-linear-gradient(right, $color1, $color2); /* For Firefox 3.6 to 15 */
-        background: linear-gradient(to right, $color1, $color2); /* Standard syntax */
+        background: linear-gradient(to right, $color1, $color2);
     }
-}
-
-@mixin border-radius($dimension) {
-    -webkit-border-radius: $dimension;
-       -moz-border-radius: $dimension;
-            border-radius: $dimension;
-}
-
-@mixin box-shadow($horizontalOffset, $verticalOffset, $blurRadius, $spreadRadius, $color) {
-    -webkit-box-shadow: $horizontalOffset $verticalOffset $blurRadius $spreadRadius $color;
-        -moz-box-shadow: $horizontalOffset $verticalOffset $blurRadius $spreadRadius $color;
-            box-shadow: $horizontalOffset $verticalOffset $blurRadius $spreadRadius $color;
-}
-
-@mixin inline-block() {
-    display: inline-block;
-    *display: inline;
-    zoom: 1;
 }
 
 @mixin clearfix() {
@@ -63,55 +29,16 @@
     &:after { clear: both; }
 }
 
-@mixin transition($type, $duration, $easing) {
-    transition-property: $type;
-    transition-duration: $duration;
-    transition-timing-function: $easing;
-    /* Safari */
-    -webkit-backface-visibility: hidden;
-    -webkit-transition-property: $type;
-    -webkit-transition-duration: $duration;
-    -webkit-transition-timing-function: $easing;
-}
-
 @mixin normalise-list() {
-    padding: 0;
-    margin: 0;
     list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 @mixin sprite($x, $y, $h, $w) {
     background: transparent url('../images/sprite.png') no-repeat $x $y;
     height: $h;
     width: $w;
-}
-
-//CSS3 element rotation
-@mixin rotate ($angle: 90deg, $origin: center) {
-    -webkit-transform: rotate($angle); //* Safari and Chrome */
-        -ms-transform: rotate($angle); //* IE 9 */
-            transform: rotate($angle);
-
-    @if ($origin != center) {
-        @include origin($origin);
-    }
-}
-
-//CSS3 element scale
-@mixin scale ($scale: 1, $origin: center) {
-    -webkit-transform: scale($scale);
-        -ms-transform: scale($scale);
-            transform: scale($scale);
-
-    @if ($origin != center) {
-        @include origin($origin);
-    }
-}
-
-@mixin origin ($origin: 0px 0px) {
-    -webkit-transform-origin: $origin;
-        -ms-transform-origin: $origin;
-            transform-origin: $origin;
 }
 
 // Absolute Center
@@ -125,11 +52,7 @@
 }
 
 @mixin centering-the-unknown() {
-    -webkit-transform: translate(-50%,-50%);
-      -moz-transition: translate(-50%,-50%);
-        -ms-transform: translate(-50%,-50%);
-        -o-transition: translate(-50%,-50%);
-            transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
     left: 50%;
     margin: auto;
     position: absolute;
@@ -138,11 +61,7 @@
 }
 
 @mixin vertically-centering-the-unknown() {
-    -webkit-transform: translate(0,-50%);
-      -moz-transition: translate(0,-50%);
-        -ms-transform: translate(0,-50%);
-        -o-transition: translate(0,-50%);
-            transform: translate(0,-50%);
+    transform: translate(0,-50%);
     position: absolute;
     top: 50%;
 }
