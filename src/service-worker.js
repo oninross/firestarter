@@ -29,6 +29,7 @@ importScripts('serviceworker-cache-polyfill.js');
 // flow and the old cache(s) will be purged as part of the activate event handler when the
 // updated service worker is activated.
 var version = '1.2.1',
+    OFFLINE_URL = 'offline/',
     CURRENT_CACHES = {
         prefetch: 'prefetch-cache-v' + version
     };
@@ -40,6 +41,7 @@ self.addEventListener('install', function (event) {
         'assets/firestarter/css/main.css',
         'assets/firestarter/js/main.js',
         'assets/firestarter/css/fonts/icomoon.woff',
+        OFFLINE_URL,
         'index.html',
         '/'
     ];
@@ -146,6 +148,9 @@ self.addEventListener('fetch', function (event) {
                 console.error('Fetching failed:', error);
 
                 throw error;
+
+                // to display offline page
+                return caches.match(OFFLINE_URL);
             });
         })
     );
