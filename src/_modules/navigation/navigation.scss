@@ -117,6 +117,10 @@
             margin: auto;
             max-width: 960px;
         }
+
+        @include large-desktop {
+            max-width: 1160px;
+        }
     }
 
     .container {

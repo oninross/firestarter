@@ -65,7 +65,7 @@
         padding: 0 $gutterTablet;
     }
 
-        @include large-desktop {
+    @include large-desktop {
         max-width: 1160px;
     }
 
