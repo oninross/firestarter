@@ -38,7 +38,12 @@
 @import 'common/_material-design';
 
 // Import Modules
-@import "../_modules/header/header";
-@import "../_modules/navigation/navigation";
-@import "../_modules/table-preview/table-preview";
-@import "../_modules/standard-banner/standard-banner";
+@import "../_modules/organisms/header/header";
+@import "../_modules/organisms/banner/banner";
+
+@import "../_modules/molecules/navigation/navigation";
+
+@import "../_modules/atoms/table-preview/table-preview";
+
+
+
