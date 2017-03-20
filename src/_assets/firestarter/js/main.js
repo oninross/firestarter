@@ -9,9 +9,11 @@ import 'TweenMax';
 import 'doT';
 import './_modernizr';
 
-import Header from '../../../_modules/header/header';
-import Navigation from '../../../_modules/navigation/navigation';
-import TablePreview from '../../../_modules/table-preview/table-preview';
+import Header from '../../../_modules/organisms/header/header';
+
+import Navigation from '../../../_modules/molecules/navigation/navigation';
+
+import TablePreview from '../../../_modules/atoms/table-preview/table-preview';
 
 import { debounce, isMobile } from './_helper';
 

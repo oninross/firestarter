@@ -1,4 +1,4 @@
-include ../navigation/navigation
+include ../../molecules/navigation/navigation
 
 mixin header(spec)
     - spec = spec || {}
@@ -8,5 +8,5 @@ mixin header(spec)
         .logo
             .container
                 h1
-                    a(href="/")|Firestarter
+                    a(href="/")|firestarter
         +navigation()

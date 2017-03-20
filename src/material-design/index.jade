@@ -1,13 +1,13 @@
 extends ../_layouts/base
 
-include ../_modules/standard-banner/standard-banner
+include ../_modules/organisms/banner/banner
 
 block config
     //- Correct base url pathing for this page
     - var baseUrl = '../'
 
 block content
-    +standard-banner({"__title": "Material Design"})
+    +banner({"__title": "Material Design"})
 
     section.container
         .wrap
