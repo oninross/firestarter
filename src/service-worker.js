@@ -29,23 +29,20 @@ importScripts('serviceworker-cache-polyfill.js');
 // flow and the old cache(s) will be purged as part of the activate event handler when the
 // updated service worker is activated.
 var version = '1.2.1',
-    OFFLINE_URL = 'offline/',
+    now = Date.now(),
+    urlsToPrefetch = [
+        'assets/firestarter/css/main.css',
+        'assets/firestarter/js/main.js',
+        'assets/firestarter/css/fonts/icomoon.woff',
+        'offline/',
+        'index.html',
+        '/'
+    ],
     CURRENT_CACHES = {
         prefetch: 'prefetch-cache-v' + version
     };
 
 self.addEventListener('install', function (event) {
-    var now = Date.now();
-
-    var urlsToPrefetch = [
-        'assets/firestarter/css/main.css',
-        'assets/firestarter/js/main.js',
-        'assets/firestarter/css/fonts/icomoon.woff',
-        OFFLINE_URL,
-        'index.html',
-        '/'
-    ];
-
     // All of these logging statements should be visible via the "Inspect" interface
     // for the relevant SW accessed via chrome://serviceworker-internals
     console.log('Handling install event. Resources to prefetch:', urlsToPrefetch);
