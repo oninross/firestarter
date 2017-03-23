@@ -25,14 +25,14 @@ mixin navigation(spec)
 
                             else
                                 a(href=lvl1.link)=lvl1.label
-                                    if navigationLvl2 != null
-                                        ul.lvl2
-                                            each lvl2, index in navigationLvl2
-                                                - var navigationLvl3 = lvl2.lvl3
-                                                    li
-                                                        a(href=lvl2.link)=lvl2.label
-                                                        if navigationLvl3 != null
-                                                            ul.lvl3
-                                                                each lvl3, index in navigationLvl3
-                                                                    li
-                                                                        a(href=lvl3.link)=lvl3.label
+                                if navigationLvl2 != null
+                                    ul.lvl2
+                                        each lvl2, index in navigationLvl2
+                                            - var navigationLvl3 = lvl2.lvl3
+                                                li
+                                                    a(href=lvl2.link)=lvl2.label
+                                                    if navigationLvl3 != null
+                                                        ul.lvl3
+                                                            each lvl3, index in navigationLvl3
+                                                                li
+                                                                    a(href=lvl3.link)=lvl3.label
