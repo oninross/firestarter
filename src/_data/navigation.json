@@ -1,17 +1,17 @@
 [
     {
         "label" : "Standard",
-        "link" : "/standard/",
+        "link" : "/pages//standard/",
         "lvl2" : null
     },
     {
         "label" : "Grid",
-        "link" : "/grid/",
+        "link" : "/pages//grid/",
         "lvl2" : null
     },
     {
         "label" : "Material Design",
-        "link" : "/material-design/",
+        "link" : "/pages//material-design/",
         "lvl2" : null
     },
     {

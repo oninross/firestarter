@@ -48,7 +48,7 @@ head
     link(rel='icon', type='image/png', sizes='16x16', href='/assets/firestarter/images/favicon/favicon-16x16.png')
 
     block stylesheets
-        link(rel='stylesheet', href= baseUrl + 'assets/firestarter/css/main.css')
+        link(rel='stylesheet', href='/assets/firestarter/css/main.css')
 
 body
     <!--[if lt IE 9]>
@@ -65,7 +65,7 @@ body
             block content
 
     block scripts
-        script(src= baseUrl + 'assets/firestarter/js/main.js')
+        script(src='/assets/firestarter/js/main.js')
 
         if !isTablePreview
             script(id='toaster-template', type='text/template')
