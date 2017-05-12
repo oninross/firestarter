@@ -1,4 +1,4 @@
-include ../_modules/header/header
+include ../_modules/organisms/header/header
 
 //- Custom Configuration
 block config
@@ -20,7 +20,7 @@ head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
 
-    title Firestarter
+    title firestarter
 
     meta(name='description', content= 'A quick, easy front-end framework and setup for any project')
     meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
@@ -48,7 +48,7 @@ head
     link(rel='icon', type='image/png', sizes='16x16', href='/assets/firestarter/images/favicon/favicon-16x16.png')
 
     block stylesheets
-        link(rel='stylesheet', href= baseUrl + 'assets/firestarter/css/main.css')
+        link(rel='stylesheet', href='/assets/firestarter/css/main.css')
 
 body
     <!--[if lt IE 9]>
@@ -65,7 +65,7 @@ body
             block content
 
     block scripts
-        script(src= baseUrl + 'assets/firestarter/js/main.js')
+        script(src='/assets/firestarter/js/main.js')
 
         if !isTablePreview
             script(id='toaster-template', type='text/template')
@@ -73,7 +73,7 @@ body
                     .container
                         p {{! it.message}}
                         button.js-dismiss
-                            span.vh Close
+                            span.sr-only Close
                             i.icon.icon-cross
 
             script.

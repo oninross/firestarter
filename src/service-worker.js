@@ -11,10 +11,6 @@
  limitations under the License.
 */
 
-// This polyfill provides Cache.add(), Cache.addAll(), and CacheStorage.match(),
-// which are not implemented in Chrome 40.
-importScripts('serviceworker-cache-polyfill.js');
-
 // While overkill for this specific sample in which there is only one cache,
 // this is one best practice that can be followed in general to keep track of
 // multiple caches used by a given service worker, and keep them all versioned.
@@ -28,22 +24,22 @@ importScripts('serviceworker-cache-polyfill.js');
 // cache, then increment the CACHE_VERSION value. It will kick off the service worker update
 // flow and the old cache(s) will be purged as part of the activate event handler when the
 // updated service worker is activated.
-var version = '1.2.1',
+var version = '1.3.0',
+    now = Date.now(),
+    OFFLINE_URL = 'offline/',
+    urlsToPrefetch = [
+        'assets/firestarter/css/main.css',
+        'assets/firestarter/js/main.js',
+        'assets/firestarter/css/fonts/icomoon.woff',
+        OFFLINE_URL,
+        'index.html',
+        '/'
+    ],
     CURRENT_CACHES = {
         prefetch: 'prefetch-cache-v' + version
     };
 
 self.addEventListener('install', function (event) {
-    var now = Date.now();
-
-    var urlsToPrefetch = [
-        'assets/firestarter/css/main.css',
-        'assets/firestarter/js/main.js',
-        'assets/firestarter/css/fonts/icomoon.woff',
-        'index.html',
-        '/'
-    ];
-
     // All of these logging statements should be visible via the "Inspect" interface
     // for the relevant SW accessed via chrome://serviceworker-internals
     console.log('Handling install event. Resources to prefetch:', urlsToPrefetch);
@@ -89,6 +85,12 @@ self.addEventListener('install', function (event) {
             return Promise.all(cachePromises).then(function () {
                 console.log('Pre-fetching complete.');
             });
+        }).then(function () {
+            // `skipWaiting()` forces the waiting ServiceWorker to become the
+            // active ServiceWorker, triggering the `onactivate` event.
+            // Together with `Clients.claim()` this allows a worker to take effect
+            // immediately in the client(s).
+            return self.skipWaiting();
         }).catch(function (error) {
             console.error('Pre-fetching failed:', error);
         })
@@ -145,8 +147,9 @@ self.addEventListener('fetch', function (event) {
                 // It will return a normal response object that has the appropriate error code set.
                 console.error('Fetching failed:', error);
 
-                throw error;
+                return caches.match(OFFLINE_URL);
             });
         })
     );
 });
+

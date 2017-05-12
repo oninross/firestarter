@@ -477,6 +477,7 @@ input[type="checkbox"]{
     max-width: 440px;
     position: fixed;
     width: 100%;
+    z-index: 1;
 }
 
 .toaster {
@@ -486,9 +487,10 @@ input[type="checkbox"]{
     border-radius: 4px;
     color: $white;
     margin-bottom: 10px;
+    opacity: 0;
     padding: 20px;
-    transform: scale(0.25);
-    transform-origin: left buttom;
+    transform: scale(0.75);
+    transform-origin: left bottom;
 
     &:only-child,
     &:last-child {
@@ -496,7 +498,7 @@ input[type="checkbox"]{
     }
 
     p {
-        margin-bottom: 0;
+        margin: 0;
     }
 
     button {
@@ -504,6 +506,7 @@ input[type="checkbox"]{
 
         background: none;
         border: 0;
+        color: $white;
         height: 20px;
         left: auto;
         padding: 0;

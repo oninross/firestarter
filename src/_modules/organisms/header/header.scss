@@ -87,6 +87,8 @@
     }
 
     .line {
+        @include transition(all, $animTime, $easeOutExpo);
+        
         background: $white;
         display: block;
         height: 2px;
@@ -95,7 +97,6 @@
         position: relative;
         top: 0;
         transform: none;
-        @include transition(all, $animTime, $easeOutExpo);
         will-change: transform;
         width: 15px;
     }

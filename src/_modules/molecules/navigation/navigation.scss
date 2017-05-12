@@ -52,6 +52,7 @@
             position: relative;
             transform: translateY(-30px);
             will-change: transform;
+            vertical-align: top;
 
             @include desktop {
                 transform: none;
@@ -61,12 +62,13 @@
 
         a {
             color: $black;
-            display: block;
+            display: inline-block;
             font-size: 1em;
             margin-bottom: 0;
             overflow: hidden;
             padding: 10px;
             position: relative;
+            vertical-align: top;
             width: 100%;
 
             &.active {
@@ -116,6 +118,10 @@
             height: auto;
             margin: auto;
             max-width: 960px;
+        }
+
+        @include large-desktop {
+            max-width: 1160px;
         }
     }
 

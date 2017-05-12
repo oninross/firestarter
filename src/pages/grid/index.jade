@@ -1,13 +1,13 @@
-extends ../_layouts/base
+extends ../../_layouts/base
 
-include ../_modules/standard-banner/standard-banner
+include ../../_modules/organisms/banner/banner
 
 block config
     //- Correct base url pathing for this page
-    - var baseUrl = '../'
+    - var baseUrl = '../../'
 
 block content
-    +standard-banner({"__title": "Grid"})
+    +banner({"__title": "Grid"})
 
     section.container.grid
         .wrap

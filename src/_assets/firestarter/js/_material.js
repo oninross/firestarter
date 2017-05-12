@@ -287,12 +287,14 @@ let toaster = function (msg) {
     let toaster = '.toaster' + toasterInd;
 
     TweenMax.to(toaster, 0.75, {
+        opacity: 1,
         scale: 1,
         ease: Expo.easeOut
     });
 
     TweenMax.to(toaster, 0.75, {
-        scale: 0,
+        opacity: 0,
+        scale: 0.75,
         ease: Expo.easeOut,
         delay: 5,
         onComplete: function () {
@@ -304,7 +306,8 @@ let toaster = function (msg) {
         e.preventDefault();
 
         TweenMax.to($(this), 0.75, {
-            scale: 0,
+            opacity: 0,
+            scale: 0.75,
             ease: Expo.easeOut,
             onComplete: function () {
                 $(toaster).remove();
