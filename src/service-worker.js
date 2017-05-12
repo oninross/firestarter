@@ -11,10 +11,6 @@
  limitations under the License.
 */
 
-// This polyfill provides Cache.add(), Cache.addAll(), and CacheStorage.match(),
-// which are not implemented in Chrome 40.
-importScripts('serviceworker-cache-polyfill.js');
-
 // While overkill for this specific sample in which there is only one cache,
 // this is one best practice that can be followed in general to keep track of
 // multiple caches used by a given service worker, and keep them all versioned.
@@ -28,13 +24,14 @@ importScripts('serviceworker-cache-polyfill.js');
 // cache, then increment the CACHE_VERSION value. It will kick off the service worker update
 // flow and the old cache(s) will be purged as part of the activate event handler when the
 // updated service worker is activated.
-var version = '1.2.1',
+var version = '1.3.0',
     now = Date.now(),
+    OFFLINE_URL = 'offline/',
     urlsToPrefetch = [
         'assets/firestarter/css/main.css',
         'assets/firestarter/js/main.js',
         'assets/firestarter/css/fonts/icomoon.woff',
-        'offline/',
+        OFFLINE_URL,
         'index.html',
         '/'
     ],
