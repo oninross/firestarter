@@ -24,7 +24,7 @@
 // cache, then increment the CACHE_VERSION value. It will kick off the service worker update
 // flow and the old cache(s) will be purged as part of the activate event handler when the
 // updated service worker is activated.
-var version = '1.3.0',
+var version = '1.3.3',
     now = Date.now(),
     OFFLINE_URL = 'offline/',
     urlsToPrefetch = [
