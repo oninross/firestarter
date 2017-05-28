@@ -270,7 +270,7 @@ $(() => {
 // Toaster  //
 //////////////
 let toasterInd = 0;
-let toaster = function (msg) {
+let toaster = function (msg = "Toaster message", ttl = 5) {
     // Alert Toaster
     let popupAlert = doT.template($('#toaster-template').html()),
         obj = {
@@ -292,15 +292,17 @@ let toaster = function (msg) {
         ease: Expo.easeOut
     });
 
-    TweenMax.to(toaster, 0.75, {
-        opacity: 0,
-        scale: 0.75,
-        ease: Expo.easeOut,
-        delay: 5,
-        onComplete: function () {
-            $(toaster).remove();
-        }
-    });
+    if (ttl !== 0) {
+        TweenMax.to(toaster, 0.75, {
+            opacity: 0,
+            scale: 0.75,
+            ease: Expo.easeOut,
+            delay: ttl,
+            onComplete: function () {
+                $(toaster).remove();
+            }
+        });
+    }
 
     $(toaster).on('click', function (e) {
         e.preventDefault();
