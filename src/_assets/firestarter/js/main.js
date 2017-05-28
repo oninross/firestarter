@@ -44,36 +44,6 @@ $(() => {
         effect : 'fadeIn'
     });
 
-
-
-    /////////////////////////////
-    // Placeholder Alternative //
-    /////////////////////////////
-    (function () {
-        let $inputText = $('input[type="text"]');
-
-        if ($('.no-placeholder').length) {
-            $inputText
-                .each(function () {
-                    let $this = $(this);
-                    $this.addClass('blur').attr('value', $this.attr('placeholder'));
-                })
-                .on('focus', function () {
-                    let $this = $(this);
-
-                    if ($this.val() == $this.attr('placeholder')) {
-                        $this.val('').removeClass('blur');
-                    }
-                })
-                .on('blur', function () {
-                    let $this = $(this);
-                    if ($this.val() == '') {
-                        $this.val($this.attr('placeholder')).addClass('blur');
-                    }
-                });
-        }
-    })();
-
     console.log("I'm a firestarter!");
 });
 
