@@ -12,14 +12,14 @@ import 'CSSPlugin';
 import 'doT';
 import './_modernizr';
 
+import { debounce, isMobile } from './_helper';
+import { toaster } from './_material';
+
 import Header from '../../../_modules/organisms/header/header';
 
 import Navigation from '../../../_modules/molecules/navigation/navigation';
 
 import TablePreview from '../../../_modules/atoms/table-preview/table-preview';
-
-import { debounce, isMobile } from './_helper';
-import { toaster } from './_material';
 
 // Variable declaration
 let $window = $(window),

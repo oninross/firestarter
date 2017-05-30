@@ -35,12 +35,6 @@
     padding: 0;
 }
 
-@mixin sprite($x, $y, $h, $w) {
-    background: transparent url('../images/sprite.png') no-repeat $x $y;
-    height: $h;
-    width: $w;
-}
-
 // Absolute Center
 @mixin absolute-center() {
     bottom: 0;
@@ -64,4 +58,10 @@
     transform: translate(0,-50%);
     position: absolute;
     top: 50%;
+}
+
+@mixin reset-centering() {
+    position: static;
+    transform: none;
+    top: 0;
 }

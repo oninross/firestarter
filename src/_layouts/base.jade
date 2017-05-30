@@ -58,12 +58,11 @@ html.no-js(lang='en')
 
             if !isTablePreview
                 script(id='toaster-template', type='text/template')
-                    .toaster(class='toaster{{= it.ind }}')
-                        .container
-                            p {{! it.message}}
-                            button.js-dismiss
-                                span.sr-only Close
-                                i.icon.icon-cross
+                    .toaster__card(class='toaster{{= it.ind }}')
+                        p {{! it.message}}
+                        button.js-dismiss
+                            span.sr-only Close
+                            i.icon.icon-cross
 
                 script.
                     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

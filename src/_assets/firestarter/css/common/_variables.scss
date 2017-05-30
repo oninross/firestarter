@@ -1,5 +1,5 @@
 // Variable settings for grids and what not
-$default-font-size:     1.6em;
+$defaultFontSize:       1.6em;
 $gutter:                20px;
 $gutterTablet:          15px;
 $gutterDesktop:         15px;
@@ -38,9 +38,11 @@ $white:                 #ffffff;
 $border-color:          #e0e0e0;
 $material-background:   #eee;
 
+
 // Easing
 $easeOutExpo:           cubic-bezier(0.19, 1, 0.22, 1);
 $easeInOutExpo:         cubic-bezier(1, 0, 0, 1);
+
 
 // Animation Time
 $animTime: 0.5s;

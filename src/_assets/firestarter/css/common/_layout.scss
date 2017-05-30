@@ -1,0 +1,105 @@
+/* =======================================================================
+Layout
+========================================================================== */
+#main {
+    margin-top: 45px;
+    position: relative;
+
+    @include desktop {
+        margin-top: 90px;
+    }
+}
+
+.skip-links {
+    position: absolute;
+    z-index: 99;
+    background-color: #fff;
+}
+
+.backstretch {
+    background-color: $grey;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.breadcrumbs {
+    height: 100%;
+    margin: auto;
+    margin-bottom: 20px;
+    max-width: 960px;
+    padding: 0 $gutter;
+    position: relative;
+    width: 100%;
+
+    li {
+        display: inline-block;
+
+        a {
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        &:after {
+            @extend %icomoon;
+
+            content: "\e902";
+            margin: 0 10px;
+            position: relative;
+            top: 3px;
+        }
+
+        &:last-child {
+            font-weight: bold;
+
+            &:after {
+                content: "";
+            }
+        }
+    }
+}
+
+.cta {
+    @include transition(all, $animTime, $easeOutExpo);
+
+    background: $black;
+    border: 0;
+    border-radius: 3px;
+    color: $white;
+    font-size: $defaultFontSize;
+    padding: 10px;
+    width: auto;
+
+    &:hover {
+        background: lighten( $black, 10%);
+    }
+
+    &.disabled {
+        background: lighten( $grey, 30%);
+        color: lighten( $grey, 10%);
+        cursor: not-allowed;
+    }
+
+    svg.ripple circle {
+        fill: $white;
+    }
+
+    @include tablet {
+        width: auto;
+    }
+}
+
+svg.ripple {
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+
+    circle {
+        fill: $white;
+        opacity: 0;
+    }
+}

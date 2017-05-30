@@ -51,7 +51,7 @@
 }
 
 .container {
-    @extend %clearfix;
+    @include clearfix;
 
     height: 100%;
     margin: auto;
@@ -70,7 +70,7 @@
     }
 
     .wrap {
-        @extend %clearfix;
+        @include clearfix;
 
         margin: 0 (-$gutter);
         padding: 0;

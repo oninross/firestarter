@@ -67,9 +67,9 @@
 .btn-print-table {
     @include transition(position, $animTime, $easeOutExpo);
 
-    @extend .btn;
+    @extend .cta;
 
-    font-size: $default-font-size;
+    font-size: $defaultFontSize;
     max-width: 200px;
     padding: 10px;
     width: 100%;

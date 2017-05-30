@@ -2,38 +2,40 @@
 
 import { debounce, isMobile } from '../../../_assets/firestarter/js/_helper';
 
+const $header = $('header');
+
+let isMobileDevice = false,
+    lastScrollTop = 0;
+
 export default class Header {
     constructor() {
-        const $header = $('header');
+        const that = this;
 
-        let isMobileDevice = false,
-            lastScrollTop = 0;
+        $(window).on('resize scroll', debounce(that.toggleHeader, 250));
+    }
 
-        $(window).on('resize scroll', debounce(toggleHeader, 250));
+    toggleHeader() {
+        let st = $(this).scrollTop(),
+            $headerHeight = $header.height();
 
-        function toggleHeader() {
-            let st = $(this).scrollTop(),
-                $headerHeight = $header.height();
+        isMobileDevice = isMobile();
 
-            isMobileDevice = isMobile();
-
-            if (!isMobileDevice) {
-                if (st > lastScrollTop) {
-                    // scroll down
-                    if (st > $headerHeight) {
-                        $header.addClass('hide').removeClass('compact');
-                    }
+        if (!isMobileDevice) {
+            if (st > lastScrollTop) {
+                // scroll down
+                if (st > $headerHeight) {
+                    $header.addClass('hide').removeClass('compact');
+                }
+            } else {
+                // scroll up
+                if (st <= $headerHeight) {
+                    $header.removeClass('compact hide');
                 } else {
-                    // scroll up
-                    if (st <= $headerHeight) {
-                        $header.removeClass('compact hide');
-                    } else {
-                        $header.addClass('compact');
-                    }
+                    $header.addClass('compact');
                 }
             }
+        }
 
-            lastScrollTop = st;
-        };
+        lastScrollTop = st;
     }
 }
