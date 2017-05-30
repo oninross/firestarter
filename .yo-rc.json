@@ -6,8 +6,8 @@
       "jsPreprocessor": "es6",
       "cssOption": "sass",
       "sassSyntax": "scss",
-      "testFramework": "jasmine"
+      "testFramework": "none"
     },
-    "version": "1.5.3"
+    "version": "2.0.0"
   }
 }
