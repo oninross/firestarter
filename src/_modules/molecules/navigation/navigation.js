@@ -3,42 +3,45 @@
 import { ripple } from '../../../_assets/firestarter/js/_material';
 import { debounce, isMobile, easeOutExpo } from '../../../_assets/firestarter/js/_helper';
 
+const $window = $(window),
+    $body = $('body'),
+    primaryNavMarkup = '<button class="menu js-mobile-menu"><span class="line top"></span><span class="line mid"></span><span class="line bot"></span></button>',
+    subNavMarkup = '<button class="sub-nav js-sub-nav icon-arrow"><span class="vh">Sub-navigation</span></button>',
+    el = $('#navigation'),
+    $nav = el.find('.nav'),
+    $lvl1 = el.find('.lvl1'),
+    $lvl2 = el.find('.lvl2'),
+    $lvl3 = el.find('.lvl3'),
+    $set = $lvl1.add($lvl2).add($lvl3),
+    $dropdownList = el.find('ul li');
+
+let $visibleArea,
+    isMobileDevice = isMobile();
+
 export default class Navigation {
     constructor() {
-        let el = $('#navigation'),
-            primaryNavMarkup = '<button class="menu js-mobile-menu"><span class="line top"></span><span class="line mid"></span><span class="line bot"></span></button>',
-            subNavMarkup = '<button class="sub-nav js-sub-nav icon-arrow"><span class="vh">Sub-navigation</span></button>',
-            $dropdownList,
-            $nav = el.find('.nav'),
-            $lvl1 = el.find('.lvl1'),
-            $lvl2 = el.find('.lvl2'),
-            $lvl3 = el.find('.lvl3'),
-            $set = $lvl1.add($lvl2).add($lvl3),
-            $window = $(window),
-            isMobileDevice = isMobile();
+        const that = this;
+
+        isMobileDevice = isMobile();
 
         el.before(primaryNavMarkup);
+
+        const $primaryNav = $('.js-mobile-menu');
 
         // Insert Subnav Markup after Level 1 menu items
         $lvl1.find('ul').each(function () {
             $(this).before(subNavMarkup);
         });
 
-        // Declare Eventlisteners
-        $dropdownList = el.find('ul li');
+        const $subNav = $('.js-sub-nav')
 
-        let $primaryNav = $('.js-mobile-menu'),
-            $subNav = $('.js-sub-nav');
-
-        TweenMax.killTweensOf($dropdownList);
-
-        checkNavHeight();
+        that.checkNavHeight();
 
         $primaryNav.on('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
 
-            let $this = $(this);
+            const $this = $(this);
 
             el.toggleClass('active');
             $this.toggleClass('active');
@@ -54,13 +57,12 @@ export default class Navigation {
                         .removeClass('active');
 
                 $lvl2.slideUp(easeOutExpo);
-
                 $lvl3.slideUp(easeOutExpo);
             }
         });
 
         $subNav.on('touchend, click', function () {
-            let $this = $(this),
+            const $this = $(this),
                 $grandParent = $this.parent().parent(),
                 $next = $this.next();
 
@@ -79,7 +81,6 @@ export default class Navigation {
                     $next.removeClass('active').slideUp(easeOutExpo);
                 } else {
                     $this.removeClass('active');
-
                     $next.removeClass('active').slideUp(easeOutExpo);
                 }
             } else {
@@ -108,14 +109,15 @@ export default class Navigation {
         // Primary Nav Mouse Listeners
         el.on('click', '.no-link', function (e) {
             e.preventDefault();
-            let $this = $(this),
+
+            const $this = $(this),
                 $next = $this.next();
 
             $next.trigger('click');
 
             ripple(e, $this);
         }).on('click', '.lvl2 a', function (e) {
-            let $this = $(this),
+            const $this = $(this),
                 $next = $this.next();
 
             if ($this.attr('src') === '#' && $this.parent().hasClass('no-link')) {
@@ -124,14 +126,14 @@ export default class Navigation {
 
             ripple(e, $this);
         }).on('mouseenter', '.lvl1 li', function () {
-            let $this = $(this),
+            const $this = $(this),
                 $next = $this.find('> .lvl2');
 
             if (!isMobileDevice) {
                 $next.slideDown(easeOutExpo);
             }
         }).on('mouseleave', '.lvl1 li', function () {
-            let $this = $(this),
+            const $this = $(this),
                 $next = $this.find('> .lvl2');
 
             if (!isMobileDevice) {
@@ -139,9 +141,8 @@ export default class Navigation {
             }
         });
 
-        let $body = $('body');
         $body.on('click', function (e) {
-            let $eTarget = $(e.target);
+            const $eTarget = $(e.target);
 
             if ($eTarget.hasClass('nav active') && !$eTarget.parents('.nav').length) {
                 if ($primaryNav.hasClass('active')) {
@@ -180,14 +181,15 @@ export default class Navigation {
                 $('.js-sub-nav.active').trigger('click');
             }
         }, 250));
+    }
 
-        function checkNavHeight() {
-            let $lvl1 = $('#navigation .lvl1'),
-                $visibleArea = $window.outerHeight() - $('.header').outerHeight();
+    checkNavHeight() {
+        const $navLvl1 = $('#navigation .lvl1');
 
-            $lvl1.css({
-                height: $visibleArea
-            });
-        };
+        $visibleArea = $window.outerHeight() - $('.header').outerHeight();
+
+        $navLvl1.css({
+            height: $visibleArea
+        });
     }
 }

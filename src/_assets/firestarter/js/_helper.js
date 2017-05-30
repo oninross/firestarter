@@ -1,10 +1,5 @@
 'use strict';
 
-let bp = {
-    "maxMobile": 767,
-    "minDesktop": 1025
-}
-
 let debounce = function (func, wait, immediate) {
     var timeout;
     return function () {
@@ -22,7 +17,7 @@ let debounce = function (func, wait, immediate) {
             func.apply(context, args);
         }
     };
-}
+};
 
 let isMobile = function () {
     return Modernizr.mq('(max-width: 767px)');
@@ -80,7 +75,6 @@ let easeOutExpo = {
 };
 
 export {
-    bp,
     debounce,
     isMobile,
     isTablet,

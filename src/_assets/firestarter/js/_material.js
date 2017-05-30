@@ -62,34 +62,21 @@ $.fn.materialize = function () {
             }
 
             if ($this.hasClass('active')) {
-                TweenMax.to($card, 0.25, {
+                TweenLite.to($card, 0.25, {
                     autoAlpha: 0,
                     scale: 0.75,
-                    ease: Expo.easeOut,
-                    onComplete: function () {
-                        TweenMax.set($card.find('li'), {
-                            opacity: 1,
-                            top: 0
-                        });
-                    }
+                    ease: Expo.easeOut
                 });
             } else {
                 let activeInd = $card.find('.active').index(),
                     materialDropPos = $('.material-select-wrapper .card-wrapper li').outerHeight() * activeInd;
 
-                TweenMax.to($card, 0.25, {
+                TweenLite.to($card, 0.25, {
                     autoAlpha: 1,
                     scale: 1,
                     top: -materialDropPos,
                     ease: Expo.easeOut
                 });
-
-                TweenMax.staggerTo($card.find('li'), 1, {
-                    opacity: 1,
-                    top: 0,
-                    ease: Expo.easeOut,
-                    delay: 0.3
-                }, 0.1);
             }
 
             $this.toggleClass('active');
@@ -114,13 +101,10 @@ $.fn.materialize = function () {
             $materialSelectWrapper.find('.active').removeClass('active');
             $parent.addClass('active');
 
-            TweenMax.to($cardWrapper, 0.25, {
+            TweenLite.to($cardWrapper, 0.25, {
                 autoAlpha: 0,
                 scale: 0,
-                ease: Expo.easeIn,
-                onComplete: function () {
-                    TweenMax.set($cardWrapper.find('li'), { opacity: 0, top: -20 });
-                }
+                ease: Expo.easeIn
             });
 
             $materialSelectWrapper
@@ -143,20 +127,16 @@ $.fn.materialize = function () {
                 $materialSelectWrapper = $('.material-select-wrapper'),
                 $cardWrapper = $('.material-select-wrapper .card-wrapper');
 
-            if (!$eTarget.hasClass('material-select-wrapper') && !$eTarget.parents('.material-select-wrapper').length) {
+            if (!$eTarget.hasClass('material-select-wrapper') && !$eTarget.parents('.material-select-wrapper').length && $materialSelectWrapper.find('.material-label').hasClass('active')) {
                 $materialSelectWrapper.find('.material-label').removeClass('active');
 
-                TweenMax.to($cardWrapper, 0.25, {
+                $cardWrapper.removeClass('active');
+
+                TweenLite.to($cardWrapper, 0.25, {
                     autoAlpha: 0,
                     scale: 0,
                     top: 0,
-                    ease: Expo.easeInOut,
-                    onComplete: function () {
-                        TweenMax.set($cardWrapper.find('li'), {
-                            opacity: 0,
-                            top: -20
-                        });
-                    }
+                    ease: Expo.easeInOut
                 });
 
                 $window.off('resize scroll', debounce(listener, 250));
@@ -166,17 +146,11 @@ $.fn.materialize = function () {
         function listener() {
             $('.material-select-wrapper').find('.material-label').removeClass('active');
 
-            TweenMax.to('.material-select-wrapper .card-wrapper', 0.5, {
+            TweenLite.to('.material-select-wrapper .card-wrapper', 0.25, {
                 autoAlpha: 0,
                 scale: 0,
                 top: 0,
-                ease: Expo.easeIn,
-                onComplete: function () {
-                    TweenMax.set('.material-select-wrapper .card-wrapper li', {
-                        opacity: 0,
-                        top: -20
-                    });
-                }
+                ease: Expo.easeIn
             });
 
             $window.off('resize scroll', debounce(listener, 250));
@@ -286,14 +260,14 @@ let toaster = function (msg = "Toaster message", ttl = 5) {
 
     let toaster = '.toaster' + toasterInd;
 
-    TweenMax.to(toaster, 0.75, {
+    TweenLite.to(toaster, 0.75, {
         opacity: 1,
         scale: 1,
         ease: Expo.easeOut
     });
 
     if (ttl !== 0) {
-        TweenMax.to(toaster, 0.75, {
+        TweenLite.to(toaster, 0.75, {
             opacity: 0,
             scale: 0.75,
             ease: Expo.easeOut,
@@ -307,7 +281,7 @@ let toaster = function (msg = "Toaster message", ttl = 5) {
     $(toaster).on('click', function (e) {
         e.preventDefault();
 
-        TweenMax.to($(this), 0.75, {
+        TweenLite.to($(this), 0.75, {
             opacity: 0,
             scale: 0.75,
             ease: Expo.easeOut,
@@ -351,7 +325,7 @@ let ripple = function (e, el) {
     el.append(svg);
 
     let $ripple = el.find('.ripple' + inc);
-    TweenMax.from($ripple.find('circle'), 1.5, {
+    TweenLite.from($ripple.find('circle'), 1.5, {
         attr: { r: 0 },
         opacity: 0.75,
         ease: Expo.easeOut,

@@ -1,19 +1,6 @@
-.menu {
-    .line {
-        background: $white;
-        display: block;
-        height: 2px;
-        margin: 2px auto;
-        position: relative;
-        top: 0;
-        width: 15px;
-    }
-}
-
-
 // Cards
 .card {
-    @include transition(all, 1s, $easeOutExpo);
+    @include transition((opacity, top), 1s, $easeOutExpo);
 
     opacity: 0;
     position: relative;
@@ -40,19 +27,17 @@
     }
 }
 
-
-
 // Input
 input[type="text"],
 input[type="email"],
 input[type="password"],
 textarea {
-    @include transition(all, $animTime, $easeOutExpo);
+    @include transition((border-bottom, color, outline), $animTime, $easeOutExpo);
 
     background: $material-background;
     border: none;
     border-bottom: 1px solid $border-color;
-    font-size: $default-font-size;
+    font-size: $defaultFontSize;
     font-weight: $light;
     padding: 10px 0;
     width: 100%;
@@ -63,11 +48,13 @@ textarea {
         outline: 0;
     }
 
-    &[disabled]  {
+    &[disabled] {
         background: none;
         border-bottom: 1px dotted $border-color;
 
-        &:hover { cursor: not-allowed; }
+        &:hover {
+            cursor: not-allowed;
+        }
     }
 }
 
@@ -75,15 +62,15 @@ textarea {
     position: relative;
 
     .placeholder {
-        @include transition(all, $animTime, $easeOutExpo);
+        @include transition((color, font-size, top), $animTime, $easeOutExpo);
 
-        font-size: $default-font-size;
+        font-size: $defaultFontSize;
         position: absolute;
         top: 8px;
     }
 
     .hint {
-        @include transition(all, $animTime, $easeOutExpo);
+        @include transition((opacity, top), $animTime, $easeOutExpo);
 
         display: block;
         opacity: 0;
@@ -107,64 +94,58 @@ textarea {
     }
 }
 
-
 // Radio Buttons / Checkboxes
 label {
+    cursor: pointer;
     display: block;
-    font-size: $default-font-size;
-    line-height: normal;
+    font-size: $defaultFontSize;
+    line-height: 1.3;
     padding-left: 30px;
     position: relative;
     margin-bottom: 10px;
     width: 100%;
 
+    &:before {
+        @include transition((border, background), $animTime, $easeOutExpo);
+
+        border: 2px solid $grey;
+        content: "";
+        display: inline-block;
+        height: 20px;
+        left: 0;
+        position: absolute;
+        width: 20px;
+    }
+
+    &:after {
+        @include transition(all, $animTime, $easeOutExpo);
+
+        height: 20px;
+        position: absolute;
+        margin: auto;
+        transform: scale(0);
+        width: 20px;
+    }
+
     &.radio-button {
         &:before {
-            @include transition(all, $animTime, $easeOutExpo);
-
-            border: 2px solid $grey;
             border-radius: 50%;
-            content: "";
-            display: inline-block;
-            height: 18px;
-            left: 0;
             margin-right: 20px;
             position: absolute;
-            width: 18px;
         }
 
         &:after {
-            @include transition(all, $animTime, $easeOutExpo);
-
             background: transparent;
             border-radius: 50%;
             content: "";
             display: block;
-            height: 18px;
             left: 0;
-            margin: auto;
-            position: absolute;
             top: 0;
-            transform: scale(0);
-            width: 18px;
         }
     }
 
     &.checkbox {
-        &:before {
-            @include transition(all, $animTime, $easeOutExpo);
-
-            content: "";
-            border: 2px solid $grey;
-            display: inline-block;
-            height: 20px;
-            left: 0;
-            position: absolute;
-            width: 20px;
-        }
-
         &:after {
-            @include transition(all, $animTime, $easeOutExpo);
             @extend %icomoon;
 
             color: transparent;
@@ -173,12 +154,8 @@ label {
             font-size: 1em;
             height: 10px;
             left: 2px;
-            margin: auto;
-            position: absolute;
             top: 6px;
-            transform: scale(0);
             width: 10px;
-
         }
     }
 }
@@ -186,11 +163,16 @@ label {
 input[type="radio"],
 input[type="checkbox"] {
     display: none;
+
+    &:checked + label {
+        &:before {
+            border: 2px solid $black;
+        }
+    }
 }
 
-input[type="radio"]{
+input[type="radio"] {
     &:checked + label {
-        &:before { border: 2px solid $black; }
         &:after {
             background: $black;
             transform: scale(0.45);
@@ -198,11 +180,10 @@ input[type="radio"]{
     }
 }
 
-input[type="checkbox"]{
+input[type="checkbox"] {
     &:checked + label {
         &:before {
             background: $black;
-            border: 2px solid $black;
         }
 
         &:after {
@@ -214,10 +195,9 @@ input[type="checkbox"]{
     }
 }
 
-
 // Progress Bar
 .progress {
-    background: lighten( $black, 75% );
+    background: lighten($black, 75%);
     border-radius: 0;
     height: 4px;
     width: 100%;
@@ -232,11 +212,10 @@ input[type="checkbox"]{
     }
 }
 
-
 // Select
 .material-select-wrapper {
     border-bottom: 2px solid $border-color;
-    font-size: $default-font-size !important;
+    font-size: $defaultFontSize !important;
     position: relative;
     width: 100%;
 
@@ -260,7 +239,9 @@ input[type="checkbox"]{
         width: 100%;
         z-index: 10;
 
-        &.material { display: none; }
+        &.material {
+            display: none;
+        }
     }
 
     .icon {
@@ -301,8 +282,8 @@ input[type="checkbox"]{
         transform: scale(0);
         transform-origin: right top;
         visibility: hidden;
-        width: 50%;
-        z-index: 5;
+        width: 75%;
+        z-index: 10;
 
         &:before,
         &:after {
@@ -326,21 +307,41 @@ input[type="checkbox"]{
             bottom: 0;
         }
 
+        @include desktop {
+            width: 50%;
+        }
+
+
+        &.active {
+            li {
+                opacity: 1;
+                top: 0;
+            }
+        }
+
         ul {
             @include normalise-list;
 
             font-size: inherit;
+        }
 
-            li {
-                font-size: 1em;
-                opacity: 0;
-                position: relative;
-                top: -20px;
+        li {
+            @include transition(all, 0.75s, $easeOutExpo);
 
-                &.active {
-                    button {
-                        background: lighten( $grey, 25% );
-                    }
+            font-size: 1em;
+            opacity: 0;
+            position: relative;
+            top: -20px;
+
+            @for $i from 1 through 10 {
+                &:nth-child(#{$i}) {
+                    transition-delay: 0.1s * $i, 0.1s * $i;
+                }
+            }
+
+            &.active {
+                button {
+                    background: lighten($grey, 25%);
                 }
             }
         }
@@ -358,7 +359,7 @@ input[type="checkbox"]{
             width: 100%;
 
             &:hover {
-                background: lighten( $grey, 25% );
+                background: lighten($grey, 25%);
             }
         }
     }
@@ -374,7 +375,7 @@ input[type="checkbox"]{
     width: 50px;
 
     &:before {
-        content:'';
+        content: '';
         display: block;
         padding-top: 100%;
     }
@@ -414,44 +415,39 @@ input[type="checkbox"]{
     @include material-shadow(5);
 }
 
-
 // Loader
 .path {
     stroke-dasharray: 1,200;
     stroke-dashoffset: 0;
-
-    animation:
-        dash 1.5s ease-in-out infinite,
-        color 6s ease-in-out infinite
-    ;
+    animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
     stroke-linecap: round;
 }
 
-@keyframes rotate{
-    100%{
+@keyframes rotate {
+    100% {
         transform: rotate(360deg);
     }
 }
 
-@keyframes dash{
-    0%{
+@keyframes dash {
+    0% {
         stroke-dasharray: 1,200;
         stroke-dashoffset: 0;
     }
 
-    50%{
+    50% {
         stroke-dasharray: 89,200;
         stroke-dashoffset: -35;
     }
 
-    100%{
+    100% {
         stroke-dasharray: 89,200;
         stroke-dashoffset: -124;
     }
 }
 
-@keyframes color{
-    100%, 0%{
+@keyframes color {
+    100%, 0% {
         stroke: $black;
     }
 
@@ -468,56 +464,54 @@ input[type="checkbox"]{
     // }
 }
 
-
-
 // Toaster
-.toaster-wrap {
+.toaster {
     bottom: 30px;
     left: 30px;
     max-width: 440px;
     position: fixed;
     width: 100%;
     z-index: 1;
-}
 
-.toaster {
-    @include material-shadow(1);
+    &__card {
+        @include material-shadow(1);
 
-    background: #323232;
-    border-radius: 4px;
-    color: $white;
-    margin-bottom: 10px;
-    opacity: 0;
-    padding: 20px;
-    transform: scale(0.75);
-    transform-origin: left bottom;
-
-    &:only-child,
-    &:last-child {
-        margin-bottom: 0;
-    }
-
-    p {
-        margin: 0;
-    }
-
-    button {
-        @include absolute-center;
-
-        background: none;
-        border: 0;
+        background: #323232;
+        border-radius: 4px;
         color: $white;
-        height: 20px;
-        left: auto;
-        padding: 0;
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 20px;
-    }
+        margin-bottom: 10px;
+        opacity: 0;
+        padding: 20px;
+        transform: scale(0.75);
+        transform-origin: left bottom;
 
-    .icon {
-        display: block;
-        font-size: 2em;
+        &:only-child,
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        button {
+            @include absolute-center;
+
+            background: none;
+            border: 0;
+            color: $white;
+            height: 20px;
+            left: auto;
+            padding: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 20px;
+        }
+
+        .icon {
+            display: block;
+            font-size: 2em;
+        }
     }
 }

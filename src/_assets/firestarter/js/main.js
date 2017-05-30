@@ -5,18 +5,21 @@
 
 import $ from 'jquery';
 import 'lazyload';
-import 'TweenMax';
+import 'TweenLite';
+import 'EasePack';
+import 'AttrPlugin';
+import 'CSSPlugin';
 import 'doT';
 import './_modernizr';
+
+import { debounce, isMobile } from './_helper';
+import { toaster } from './_material';
 
 import Header from '../../../_modules/organisms/header/header';
 
 import Navigation from '../../../_modules/molecules/navigation/navigation';
 
 import TablePreview from '../../../_modules/atoms/table-preview/table-preview';
-
-import { debounce, isMobile } from './_helper';
-import { toaster } from './_material';
 
 // Variable declaration
 let $window = $(window),
@@ -33,7 +36,7 @@ $(() => {
     ////////////////////////////
     // Set framerate to 60fps //
     ////////////////////////////
-    TweenMax.ticker.fps(60);
+    TweenLite.ticker.fps(60);
 
 
 
@@ -43,36 +46,6 @@ $(() => {
     $('.lazy').lazyload({
         effect : 'fadeIn'
     });
-
-
-
-    /////////////////////////////
-    // Placeholder Alternative //
-    /////////////////////////////
-    (function () {
-        let $inputText = $('input[type="text"]');
-
-        if ($('.no-placeholder').length) {
-            $inputText
-                .each(function () {
-                    let $this = $(this);
-                    $this.addClass('blur').attr('value', $this.attr('placeholder'));
-                })
-                .on('focus', function () {
-                    let $this = $(this);
-
-                    if ($this.val() == $this.attr('placeholder')) {
-                        $this.val('').removeClass('blur');
-                    }
-                })
-                .on('blur', function () {
-                    let $this = $(this);
-                    if ($this.val() == '') {
-                        $this.val($this.attr('placeholder')).addClass('blur');
-                    }
-                });
-        }
-    })();
 
     console.log("I'm a firestarter!");
 });

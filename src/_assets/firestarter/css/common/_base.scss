@@ -1,6 +1,16 @@
 /* =======================================================================
 Global
 ========================================================================== */
+// Box sizing partial styles:
+// Apply a natural box layout model to all elements
+*,
+*:before,
+*:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 html {
     box-sizing: border-box;
 }
@@ -59,12 +69,11 @@ h6 {
 }
 
 menu, ol, ul {
-    // font-size: $default-font-size;
     margin-bottom: 20px;
     padding: 0 0 0 40px;
 
     li {
-        font-size: $default-font-size;
+        font-size: $defaultFontSize;
 
         li {
             font-size: 1em;
@@ -78,14 +87,10 @@ menu, ol, ul {
 
 ol, ul {
     margin: auto;
-
-    // code, kbd, pre, samp {
-    //     font-size: inherit;
-    // }
 }
 
 dl {
-    font-size: $default-font-size;
+    font-size: $defaultFontSize;
 }
 
 table {
@@ -113,32 +118,12 @@ table {
     }
 
     td {
-        font-size: $default-font-size;
+        font-size: $defaultFontSize;
     }
 
     p {
         font-size: 1em;
     }
-
-    // menu, ol, ul, p, a {
-    //     font-size: 1em;
-    // }
-}
-
-code,
-kbd,
-pre,
-samp,
-cite {
-    // font-size: $default-font-size;
-
-    // code,
-    // kbd,
-    // pre,
-    // samp,
-    // cite {
-    //     font-size: 1em;
-    // }
 }
 
 img {
@@ -155,7 +140,7 @@ img {
 }
 
 address {
-    font-size: $default-font-size;
+    font-size: $defaultFontSize;
     margin: 0 0 10px;
     word-break: break-word;
 }
@@ -167,12 +152,8 @@ blockquote {
 }
 
 p {
-    font-size: $default-font-size;
+    font-size: $defaultFontSize;
     word-break: break-word;
-
-    // code, kbd, pre, samp, cite {
-    //     font-size: inherit;
-    // }
 
     a {
         font-size: 1em;
@@ -180,10 +161,9 @@ p {
 }
 
 a {
-    font-size: $default-font-size;
+    font-size: $defaultFontSize;
     margin-bottom: 10px;
     text-decoration: none;
-@include     transition(all, $animTime, $easeOutExpo);
 }
 
 hr {
@@ -227,122 +207,4 @@ button {
 :-moz-placeholder { /* Firefox 4 - 18 */
     color: #a9a9a9;
     opacity: 1;
-}
-
-// ::-webkit-scrollbar {
-//     height: 5px;
-//     width: 5px;
-// }
-
-// ::-webkit-scrollbar-thumb {
-//     background: rgba(0, 0, 0, 0.26);
-// }
-
-// ::-webkit-scrollbar-corner {
-//     background: 0;
-// }
-
-
-.btn {
-    @include transition(all, $animTime, $easeOutExpo);
-
-    background: $black;
-    border: 0;
-    border-radius: 3px;
-    color: $white;
-    font-size: $default-font-size;
-    padding: 10px;
-    width: auto;
-
-    &:hover {
-        background: lighten( $black, 10%);
-    }
-
-    &.disabled {
-        background: lighten( $grey, 30%);
-        color: lighten( $grey, 10%);
-        cursor: not-allowed;
-    }
-
-    svg.ripple circle {
-        fill: $white;
-    }
-
-    @include tablet {
-        width: auto;
-    }
-}
-
-svg.ripple {
-    left: 0;
-    position: absolute;
-    top: 0;
-    z-index: 1;
-
-    circle {
-        fill: $white;
-        opacity: 0;
-    }
-}
-
-
-
-/* =======================================================================
-Layout
-========================================================================== */
-#main {
-    margin-top: 45px;
-    position: relative;
-
-    @include desktop {
-        margin-top: 90px;
-    }
-}
-
-.backstretch {
-    background-color: $grey;
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: relative;
-}
-
-.breadcrumbs {
-    height: 100%;
-    margin: auto;
-    margin-bottom: 20px;
-    max-width: 960px;
-    padding: 0 $gutter;
-    position: relative;
-    width: 100%;
-
-    li {
-        display: inline-block;
-        // font-size: 1em;
-
-        a {
-            text-decoration: none;
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-
-        &:after {
-            @extend %icomoon;
-
-            content: "\e902";
-            // font-size: 1.2em;
-            margin: 0 10px;
-            position: relative;
-            top: 3px;
-        }
-
-        &:last-child {
-            font-weight: bold;
-
-            &:after {
-                content: "";
-            }
-        }
-    }
 }

@@ -1,6 +1,7 @@
 extends ../../_layouts/base
 
 include ../../_modules/organisms/banner/banner
+include ../../_modules/organisms/breadcrumbs/breadcrumbs
 
 block config
     //- Correct base url pathing for this page
@@ -9,15 +10,24 @@ block config
 block content
     +banner({"__title": "Material Design"})
 
+    +breadcrumbs({
+        "content": [
+            {
+                "label": "Material Design",
+                "href": null
+            }
+        ]
+    })
+
     section.container
         .wrap
             .col-12
                 h2 Buttons
                 h3 Normal Buttons
             .col-4
-                button.btn Button
+                button.cta Button
             .col-4
-                button.btn.disabled Disabled
+                button.cta.disabled Disabled
             .col-4
                 a.cta(href='#') Link
         hr

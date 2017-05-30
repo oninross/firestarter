@@ -2,7 +2,7 @@
     "lang": "en",
     "name": "firestarter",
     "short_name": "firestarter",
-    "description": "",
+    "description": "A quick, easy front-end framework and setup for any project",
     "start_url": "./index.html",
     "display": "standalone",
     "orientation": "portrait",

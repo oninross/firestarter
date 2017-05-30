@@ -26,7 +26,7 @@
 // updated service worker is activated.
 var version = '1.3.3',
     now = Date.now(),
-    OFFLINE_URL = 'offline/',
+    OFFLINE_URL = '/pages/offline/',
     urlsToPrefetch = [
         'assets/firestarter/css/main.css',
         'assets/firestarter/js/main.js',

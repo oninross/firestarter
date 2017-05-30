@@ -1,0 +1,17 @@
+mixin breadcrumbs(spec)
+    - spec = spec || {}
+    - spec.__class = spec.__class || ''
+    - spec.content = spec.content || ''
+
+    .breadcrumbs
+        nav
+            ol
+                li
+                    a(href='/') Home
+
+                    each item, index in spec.content
+                        li
+                            if item.href
+                                a(href=item.href)=item.label
+                            else
+                                =item.label
