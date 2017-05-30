@@ -23,45 +23,6 @@ Layout
     position: relative;
 }
 
-.breadcrumbs {
-    height: 100%;
-    margin: auto;
-    margin-bottom: 20px;
-    max-width: 960px;
-    padding: 0 $gutter;
-    position: relative;
-    width: 100%;
-
-    li {
-        display: inline-block;
-
-        a {
-            text-decoration: none;
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-
-        &:after {
-            @extend %icomoon;
-
-            content: "\e902";
-            margin: 0 10px;
-            position: relative;
-            top: 3px;
-        }
-
-        &:last-child {
-            font-weight: bold;
-
-            &:after {
-                content: "";
-            }
-        }
-    }
-}
-
 .cta {
     @include transition(all, $animTime, $easeOutExpo);
 

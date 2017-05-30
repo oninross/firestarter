@@ -1,6 +1,7 @@
 extends ../../_layouts/base
 
 include ../../_modules/organisms/banner/banner
+include ../../_modules/organisms/breadcrumbs/breadcrumbs
 
 block config
     //- Correct base url pathing for this page
@@ -8,6 +9,15 @@ block config
 
 block content
     +banner({"__title": "Material Design"})
+
+    +breadcrumbs({
+        "content": [
+            {
+                "label": "Material Design",
+                "href": null
+            }
+        ]
+    })
 
     section.container
         .wrap
