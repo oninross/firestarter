@@ -5,7 +5,10 @@
 
 import $ from 'jquery';
 import 'lazyload';
-import 'TweenMax';
+import 'TweenLite';
+import 'EasePack';
+import 'AttrPlugin';
+import 'CSSPlugin';
 import 'doT';
 import './_modernizr';
 
@@ -33,7 +36,7 @@ $(() => {
     ////////////////////////////
     // Set framerate to 60fps //
     ////////////////////////////
-    TweenMax.ticker.fps(60);
+    TweenLite.ticker.fps(60);
 
 
 

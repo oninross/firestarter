@@ -326,21 +326,37 @@ input[type="checkbox"]{
             bottom: 0;
         }
 
+        &.active {
+            li {
+                opacity: 1;
+                top: 0;
+            }
+        }
+
         ul {
             @include normalise-list;
 
             font-size: inherit;
 
-            li {
-                font-size: 1em;
-                opacity: 0;
-                position: relative;
-                top: -20px;
+        }
 
-                &.active {
-                    button {
-                        background: lighten( $grey, 25% );
-                    }
+        li {
+            @include transition(all, 0.75s, $easeOutExpo);
+
+            font-size: 1em;
+            opacity: 0;
+            position: relative;
+            top: -20px;
+
+            @for $i from 1 through 10 {
+                &:nth-child(#{$i}) {
+                    transition-delay: 0.1s * $i, 0.1s * $i;
+                }
+            }
+
+            &.active {
+                button {
+                    background: lighten( $grey, 25% );
                 }
             }
         }

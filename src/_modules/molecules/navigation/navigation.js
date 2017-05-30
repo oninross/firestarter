@@ -30,8 +30,6 @@ export default class Navigation {
         let $primaryNav = $('.js-mobile-menu'),
             $subNav = $('.js-sub-nav');
 
-        TweenMax.killTweensOf($dropdownList);
-
         checkNavHeight();
 
         $primaryNav.on('click', function (e) {
@@ -54,7 +52,6 @@ export default class Navigation {
                         .removeClass('active');
 
                 $lvl2.slideUp(easeOutExpo);
-
                 $lvl3.slideUp(easeOutExpo);
             }
         });
@@ -79,7 +76,6 @@ export default class Navigation {
                     $next.removeClass('active').slideUp(easeOutExpo);
                 } else {
                     $this.removeClass('active');
-
                     $next.removeClass('active').slideUp(easeOutExpo);
                 }
             } else {
