@@ -130,14 +130,14 @@ export default class Navigation {
                 $next = $this.find('> .lvl2');
 
             if (!isMobileDevice) {
-                $next.slideDown(easeOutExpo);
+                $next.stop()slideDown(easeOutExpo);
             }
         }).on('mouseleave', '.lvl1 li', function () {
             const $this = $(this),
                 $next = $this.find('> .lvl2');
 
             if (!isMobileDevice) {
-                $next.slideUp(easeOutExpo);
+                $next.stop()slideUp(easeOutExpo);
             }
         });
 
