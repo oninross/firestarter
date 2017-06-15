@@ -466,12 +466,18 @@ input[type="checkbox"] {
 
 // Toaster
 .toaster {
-    bottom: 30px;
-    left: 30px;
-    max-width: 440px;
-    position: fixed;
-    width: 100%;
-    z-index: 1;
+    &__wrap {
+        bottom: 30px;
+        left: 30px;
+        max-width: 440px;
+        position: fixed;
+        width: 100%;
+        z-index: 25;
+
+        @include mobile {
+            max-width: 260px;
+        }
+    }
 
     &__card {
         @include material-shadow(1);
@@ -503,9 +509,7 @@ input[type="checkbox"] {
             height: 20px;
             left: auto;
             padding: 0;
-            position: absolute;
-            right: 0;
-            top: 0;
+            right: 10px;
             width: 20px;
         }
 
