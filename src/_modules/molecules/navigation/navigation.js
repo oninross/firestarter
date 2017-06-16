@@ -5,8 +5,8 @@ import { debounce, isMobile, easeOutExpo } from '../../../_assets/firestarter/js
 
 const $window = $(window),
     $body = $('body'),
-    primaryNavMarkup = '<button class="menu js-mobile-menu"><span class="line top"></span><span class="line mid"></span><span class="line bot"></span></button>',
-    subNavMarkup = '<button class="sub-nav js-sub-nav icon-arrow"><span class="vh">Sub-navigation</span></button>',
+    primaryNavMarkup = '<button class="menu js-mobile-menu" name="menu><span class="line top"></span><span class="line mid"></span><span class="line bot"></span></button>',
+    subNavMarkup = '<button class="sub-nav js-sub-nav icon-arrow" name="Sub-navigation"></button>',
     el = $('#navigation'),
     $nav = el.find('.nav'),
     $lvl1 = el.find('.lvl1'),
