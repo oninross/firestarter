@@ -11,7 +11,7 @@ export default class TablePreview {
 
             if ($this.length && $this.isTableWide()) {
                 $this
-                    .after('<button class="btn-print-table js-print-table">View Table</button>')
+                    .before('<button class="btn-print-table js-print-table">View Table</button>')
                     .wrap('<div class="table-wrap"><div class="table-responsive"></div></div>');
             }
         });
