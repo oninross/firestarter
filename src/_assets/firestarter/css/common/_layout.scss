@@ -10,6 +10,32 @@ Layout
     }
 }
 
+.intro {
+    p {
+        font-size: 1.8em;
+        font-weight: bold;
+    }
+}
+
+.offline {
+    height: calc(100vh - 91px);
+    text-align: center;
+
+    @include mobile {
+        height: calc(100vh - 45px);
+    }
+
+    svg {
+        width: 100px;
+    }
+
+    .container {
+        .wrap {
+            @include centering-the-unknown;
+        }
+    }
+}
+
 .skip-links {
     position: absolute;
     z-index: 99;
@@ -30,8 +56,10 @@ Layout
     border: 0;
     border-radius: 3px;
     color: $white;
+    cursor: pointer;
     font-size: $defaultFontSize;
     padding: 10px;
+    text-decoration: none;
     width: auto;
 
     &:hover {

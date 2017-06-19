@@ -1,7 +1,7 @@
 # Firestarter readme
 
-Generated on 2016-09-16 using
-[generator-yeogurt@1.5.3](https://github.com/larsonjj/generator-yeogurt)
+Generated using
+[generator-yeogurt@2.0.0](https://github.com/larsonjj/generator-yeogurt)
 
 ## Description
 

@@ -5,8 +5,7 @@ import { debounce, isMobile, easeOutExpo } from '../../../_assets/firestarter/js
 
 const $window = $(window),
     $body = $('body'),
-    primaryNavMarkup = '<button class="menu js-mobile-menu"><span class="line top"></span><span class="line mid"></span><span class="line bot"></span></button>',
-    subNavMarkup = '<button class="sub-nav js-sub-nav icon-arrow"><span class="vh">Sub-navigation</span></button>',
+    subNavMarkup = '<button class="sub-nav js-sub-nav icon-arrow" name="Sub-navigation"></button>',
     el = $('#navigation'),
     $nav = el.find('.nav'),
     $lvl1 = el.find('.lvl1'),
@@ -20,13 +19,10 @@ let $visibleArea,
 
 export default class Navigation {
     constructor() {
-        const that = this;
-
         isMobileDevice = isMobile();
 
-        el.before(primaryNavMarkup);
-
-        const $primaryNav = $('.js-mobile-menu');
+        const that = this,
+            $primaryNav = $('.js-mobile-menu');
 
         // Insert Subnav Markup after Level 1 menu items
         $lvl1.find('ul').each(function () {
@@ -130,14 +126,14 @@ export default class Navigation {
                 $next = $this.find('> .lvl2');
 
             if (!isMobileDevice) {
-                $next.slideDown(easeOutExpo);
+                $next.stop().slideDown(easeOutExpo);
             }
         }).on('mouseleave', '.lvl1 li', function () {
             const $this = $(this),
                 $next = $this.find('> .lvl2');
 
             if (!isMobileDevice) {
-                $next.slideUp(easeOutExpo);
+                $next.stop().slideUp(easeOutExpo);
             }
         });
 

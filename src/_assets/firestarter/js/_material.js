@@ -252,11 +252,11 @@ let toaster = function (msg = "Toaster message", ttl = 5) {
             message: msg
         };
 
-    if (!$('.toaster-wrap').length) {
-        $('#main').after('<div class="toaster-wrap" />');
+    if (!$('.toaster__wrap').length) {
+        $('#main').after('<div class="toaster__wrap" />');
     }
 
-    $('.toaster-wrap').append(popupAlert(obj));
+    $('.toaster__wrap').append(popupAlert(obj));
 
     let toaster = '.toaster' + toasterInd;
 

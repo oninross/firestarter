@@ -1,5 +1,5 @@
 // Normalize Styles
-@import "node_modules/normalize.css/normalize";
+// @import "node_modules/normalize.css/normalize";
 @import "node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar";
 
 // Import all needed help
@@ -17,6 +17,7 @@
 @import "../_modules/organisms/header/header";
 @import "../_modules/organisms/banner/banner";
 @import "../_modules/organisms/breadcrumbs/breadcrumbs";
+@import "../_modules/organisms/form/form";
 
 @import "../_modules/molecules/navigation/navigation";
 

@@ -16,7 +16,6 @@ html {
 }
 
 body {
-    background: $material-background;
     font: 62.5%/1.618 sans-serif;
     font-family:
 /* 1 */ -apple-system, BlinkMacSystemFont,
@@ -161,9 +160,9 @@ p {
 }
 
 a {
+    color: $black;
     font-size: $defaultFontSize;
     margin-bottom: 10px;
-    text-decoration: none;
 }
 
 hr {
@@ -176,13 +175,6 @@ button {
 
     &:focus {
         outline: 0;
-    }
-}
-
-.intro {
-    p {
-        font-size: 1.8em;
-        font-weight: bold;
     }
 }
 
