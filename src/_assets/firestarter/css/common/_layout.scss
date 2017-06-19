@@ -10,6 +10,25 @@ Layout
     }
 }
 
+.offline {
+    height: calc(100vh - 91px);
+    text-align: center;
+
+    @include mobile {
+        height: calc(100vh - 45px);
+    }
+
+    svg {
+        width: 100px;
+    }
+
+    .container {
+        .wrap {
+            @include centering-the-unknown;
+        }
+    }
+}
+
 .skip-links {
     position: absolute;
     z-index: 99;
