@@ -15,6 +15,7 @@ import './_modernizr';
 // for testing a11y only.  Remove before integration
 import './tota11y.min';
 
+
 import { debounce, isMobile } from './_helper';
 import { toaster } from './_material';
 
@@ -22,6 +23,7 @@ import Header from '../../../_modules/organisms/header/header';
 
 import Navigation from '../../../_modules/molecules/navigation/navigation';
 
+import Galisteners from '../../../_modules/atoms/galisteners/galisteners';
 import TablePreview from '../../../_modules/atoms/table-preview/table-preview';
 
 // Variable declaration
@@ -32,9 +34,9 @@ let $window = $(window),
     lastScrollTop = 0;
 
 $(() => {
-    new Header();       // Activate Header modules logic
-    new Navigation();   // Activate Primary Nav modules logic
-    new TablePreview();   // Activate Table Preview modules logic
+    new Header();
+    new Navigation();
+    new TablePreview();
 
     ////////////////////////////
     // Set framerate to 60fps //
