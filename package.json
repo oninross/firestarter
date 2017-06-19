@@ -3,13 +3,13 @@
   "version": "1.4.1",
   "dependencies": {
     "browserify-shim": "^3.8.12",
-    "dot": "^1.0.3",
-    "gsap": "^1.19.0",
+    "dot": "^1.1.2",
+    "gsap": "^1.19.1",
     "jquery": "~2.2.0",
     "jquery-lazyload": "^1.9.7",
     "malihu-custom-scrollbar-plugin": "^3.1.5",
     "normalize.css": "~5.0.0",
-    "scrollmonitor": "^1.0.12"
+    "scrollmonitor": "^1.2.3"
   },
   "devDependencies": {
     "babelify": "~7.3.0",
