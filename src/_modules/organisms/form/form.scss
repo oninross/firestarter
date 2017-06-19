@@ -1,12 +1,15 @@
 // form styles
-.form {
+.form { }
+
+.form-item {
+    margin-bottom: 15px;
+
     input[type="text"],
     input[type="email"],
     input[type="password"],
     textarea {
         @include transition((border-bottom, color, outline), $animTime, $easeOutExpo);
 
-        background: $material-background;
         border: none;
         border-bottom: 1px solid $border-color;
         font-size: $defaultFontSize;
@@ -29,10 +32,6 @@
             }
         }
     }
-}
-
-.form-item {
-    margin-bottom: 15px;
 
     label {
         cursor: pointer;
