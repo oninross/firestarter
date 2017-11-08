@@ -19,147 +19,148 @@ block content
         ]
     })
 
-    section.container
-        .wrap
-            .col-12
-                h2 Buttons
-                h3 Normal Buttons
-            .col-4
-                button.cta Button
-            .col-4
-                button.cta.disabled Disabled
-            .col-4
-                a.cta(href='#') Link
-        hr
-
-    section.container
-        .wrap
-            .col-12
-                h2 Cards and Shadows
-            .card-container
+    section.section
+        .container
+            .wrap
+                .col-12
+                    h2 Buttons
+                    h3 Normal Buttons
                 .col-4
-                    .card
-                        .card__wrapper.shadow-z0
-                            h3 Shadow 0
-                            p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus nisl arcu, a finibus erat rutrum id. Phasellus pretium pharetra sem at facilisis. Mauris interdum vestibulum faucibus. Sed non arcu nisl.
+                    button.cta Button
                 .col-4
-                    .card
-                        .card__wrapper.shadow-z1
-                            h3 Shadow 1
-                            p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus nisl arcu, a finibus erat rutrum id. Phasellus pretium pharetra sem at facilisis. Mauris interdum vestibulum faucibus. Sed non arcu nisl.
+                    button.cta.disabled Disabled
                 .col-4
-                    .card
-                        .card__wrapper.shadow-z2
-                            h3 Shadow 2
-                            p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus nisl arcu, a finibus erat rutrum id. Phasellus pretium pharetra sem at facilisis. Mauris interdum vestibulum faucibus. Sed non arcu nisl.
+                    a.cta(href='#') Link
+            hr
+
+        section.container
+            .wrap
+                .col-12
+                    h2 Cards and Shadows
+                .card-container
+                    .col-4
+                        .card
+                            .card__wrapper.shadow-z0
+                                h3 Shadow 0
+                                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus nisl arcu, a finibus erat rutrum id. Phasellus pretium pharetra sem at facilisis. Mauris interdum vestibulum faucibus. Sed non arcu nisl.
+                    .col-4
+                        .card
+                            .card__wrapper.shadow-z1
+                                h3 Shadow 1
+                                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus nisl arcu, a finibus erat rutrum id. Phasellus pretium pharetra sem at facilisis. Mauris interdum vestibulum faucibus. Sed non arcu nisl.
+                    .col-4
+                        .card
+                            .card__wrapper.shadow-z2
+                                h3 Shadow 2
+                                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus nisl arcu, a finibus erat rutrum id. Phasellus pretium pharetra sem at facilisis. Mauris interdum vestibulum faucibus. Sed non arcu nisl.
+                    .col-4
+                        .card
+                            .card__wrapper.shadow-z3
+                                h3 Shadow 3
+                                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus nisl arcu, a finibus erat rutrum id. Phasellus pretium pharetra sem at facilisis. Mauris interdum vestibulum faucibus. Sed non arcu nisl.
+                    .col-4
+                        .card
+                            .card__wrapper.shadow-z4
+                                h3 Shadow 4
+                                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus nisl arcu, a finibus erat rutrum id. Phasellus pretium pharetra sem at facilisis. Mauris interdum vestibulum faucibus. Sed non arcu nisl.
+                    .col-4
+                        .card
+                            .card__wrapper.shadow-z5
+                                h3 Shadow 5
+                                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus nisl arcu, a finibus erat rutrum id. Phasellus pretium pharetra sem at facilisis. Mauris interdum vestibulum faucibus. Sed non arcu nisl.
+            hr
+
+        form.form.container
+            .wrap
                 .col-4
-                    .card
-                        .card__wrapper.shadow-z3
-                            h3 Shadow 3
-                            p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus nisl arcu, a finibus erat rutrum id. Phasellus pretium pharetra sem at facilisis. Mauris interdum vestibulum faucibus. Sed non arcu nisl.
-                .col-4
-                    .card
-                        .card__wrapper.shadow-z4
-                            h3 Shadow 4
-                            p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus nisl arcu, a finibus erat rutrum id. Phasellus pretium pharetra sem at facilisis. Mauris interdum vestibulum faucibus. Sed non arcu nisl.
-                .col-4
-                    .card
-                        .card__wrapper.shadow-z5
-                            h3 Shadow 5
-                            p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus nisl arcu, a finibus erat rutrum id. Phasellus pretium pharetra sem at facilisis. Mauris interdum vestibulum faucibus. Sed non arcu nisl.
-        hr
+                    h2 Radio Buttons
+                    .form-item.-radio-button
+                        input#radio1(type='radio', name='name', value='value')
+                        label(for='radio1') Radio Button
+                    .form-item.-radio-button
+                        input#radio2(type='radio', name='name', value='value')
+                        label(for='radio2') Radio Button
+                    .form-item.-radio-button
+                        input#radio3(type='radio', name='name', value='value')
+                        label(for='radio3') Radio Button
+                    .form-item.-radio-button
+                        input#radio4(type='radio', name='name', value='value')
+                        label(for='radio4') Radio Button
 
-    form.form.container
-        .wrap
-            .col-4
-                h2 Radio Buttons
-                .form-item.-radio-button
-                    input#radio1(type='radio', name='name', value='value')
-                    label(for='radio1') Radio Button
-                .form-item.-radio-button
-                    input#radio2(type='radio', name='name', value='value')
-                    label(for='radio2') Radio Button
-                .form-item.-radio-button
-                    input#radio3(type='radio', name='name', value='value')
-                    label(for='radio3') Radio Button
-                .form-item.-radio-button
-                    input#radio4(type='radio', name='name', value='value')
-                    label(for='radio4') Radio Button
+                    h2 Checkbox
+                    .form-item.-checkbox
+                        input#checkbox1(type='checkbox', name='name', value='value')
+                        label(for='checkbox1') Checkbox Button
+                    .form-item.-checkbox
+                        input#checkbox2(type='checkbox', name='name', value='value')
+                        label(for='checkbox2') Checkbox Button
+                    .form-item.-checkbox
+                        input#checkbox3(type='checkbox', name='name', value='value')
+                        label(for='checkbox3') Checkbox Button
+                    .form-item.-checkbox
+                        input#checkbox4(type='checkbox', name='name', value='value')
+                        label(for='checkbox4') Checkbox Button
+                .col-8
+                    h2 Dropdown with Material Design
+                    .form-item
+                        select.material
+                            option.active(value='Select an option') Select an option
+                            option(value='Option 1') Option 1
+                            option(value='Option 2') Option 2
+                            option(value='Option 3') Option 3
+                            option(value='Option 4') Option 4
+                            option(value='Option 5') Option 5
 
-                h2 Checkbox
-                .form-item.-checkbox
-                    input#checkbox1(type='checkbox', name='name', value='value')
-                    label(for='checkbox1') Checkbox Button
-                .form-item.-checkbox
-                    input#checkbox2(type='checkbox', name='name', value='value')
-                    label(for='checkbox2') Checkbox Button
-                .form-item.-checkbox
-                    input#checkbox3(type='checkbox', name='name', value='value')
-                    label(for='checkbox3') Checkbox Button
-                .form-item.-checkbox
-                    input#checkbox4(type='checkbox', name='name', value='value')
-                    label(for='checkbox4') Checkbox Button
-            .col-8
-                h2 Dropdown with Material Design
-                .form-item
-                    select.material
-                        option.active(value='Select an option') Select an option
-                        option(value='Option 1') Option 1
-                        option(value='Option 2') Option 2
-                        option(value='Option 3') Option 3
-                        option(value='Option 4') Option 4
-                        option(value='Option 5') Option 5
+                    h2
+                        | Dropdown with Material Design (with native select on mobile)
 
-                h2
-                    | Dropdown with Material Design (with native select on mobile)
+                    .form-item
+                        select.material.native
+                            option.active(value='Select an option') Select an option
+                            option(value='Option 1') Option 1
+                            option(value='Option 2') Option 2
+                            option(value='Option 3') Option 3
+                            option(value='Option 4') Option 4
+                            option(value='Option 5') Option 5
+            hr
 
-                .form-item
-                    select.material.native
-                        option.active(value='Select an option') Select an option
-                        option(value='Option 1') Option 1
-                        option(value='Option 2') Option 2
-                        option(value='Option 3') Option 3
-                        option(value='Option 4') Option 4
-                        option(value='Option 5') Option 5
-        hr
+        form.form.container
+            .wrap
+                .col-12
+                    h2 Input
+                .col-6
+                    h3 Basic Placeholder
 
-    form.form.container
-        .wrap
-            .col-12
-                h2 Input
-            .col-6
-                h3 Basic Placeholder
+                    .form-item
+                        input(type='text', placeholder='Label')
+                .col-6
+                    h3 Floating Placeholder
 
-                .form-item
-                    input(type='text', placeholder='Label')
-            .col-6
-                h3 Floating Placeholder
+                    .form-item
+                        input.floating-input(type='text', placeholder='Label')
+                .col-6
+                    h3 Hints
 
-                .form-item
-                    input.floating-input(type='text', placeholder='Label')
-            .col-6
-                h3 Hints
+                    .form-item
+                        input.floating-input(type='text', placeholder='Label', data-hint='Lorem ipsum dolor')
+                .col-6
+                    h3 Disabled Input
 
-                .form-item
-                    input.floating-input(type='text', placeholder='Label', data-hint='Lorem ipsum dolor')
-            .col-6
-                h3 Disabled Input
+                    .form-item
+                        input(type='text', placeholder='Label', disabled='')
+            hr
 
-                .form-item
-                    input(type='text', placeholder='Label', disabled='')
-        hr
-
-    section.container
-        .wrap
-            .col-12
-                h2 Progress Bar
-            .col-6
-                h3 Basic Progress Bar
-                .progress
-                    .progress-bar(data-value='75')
-            .col-6
-                h3 Loader
-                .loader
-                    svg.circular(viewbox='25 25 50 50')
-                        circle.path(cx='50', cy='50', r='18', fill='none', stroke-width='3', stroke-miterlimit='10')
+        section.container
+            .wrap
+                .col-12
+                    h2 Progress Bar
+                .col-6
+                    h3 Basic Progress Bar
+                    .progress
+                        .progress-bar(data-value='75')
+                .col-6
+                    h3 Loader
+                    .loader
+                        svg.circular(viewbox='25 25 50 50')
+                            circle.path(cx='50', cy='50', r='18', fill='none', stroke-width='3', stroke-miterlimit='10')
 

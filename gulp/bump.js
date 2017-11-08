@@ -31,15 +31,30 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
             .pipe(gulp.dest('./'));
     }
 
+    function sw(importance) {
+        // get all the files to bump version in
+        return gulp.src(['./src/service-worker.js'])
+            // bump the version number in those files
+            .pipe(bump({type: importance}))
+
+            // save it back to filesystem
+            .pipe(gulp.dest('./src'));
+    }
+
     gulp.task('patch', function() {
         pack('patch');
+        sw('patch');
     });
 
     gulp.task('feature', function() {
         pack('minor');
+        sw('minor');
     });
 
     gulp.task('release', function() {
         pack('major');
+        sw('major');
     });
+
+
 }

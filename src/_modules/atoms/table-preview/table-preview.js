@@ -1,15 +1,16 @@
 'use strict';
 
+import { debounce } from '../../../_assets/firestarter/js/_helper';
+
 export default class TablePreview {
     constructor() {
-        $.fn.isTableWide = function () {
-            return $(this).parent().width() < $(this).width();
-        };
+        const that = this,
+            $window = $(window);
 
         $('table').each(function (i, v) {
             let $this = $(v);
 
-            if ($this.length && $this.isTableWide()) {
+            if (!$this.hasClass('no-wrap')) {
                 $this
                     .before('<button class="btn-print-table js-print-table">View Table</button>')
                     .wrap('<div class="table-wrap"><div class="table-responsive"></div></div>');
@@ -20,31 +21,27 @@ export default class TablePreview {
             var $this = $(this),
                 $tableResponsive = $this.find('.table-responsive'),
                 $table = $this.find('table'),
-                trTotalWidth = getTrWidth($this, $table);
+                trTotalWidth = that.getTrWidth($this, $table);
 
-            isLeftOrRight($this, $tableResponsive, trTotalWidth);
+            that.isLeftOrRight($this, $tableResponsive, trTotalWidth);
 
             $tableResponsive.on('scroll', function () {
-                isLeftOrRight($this, $tableResponsive, trTotalWidth);
+                that.isLeftOrRight($this, $tableResponsive, trTotalWidth);
             })
         });
 
-        function getTrWidth(el, table) {
-            var width,
-                totalWidth = 0,
-                tableWrapWidth = el.width();
+        $window.on('resize', debounce(function () {
+            $('table').each(function (i, v) {
+                let $this = $(v),
+                    $tableWrap = $this.closest('.table-wrap');
 
-            return table.find('tr:first-child > *').each(function () {
-                totalWidth += $(this).outerWidth()
-            }), width = totalWidth - tableWrapWidth;
-        };
-
-        function isLeftOrRight(el, tableResponsive, trTotalWidth) {
-            var tableResponsiveScrollLeft = tableResponsive.scrollLeft();
-
-            tableResponsiveScrollLeft > 0 ? el.addClass('left') : el.removeClass('left'),
-            tableResponsiveScrollLeft < trTotalWidth ? el.addClass('right') : el.removeClass('right')
-        };
+                if (that.isTableWide(v)) {
+                    $tableWrap.removeClass('-clean');
+                } else {
+                    $tableWrap.addClass('-clean');
+                }
+            });
+        }, 250)).trigger('resize');
 
 
 
