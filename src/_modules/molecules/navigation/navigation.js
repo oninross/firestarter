@@ -1,7 +1,7 @@
 'use strict';
 
-import { ripple } from '../../../_assets/firestarter/js/_material';
-import { debounce, isMobile, easeOutExpo } from '../../../_assets/firestarter/js/_helper';
+import { ripple } from '../../../_js/_material';
+import { debounce, isMobile, easeOutExpo } from '../../../_js/_helper';
 
 const $window = $(window),
     $body = $('body'),

@@ -2,13 +2,14 @@
 
 import path from 'path';
 
-export default function(gulp, plugins, args, config, taskTarget, browserSync) {
+export default function (gulp, plugins, args, config, taskTarget, browserSync) {
   let dirs = config.directories;
-  let dest = path.join(taskTarget, dirs.fonts.replace(/^_/, ''));
+  let dest = path.join(dirs.assets, dirs.fonts.replace(/^_/, ''));
+  dest = path.join(taskTarget, dest);
 
   // Copy fonts
-  gulp.task('copyFonts', function() {
-    gulp.src(path.join(dirs.source, '_assets/firestarter/css/fonts/**/*.*'))
+  gulp.task('copyFonts', () => {
+    return gulp.src(path.join(dirs.source, dirs.fonts, '**/*.*'))
       .pipe(gulp.dest(dest))
-});
+  });
 }
