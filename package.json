@@ -1,6 +1,6 @@
 {
   "name": "firestarter",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "dependencies": {
     "browserify-shim": "^3.8.12",
     "dot": "^1.1.2",
@@ -89,15 +89,16 @@
     "baseUrl": "./",
     "directories": {
       "source": "src",
+      "assets": "assets/firestarter",
       "destination": "build",
       "temporary": "tmp",
       "//": "Directories relative to `source` directory",
       "modules": "_modules",
       "layouts": "_layouts",
-      "images": "_assets/firestarter/images",
-      "css": "_assets/firestarter/css",
-      "fonts": "_assets/firestarter/css/fonts",
-      "js": "_assets/firestarter/js",
+      "images": "_images",
+      "css": "_css",
+      "fonts": "_fonts",
+      "js": "_js",
       "data": "_data"
     },
     "entries": {

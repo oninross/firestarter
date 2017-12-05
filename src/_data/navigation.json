@@ -1,86 +1,86 @@
 [
     {
         "label" : "Standard",
-        "link" : "/pages//standard/",
+        "link" : "/pages/standard/",
         "lvl2" : null
     },
     {
         "label" : "Grid",
-        "link" : "/pages//grid/",
+        "link" : "/pages/grid/",
         "lvl2" : null
     },
     {
         "label" : "Material Design",
-        "link" : "/pages//material-design/",
+        "link" : "/pages/material-design/",
         "lvl2" : null
     },
     {
         "label" : "Dropdown Level 1",
-        "link" : "#",
+        "link" : "javascript:;",
         "lvl2" : [
             {
                 "label" : "Dropdown Level 2",
-                "link" : "#go-to-some-link",
+                "link" : "#javascript:;",
                 "lvl3" : [
                     {
                         "label" : "Dropdown Level 3",
-                        "Link" : "#"
+                        "Link" : "javascript:;"
                     },
                     {
                         "label" : "Dropdown Level 3",
-                        "Link" : "#"
+                        "Link" : "javascript:;"
                     },
                     {
                         "label" : "Dropdown Level 3",
-                        "Link" : "#"
+                        "Link" : "javascript:;"
                     },
                     {
                         "label" : "Dropdown Level 3",
-                        "Link" : "#"
+                        "Link" : "javascript:;"
                     }
                 ]
             },
             {
                 "label" : "Dropdown Level 2",
-                "link" : "#go-to-some-link",
+                "link" : "#javascript:;",
                 "lvl3" : [
                     {
                         "label" : "Dropdown Level 3",
-                        "Link" : "#"
+                        "Link" : "javascript:;"
                     },
                     {
                         "label" : "Dropdown Level 3",
-                        "Link" : "#"
+                        "Link" : "javascript:;"
                     },
                     {
                         "label" : "Dropdown Level 3",
-                        "Link" : "#"
+                        "Link" : "javascript:;"
                     },
                     {
                         "label" : "Dropdown Level 3",
-                        "Link" : "#"
+                        "Link" : "javascript:;"
                     }
                 ]
             },
             {
                 "label" : "Dropdown Level 2",
-                "link" : "#go-to-some-link",
+                "link" : "#javascript:;",
                 "lvl3" : [
                     {
                         "label" : "Dropdown Level 3",
-                        "Link" : "#"
+                        "Link" : "javascript:;"
                     },
                     {
                         "label" : "Dropdown Level 3",
-                        "Link" : "#"
+                        "Link" : "javascript:;"
                     },
                     {
                         "label" : "Dropdown Level 3",
-                        "Link" : "#"
+                        "Link" : "javascript:;"
                     },
                     {
                         "label" : "Dropdown Level 3",
-                        "Link" : "#"
+                        "Link" : "javascript:;"
                     }
                 ]
             }
@@ -88,71 +88,71 @@
     },
     {
         "label" : "Dropdown Level 1",
-        "link" : "#",
+        "link" : "javascript:;",
         "lvl2" : [
             {
                 "label" : "Dropdown Level 2",
-                "link" : "#go-to-some-link",
+                "link" : "#javascript:;",
                 "lvl3" : [
                     {
                         "label" : "Dropdown Level 3",
-                        "Link" : "#"
+                        "Link" : "javascript:;"
                     },
                     {
                         "label" : "Dropdown Level 3",
-                        "Link" : "#"
+                        "Link" : "javascript:;"
                     },
                     {
                         "label" : "Dropdown Level 3",
-                        "Link" : "#"
+                        "Link" : "javascript:;"
                     },
                     {
                         "label" : "Dropdown Level 3",
-                        "Link" : "#"
+                        "Link" : "javascript:;"
                     }
                 ]
             },
             {
                 "label" : "Dropdown Level 2",
-                "link" : "#go-to-some-link",
+                "link" : "#javascript:;",
                 "lvl3" : [
                     {
                         "label" : "Dropdown Level 3",
-                        "Link" : "#"
+                        "Link" : "javascript:;"
                     },
                     {
                         "label" : "Dropdown Level 3",
-                        "Link" : "#"
+                        "Link" : "javascript:;"
                     },
                     {
                         "label" : "Dropdown Level 3",
-                        "Link" : "#"
+                        "Link" : "javascript:;"
                     },
                     {
                         "label" : "Dropdown Level 3",
-                        "Link" : "#"
+                        "Link" : "javascript:;"
                     }
                 ]
             },
             {
                 "label" : "Dropdown Level 2",
-                "link" : "#go-to-some-link",
+                "link" : "#javascript:;",
                 "lvl3" : [
                     {
                         "label" : "Dropdown Level 3",
-                        "Link" : "#"
+                        "Link" : "javascript:;"
                     },
                     {
                         "label" : "Dropdown Level 3",
-                        "Link" : "#"
+                        "Link" : "javascript:;"
                     },
                     {
                         "label" : "Dropdown Level 3",
-                        "Link" : "#"
+                        "Link" : "javascript:;"
                     },
                     {
                         "label" : "Dropdown Level 3",
-                        "Link" : "#"
+                        "Link" : "javascript:;"
                     }
                 ]
             }

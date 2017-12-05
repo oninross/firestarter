@@ -1,6 +1,6 @@
 'use strict';
 
-import { debounce, isMobile } from '../../../_assets/firestarter/js/_helper';
+import { debounce, isMobile } from '../../../_js/_helper';
 
 const $header = $('header');
 

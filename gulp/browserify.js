@@ -58,7 +58,7 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
           .pipe(plugins.rename(function(filepath) {
             // Remove 'source' directory as well as prefixed folder underscores
             // Ex: 'src/_scripts' --> '/scripts'
-            filepath.dirname = filepath.dirname.replace(dirs.source, '').replace('_', '');
+            filepath.dirname = filepath.dirname.replace(dirs.source, dirs.assets).replace('_', '');
           }))
           .pipe(plugins.sourcemaps.write('./'))
           .pipe(gulp.dest(dest))

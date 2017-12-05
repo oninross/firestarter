@@ -19,12 +19,12 @@ import './tota11y.min';
 import { debounce, isMobile } from './_helper';
 import { toaster } from './_material';
 
-import Header from '../../../_modules/organisms/header/header';
+import Header from '../_modules/organisms/header/header';
 
-import Navigation from '../../../_modules/molecules/navigation/navigation';
+import Navigation from '../_modules/molecules/navigation/navigation';
 
-import Galisteners from '../../../_modules/atoms/galisteners/galisteners';
-import TablePreview from '../../../_modules/atoms/table-preview/table-preview';
+import Galisteners from '../_modules/atoms/galisteners/galisteners';
+import TablePreview from '../_modules/atoms/table-preview/table-preview';
 
 // Variable declaration
 let $window = $(window),

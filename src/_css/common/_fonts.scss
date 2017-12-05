@@ -1,0 +1,91 @@
+// Common Font Weights From Google Fonts
+$thin: 100;
+$light: 300;
+$normal: 400;
+$medium: 500;
+$bold: 700;
+$ultra-bold: 900;
+
+// Helvetica Fonts
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url("../fonts/HelveticaNeue-Light.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/HelveticaNeue-Light.otf") format("opentype"),
+        url("../fonts/HelveticaNeue-Light.woff") format("woff"),
+        url("../fonts/HelveticaNeue-Light.ttf") format("truetype"),
+        url("../fonts/HelveticaNeue-Light.svg#HelveticaNeue-Light") format("svg");
+    font-weight: $light;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url("../fonts/HelveticaNeue.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/HelveticaNeue.otf") format("opentype"),
+        url("../fonts/HelveticaNeue.woff") format("woff"),
+        url("../fonts/HelveticaNeue.ttf") format("truetype"),
+        url("../fonts/HelveticaNeue.svg#HelveticaNeue") format("svg");
+    font-weight: $normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url("../fonts/HelveticaNeue-Bold.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/HelveticaNeue-Bold.otf") format("opentype"),
+        url("../fonts/HelveticaNeue-Bold.woff") format("woff"),
+        url("../fonts/HelveticaNeue-Bold.ttf") format("truetype"),
+        url("../fonts/HelveticaNeue-Bold.svg#HelveticaNeue-Bold") format("svg");
+    font-weight: $bold;
+    font-style: normal;
+}
+
+// Icomoon Fonts
+@font-face {
+    font-family: 'icomoon';
+    src: url("../fonts/icomoon.eot?-p3pgtp");
+    src: url("../fonts/icomoon.eot?#iefix-p3pgtp") format("embedded-opentype"),
+        url("../fonts/icomoon.woff?-p3pgtp") format("woff"),
+        url("../fonts/icomoon.ttf?-p3pgtp") format("truetype"),
+        url("../fonts/icomoon.svg?-p3pgtp#icomoon") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+%icomoon {
+    font-family: "icomoon", sans-serif;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    @extend %icomoon;
+}
+
+.icon-cross:before {
+    content: "\e900";
+}
+
+.icon-chevron-down:before {
+    content: "\e901";
+}
+
+.icon-chevron-right:before {
+    content: "\e902";
+}
+
+.icon-done:before {
+    content: "\e28a";
+}
+
+.icon-print:before {
+    content: "\e2c1";
+}

@@ -7,7 +7,8 @@ import gulpif from 'gulp-if';
 export default function(gulp, plugins, args, config, taskTarget, browserSync) {
   let dirs = config.directories;
   let entries = config.entries;
-  let dest = path.join(taskTarget, dirs.css.replace(/^_/, ''));
+  let dest = path.join(dirs.assets, dirs.css.replace(/^_/, ''));
+  dest = path.join(taskTarget, dest);
 
   // Sass compilation
   gulp.task('sass', () => {
@@ -30,7 +31,7 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
       .pipe(plugins.rename(function(path) {
         // Remove 'source' directory as well as prefixed folder underscores
         // Ex: 'src/_css' --> '/css'
-        path.dirname = path.dirname.replace(dirs.source, '').replace('_', '');
+        path.dirname = path.dirname.replace(dirs.source, dirs.assets).replace('_', '');
       }))
       .pipe(gulpif(args.production, plugins.cssnano({rebase: false})))
       .pipe(plugins.sourcemaps.write('./'))
