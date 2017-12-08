@@ -64,4 +64,25 @@ export default class TablePreview {
             });
         }
     }
+
+    isTableWide(el) {
+        return $(el).parent().width() < $(el).width();
+    }
+
+    getTrWidth(el, table) {
+        var width,
+            totalWidth = 0,
+            tableWrapWidth = el.width();
+
+        return table.find('tr:first-child > *').each(function () {
+            totalWidth += $(this).outerWidth()
+        }), width = totalWidth - tableWrapWidth;
+    }
+
+    isLeftOrRight(el, tableResponsive, trTotalWidth) {
+        var tableResponsiveScrollLeft = tableResponsive.scrollLeft();
+
+        tableResponsiveScrollLeft > 0 ? el.addClass('left') : el.removeClass('left'),
+            tableResponsiveScrollLeft < trTotalWidth ? el.addClass('right') : el.removeClass('right')
+    }
 }
