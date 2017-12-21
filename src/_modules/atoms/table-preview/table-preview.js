@@ -18,7 +18,7 @@ export default class TablePreview {
         });
 
         $('.table-wrap').each(function () {
-            var $this = $(this),
+            let $this = $(this),
                 $tableResponsive = $this.find('.table-responsive'),
                 $table = $this.find('table'),
                 trTotalWidth = that.getTrWidth($this, $table);
@@ -70,7 +70,7 @@ export default class TablePreview {
     }
 
     getTrWidth(el, table) {
-        var width,
+        let width,
             totalWidth = 0,
             tableWrapWidth = el.width();
 
@@ -80,7 +80,7 @@ export default class TablePreview {
     }
 
     isLeftOrRight(el, tableResponsive, trTotalWidth) {
-        var tableResponsiveScrollLeft = tableResponsive.scrollLeft();
+        let tableResponsiveScrollLeft = tableResponsive.scrollLeft();
 
         tableResponsiveScrollLeft > 0 ? el.addClass('left') : el.removeClass('left'),
             tableResponsiveScrollLeft < trTotalWidth ? el.addClass('right') : el.removeClass('right')

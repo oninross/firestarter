@@ -1,39 +1,39 @@
 'use strict';
 
-let debounce = function (func, wait, immediate) {
+const debounce = function (func, wait, immediate) {
     var timeout;
     return function () {
-        var context = this, args = arguments;
-        var later = function () {
-            timeout = null;
-            if (!immediate) {
-                func.apply(context, args);
-            }
-        };
-        var callNow = immediate && !timeout;
+        var context = this,
+            args = arguments,
+            later = function () {
+                timeout = null;
+                if (!immediate) {
+                    func.apply(context, args);
+                }
+            },
+            callNow = immediate && !timeout;
+
         clearTimeout(timeout);
+
         timeout = setTimeout(later, wait);
+
         if (callNow) {
             func.apply(context, args);
         }
     };
-};
-
-let isMobile = function () {
-    return Modernizr.mq('(max-width: 767px)');
-};
-
-let isTablet = function () {
-    return Modernizr.mq('(min-width: 768px)');
-}
-
-let isDesktop = function () {
-    return Modernizr.mq('(min-width: 1024px)');
-}
-
-let isLargeDesktop = function () {
-    return Modernizr.mq('(min-width: 1200px)');
-}
+},
+    isMobile = function () {
+        return Modernizr.mq('(max-width: 767px)');
+    },
+    isTablet = function () {
+        return Modernizr.mq('(min-width: 768px)');
+    },
+    isDesktop = function () {
+        return Modernizr.mq('(min-width: 1024px)');
+    },
+    isLargeDesktop = function () {
+        return Modernizr.mq('(min-width: 1200px)');
+    };
 
 
 /*
@@ -68,7 +68,7 @@ jQuery.extend(jQuery.easing, {
     }
 });
 
-let easeOutExpo = {
+const easeOutExpo = {
     duration: 500,
     easing: 'easeOutExpo',
     queue: false

@@ -2,25 +2,25 @@
 
 import { debounce, isMobile } from '../../../_js/_helper';
 
-const $header = $('header');
-
-let isMobileDevice = false,
-    lastScrollTop = 0;
-
 export default class Header {
     constructor() {
         const that = this;
+
+        that.isMobileDevice = false;
 
         $(window).on('resize scroll', debounce(that.toggleHeader, 250));
     }
 
     toggleHeader() {
-        let st = $(this).scrollTop(),
-            $headerHeight = $header.height();
+        let that = this,
+            $header = $('header'),
+            st = $(this).scrollTop(),
+            $headerHeight = $header.height(),
+            lastScrollTop = 0;
 
-        isMobileDevice = isMobile();
+        that.isMobileDevice = isMobile();
 
-        if (!isMobileDevice) {
+        if (!that.isMobileDevice) {
             if (st > lastScrollTop) {
                 // scroll down
                 if (st > $headerHeight) {

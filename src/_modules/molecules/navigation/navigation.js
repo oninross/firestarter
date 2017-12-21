@@ -3,33 +3,31 @@
 import { ripple } from '../../../_js/_material';
 import { debounce, isMobile, easeOutExpo } from '../../../_js/_helper';
 
-const $window = $(window),
-    $body = $('body'),
-    subNavMarkup = '<button class="sub-nav js-sub-nav icon-arrow" name="Sub-navigation"></button>',
-    el = $('#navigation'),
-    $nav = el.find('.nav'),
-    $lvl1 = el.find('.lvl1'),
-    $lvl2 = el.find('.lvl2'),
-    $lvl3 = el.find('.lvl3'),
-    $set = $lvl1.add($lvl2).add($lvl3),
-    $dropdownList = el.find('ul li');
-
-let $visibleArea,
-    isMobileDevice = isMobile();
-
 export default class Navigation {
     constructor() {
-        isMobileDevice = isMobile();
 
         const that = this,
-            $primaryNav = $('.js-mobile-menu');
+            $body = $('body'),
+            el = $('#navigation'),
+            $nav = el.find('.nav'),
+            $lvl1 = el.find('.lvl1'),
+            $lvl2 = el.find('.lvl2'),
+            $lvl3 = el.find('.lvl3'),
+            $set = $lvl1.add($lvl2).add($lvl3),
+            $dropdownList = el.find('ul li'),
+            $primaryNav = $('.js-mobile-menu'),
+            $subNav = $('.js-sub-nav'),
+            subNavMarkup = '<button class="sub-nav js-sub-nav icon-arrow" name="Sub-navigation"></button>';
+
+        let isMobileDevice = isMobile();
+
+        that.$window = $(window);
+        that.$visibleArea = 0;
 
         // Insert Subnav Markup after Level 1 menu items
         $lvl1.find('ul').each(function () {
             $(this).before(subNavMarkup);
         });
-
-        const $subNav = $('.js-sub-nav')
 
         that.checkNavHeight();
 
@@ -50,7 +48,7 @@ export default class Navigation {
                 $set
                     .removeClass('active')
                     .find('.icon-arrow.active')
-                        .removeClass('active');
+                    .removeClass('active');
 
                 $lvl2.slideUp(easeOutExpo);
                 $lvl3.slideUp(easeOutExpo);
@@ -66,7 +64,7 @@ export default class Navigation {
                 if ($next.hasClass('lvl2')) {
                     $set
                         .find('.icon-arrow.active')
-                            .removeClass('active');
+                        .removeClass('active');
 
                     $this.removeClass('active')
                         .next().find('.icon-arrow.active')
@@ -83,13 +81,13 @@ export default class Navigation {
                 if ($grandParent.hasClass('lvl1')) {
                     $lvl1
                         .find('.icon-arrow.active')
-                            .removeClass('active')
-                            .next().removeClass('active').slideUp(easeOutExpo);
+                        .removeClass('active')
+                        .next().removeClass('active').slideUp(easeOutExpo);
                 } else if ($grandParent.hasClass('lvl2')) {
                     $lvl2
                         .find('.icon-arrow.active')
-                            .removeClass('active')
-                            .next().removeClass('active').slideUp(easeOutExpo);
+                        .removeClass('active')
+                        .next().removeClass('active').slideUp(easeOutExpo);
                 }
 
                 $this.addClass('active');
@@ -150,7 +148,7 @@ export default class Navigation {
         });
 
         // Window Listener
-        $window.on('resize', debounce(function () {
+        that.$window.on('resize', debounce(function () {
             isMobileDevice = isMobile();
 
             if (isMobileDevice) {
@@ -170,7 +168,7 @@ export default class Navigation {
             }
         }, 250));
 
-        $window.on('scroll', debounce(function () {
+        that.$window.on('scroll', debounce(function () {
             isMobileDevice = isMobile();
 
             if (!isMobileDevice) {
@@ -180,12 +178,13 @@ export default class Navigation {
     }
 
     checkNavHeight() {
-        const $navLvl1 = $('#navigation .lvl1');
+        const that = this,
+            $navLvl1 = $('#navigation .lvl1');
 
-        $visibleArea = $window.outerHeight() - $('.header').outerHeight();
+        that.$visibleArea = that.$window.outerHeight() - $('.header').outerHeight();
 
         $navLvl1.css({
-            height: $visibleArea
+            height: that.$visibleArea
         });
     }
 }

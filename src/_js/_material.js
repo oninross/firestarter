@@ -5,13 +5,7 @@ import mCustomScrollbar from 'mCustomScrollbar';
 
 import { debounce, isMobile } from './_helper';
 
-let $body = $('body'),
-    $window = $(window),
-    isMobileDevice = isMobile();
-
-/////////////////////////////
-// Select Box Materializer //
-/////////////////////////////
+// Select Box Materializer
 $.fn.materialize = function () {
     return this.each(function () {
         let $this = $(this),
@@ -159,8 +153,14 @@ $.fn.materialize = function () {
 };
 
 $(() => {
+    const $body = $('body'),
+        $window = $(window);
+
+    let isMobileDevice = isMobile();
+
+
     // Ripple Effect
-    let $rippleEffect = $('button, .cta');
+    const $rippleEffect = $('button, .cta');
 
     $rippleEffect.on('click', function (e) {
         let $this = $(this);
@@ -169,6 +169,7 @@ $(() => {
             ripple(e, $this);
         }
     });
+
 
     // Floating Label Input Box
     $('.floating-input').each(function () {
@@ -212,14 +213,15 @@ $(() => {
 
     $('.material').materialize();
 
+
     // cards
-    let $card = $('.card');
+    const $card = $('.card');
     if ($card.length) {
         $card.each(function (i, el) {
             let $this = $(el);
 
             let cardWatcher = scrollMonitor.create(el);
-            cardWatcher.enterViewport (function () {
+            cardWatcher.enterViewport(function () {
                 $this.addClass('show', this.isInViewport);
                 $this.removeClass('up', this.isAboveViewport);
             });
@@ -240,102 +242,98 @@ $(() => {
 
 
 
-//////////////
-// Toaster  //
-//////////////
-let toasterInd = 0;
-let toaster = function (msg = "Toaster message", ttl = 5) {
-    // Alert Toaster
-    let popupAlert = doT.template($('#toaster-template').html()),
-        obj = {
-            ind: toasterInd,
-            message: msg
-        };
+// Toaster
+let toasterInd = 0,
+    toaster = function (msg = "Toaster message", ttl = 5) {
+        // Alert Toaster
+        let popupAlert = doT.template($('#toaster-template').html()),
+            obj = {
+                ind: toasterInd,
+                message: msg
+            };
 
-    if (!$('.toaster__wrap').length) {
-        $('#main').after('<div class="toaster__wrap" />');
-    }
-
-    $('.toaster__wrap').append(popupAlert(obj));
-
-    let toaster = '.toaster' + toasterInd;
-
-    TweenLite.to(toaster, 0.75, {
-        opacity: 1,
-        scale: 1,
-        ease: Expo.easeOut
-    });
-
-    if (ttl !== 0) {
-        TweenLite.to(toaster, 0.75, {
-            opacity: 0,
-            scale: 0.75,
-            ease: Expo.easeOut,
-            delay: ttl,
-            onComplete: function () {
-                $(toaster).remove();
-            }
-        });
-    }
-
-
-    $(toaster).on('click', function (e) {
-        e.preventDefault();
-
-        TweenLite.to($(this), 0.75, {
-            opacity: 0,
-            scale: 0.75,
-            ease: Expo.easeOut,
-            onComplete: function () {
-                $(toaster).remove();
-            }
-        });
-    });
-
-    toasterInd++;
-};
-
-
-
-///////////////////
-// Ripple Effect //
-///////////////////
-let inc = 0;
-let ripple = function (e, el) {
-    if ($('.no-svg').length || el.find('svg').length) {
-        return false;
-    }
-
-    // create SVG element
-    let svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
-        g = document.createElementNS('http://www.w3.org/2000/svg', 'g'),
-        circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle'),
-        x = e.offsetX,
-        y = e.offsetY;
-
-    if (x == undefined) {
-        return false;
-    }
-
-    svg.setAttributeNS(null, 'class', 'ripple ripple' + inc);
-    g.setAttributeNS(null, 'transform', 'translate(' + x + ', ' + y + ')');
-    circle.setAttributeNS(null, 'r', (parseInt(el.outerWidth()) + x));
-
-    svg.appendChild(g);
-    g.appendChild(circle);
-    el.append(svg);
-
-    let $ripple = el.find('.ripple' + inc);
-    TweenLite.from($ripple.find('circle'), 1.5, {
-        attr: { r: 0 },
-        opacity: 0.75,
-        ease: Expo.easeOut,
-        onComplete: function () {
-            $ripple.remove();
+        if (!$('.toaster__wrap').length) {
+            $('#main').after('<div class="toaster__wrap" />');
         }
-    });
 
-    inc++;
-};
+        $('.toaster__wrap').append(popupAlert(obj));
+
+        let toaster = '.toaster' + toasterInd;
+
+        TweenLite.to(toaster, 0.75, {
+            opacity: 1,
+            scale: 1,
+            ease: Expo.easeOut
+        });
+
+        if (ttl !== 0) {
+            TweenLite.to(toaster, 0.75, {
+                opacity: 0,
+                scale: 0.75,
+                ease: Expo.easeOut,
+                delay: ttl,
+                onComplete: function () {
+                    $(toaster).remove();
+                }
+            });
+        }
+
+
+        $(toaster).on('click', function (e) {
+            e.preventDefault();
+
+            TweenLite.to($(this), 0.75, {
+                opacity: 0,
+                scale: 0.75,
+                ease: Expo.easeOut,
+                onComplete: function () {
+                    $(toaster).remove();
+                }
+            });
+        });
+
+        toasterInd++;
+    };
+
+
+
+// Ripple Effect
+let inc = 0,
+    ripple = function (e, el) {
+        if ($('.no-svg').length || el.find('svg').length) {
+            return false;
+        }
+
+        // create SVG element
+        let svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+            g = document.createElementNS('http://www.w3.org/2000/svg', 'g'),
+            circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle'),
+            x = e.offsetX,
+            y = e.offsetY;
+
+        if (x == undefined) {
+            return false;
+        }
+
+        svg.setAttributeNS(null, 'class', 'ripple ripple' + inc);
+        g.setAttributeNS(null, 'transform', 'translate(' + x + ', ' + y + ')');
+        circle.setAttributeNS(null, 'r', (parseInt(el.outerWidth()) + x));
+
+        svg.appendChild(g);
+        g.appendChild(circle);
+        el.append(svg);
+
+        let $ripple = el.find('.ripple' + inc);
+        TweenLite.from($ripple.find('circle'), 1.5, {
+            attr: { r: 0 },
+            opacity: 0.75,
+            ease: Expo.easeOut,
+            onComplete: function () {
+                $ripple.remove();
+            }
+        });
+
+        inc++;
+    };
 
 export { toaster, ripple };
