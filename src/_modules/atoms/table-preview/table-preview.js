@@ -18,7 +18,7 @@ export default class TablePreview {
         });
 
         $('.table-wrap').each(function () {
-            var $this = $(this),
+            let $this = $(this),
                 $tableResponsive = $this.find('.table-responsive'),
                 $table = $this.find('table'),
                 trTotalWidth = that.getTrWidth($this, $table);
@@ -63,5 +63,26 @@ export default class TablePreview {
                 localStorage.tablePreview = null;
             });
         }
+    }
+
+    isTableWide(el) {
+        return $(el).parent().width() < $(el).width();
+    }
+
+    getTrWidth(el, table) {
+        let width,
+            totalWidth = 0,
+            tableWrapWidth = el.width();
+
+        return table.find('tr:first-child > *').each(function () {
+            totalWidth += $(this).outerWidth()
+        }), width = totalWidth - tableWrapWidth;
+    }
+
+    isLeftOrRight(el, tableResponsive, trTotalWidth) {
+        let tableResponsiveScrollLeft = tableResponsive.scrollLeft();
+
+        tableResponsiveScrollLeft > 0 ? el.addClass('left') : el.removeClass('left'),
+            tableResponsiveScrollLeft < trTotalWidth ? el.addClass('right') : el.removeClass('right')
     }
 }

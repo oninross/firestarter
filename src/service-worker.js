@@ -24,7 +24,7 @@
 // cache, then increment the CACHE_VERSION value. It will kick off the service worker update
 // flow and the old cache(s) will be purged as part of the activate event handler when the
 // updated service worker is activated.
-var version = '1.5.1',
+var version = '1.5.2',
     now = Date.now(),
     OFFLINE_URL = '/pages/offline/',
     urlsToPrefetch = [
@@ -69,7 +69,7 @@ self.addEventListener('install', function (event) {
                 // (https://slightlyoff.github.io/ServiceWorker/spec/service_worker/index.html#cross-origin-resources)
                 // and it is not possible to determine whether an opaque response represents a success or failure
                 // (https://github.com/whatwg/fetch/issues/14).
-                var request = new Request(url, {mode: 'no-cors'});
+                var request = new Request(url, { mode: 'no-cors' });
                 return fetch(request).then(function (response) {
                     if (response.status >= 400) {
                         throw new Error('request for ' + urlToPrefetch +
