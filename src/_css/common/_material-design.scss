@@ -375,6 +375,7 @@
             background: none;
             border: 0;
             color: $white;
+            cursor: pointer;
             height: 20px;
             left: auto;
             padding: 0;
@@ -382,9 +383,16 @@
             width: 20px;
         }
 
+        .btn-refresh {
+            color: $yellow;
+            font-size: 1.3em;
+            right: 50px;
+            width: auto;
+        }
+
         .icon {
             display: block;
-            font-size: 2em;
+            font-size: 20px;
         }
     }
 }

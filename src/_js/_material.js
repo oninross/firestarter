@@ -242,14 +242,17 @@ $(() => {
 
 
 
-// Toaster
+//////////////
+// Toaster  //
+//////////////
 let toasterInd = 0,
-    toaster = function (msg = "Toaster message", ttl = 5) {
+    toaster = function (msg = "Toaster message", ttl = 5, isReload = false) {
         // Alert Toaster
         let popupAlert = doT.template($('#toaster-template').html()),
             obj = {
                 ind: toasterInd,
-                message: msg
+                message: msg,
+                isReload: isReload
             };
 
         if (!$('.toaster__wrap').length) {
@@ -278,11 +281,10 @@ let toasterInd = 0,
             });
         }
 
-
-        $(toaster).on('click', function (e) {
+        $(toaster).on('click', '.js-dismiss', function (e) {
             e.preventDefault();
 
-            TweenLite.to($(this), 0.75, {
+            TweenLite.to($(this).parent(), 0.75, {
                 opacity: 0,
                 scale: 0.75,
                 ease: Expo.easeOut,
@@ -294,6 +296,10 @@ let toasterInd = 0,
 
         toasterInd++;
     };
+
+$('body').on('click', '.js-refresh', function () {
+    window.location.reload();
+});
 
 
 
