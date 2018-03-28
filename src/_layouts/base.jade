@@ -57,9 +57,12 @@ html.no-js(lang='en')
             script(src='/assets/firestarter/js/main.js')
 
             if !isTablePreview
-                script(id='toaster-template', type='text/template')
+                script#toaster-template(type='text/template')
                     .toaster__card(class='toaster{{= it.ind }}')
-                        p {{! it.message}}
+                        p {{! it.message }}
+                        | {{? it.isReload }}
+                        button.btn-refresh.js-refresh REFRESH
+                        | {{? }}
                         button.js-dismiss
                             span.sr-only Close
                             i.icon.icon-cross
