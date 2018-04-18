@@ -3,160 +3,161 @@
 import scrollMonitor from 'scrollMonitor';
 import mCustomScrollbar from 'mCustomScrollbar';
 
-import { debounce, isMobile } from './_helper';
-
-// Select Box Materializer
-$.fn.materialize = function () {
-    return this.each(function () {
-        let $this = $(this),
-            $label = $('<span class = "material-label"/>'),
-            $arrow = $('<span class = "icon icon-chevron-down"/>'),
-            $wrapper = $('<div class = "material-select-wrapper js-material-drop"/>'),
-            $wrapperNative = $('<div class = "material-select-wrapper native js-material-drop"/>'),
-            markup = '';
-
-        if ($this.hasClass('native')) {
-            $this.wrap($wrapperNative);
-        } else {
-            $this.wrap($wrapper);
-        }
-
-        $this
-            .before($label)
-            .before($arrow)
-            .on('change', function (e) {
-                $label.text($this.find(':selected').text());
-            });
-
-        $label.text($this.find(':selected').text());
-
-        markup += '<div class="card-wrapper"><ul>';
-
-        $this.find('option').each(function () {
-            let $that = $(this);
-
-            if ($that.is(':selected')) {
-                markup += '<li class="active"><button>' + $that.text() + '</button></li>';
-            } else {
-                markup += '<li><button>' + $that.text() + '</button></li>';
-            }
-        });
-
-        markup += '</ul></div>';
-
-        $this.after(markup);
-
-        $this.parent().on('click', '.material-label', function () {
-            let $this = $(this),
-                $parent = $this.parent(),
-                $card = $this.parent().find('.card-wrapper');
-
-            if ($parent.hasClass('native') && isMobileDevice) {
-                return false;
-            }
-
-            if ($this.hasClass('active')) {
-                TweenLite.to($card, 0.25, {
-                    autoAlpha: 0,
-                    scale: 0.75,
-                    ease: Expo.easeOut
-                });
-            } else {
-                let activeInd = $card.find('.active').index(),
-                    materialDropPos = $('.material-select-wrapper .card-wrapper li').outerHeight() * activeInd;
-
-                TweenLite.to($card, 0.25, {
-                    autoAlpha: 1,
-                    scale: 1,
-                    top: -materialDropPos,
-                    ease: Expo.easeOut
-                });
-            }
-
-            $this.toggleClass('active');
-
-            $card.addClass('active').mCustomScrollbar('scrollTo', 0);
-
-            $window.on('resize scroll', debounce(listener, 250));
-        }).on('click', 'button', function (e) {
-            e.preventDefault();
-
-            let $this = $(this),
-                $cardWrapper = $this.parents('.card-wrapper'),
-                $materialSelectWrapper = $this.parents('.material-select-wrapper'),
-                $parent = $this.parent(),
-                ind = $parent.index() + 1,
-                selectedValue = $materialSelectWrapper.find('select option:nth-child(' + ind + ')').val();
-
-            if ($parent.hasClass('native') && isMobileDevice) {
-                return false;
-            }
-
-            $materialSelectWrapper.find('.active').removeClass('active');
-            $parent.addClass('active');
-
-            TweenLite.to($cardWrapper, 0.25, {
-                autoAlpha: 0,
-                scale: 0,
-                ease: Expo.easeIn
-            });
-
-            $materialSelectWrapper
-                .find('select').val(selectedValue).trigger('change').end()
-                .find('.material-label').text($this.text());
-
-            $window.off('resize scroll', listener, 250);
-        });
-
-        $this.next().mCustomScrollbar({
-            setTop: 0,
-            setHeight: 250,
-            theme: 'minimal-dark',
-            scrollbarPosition: 'outside'
-            // SET SCROLLABALE
-        });
-
-        $body.on('click', function (e) {
-            let $eTarget = $(e.target),
-                $materialSelectWrapper = $('.material-select-wrapper'),
-                $cardWrapper = $('.material-select-wrapper .card-wrapper');
-
-            if (!$eTarget.hasClass('material-select-wrapper') && !$eTarget.parents('.material-select-wrapper').length && $materialSelectWrapper.find('.material-label').hasClass('active')) {
-                $materialSelectWrapper.find('.material-label').removeClass('active');
-
-                $cardWrapper.removeClass('active');
-
-                TweenLite.to($cardWrapper, 0.25, {
-                    autoAlpha: 0,
-                    scale: 0,
-                    top: 0,
-                    ease: Expo.easeInOut
-                });
-
-                $window.off('resize scroll', debounce(listener, 250));
-            }
-        });
-
-        function listener() {
-            $('.material-select-wrapper').find('.material-label').removeClass('active');
-
-            TweenLite.to('.material-select-wrapper .card-wrapper', 0.25, {
-                autoAlpha: 0,
-                scale: 0,
-                top: 0,
-                ease: Expo.easeIn
-            });
-
-            $window.off('resize scroll', debounce(listener, 250));
-        };
-    });
-};
+import { debounce, isMobile } from './_util';
 
 $(() => {
     const $body = $('body'),
         $window = $(window);
 
     let isMobileDevice = isMobile();
+
+
+    // Select Box Materializer
+    $.fn.materialize = function () {
+        return this.each(function () {
+            let $this = $(this),
+                $label = $('<span class = "material-label" />'),
+                $arrow = $('<span class = "icon icon-chevron-down"/>'),
+                $wrapper = $('<div class = "material-select-wrapper"/>'),
+                $wrapperNative = $('<div class = "material-select-wrapper native"/>'),
+                markup = '';
+
+            if ($this.hasClass('native')) {
+                $this.wrap($wrapperNative);
+            } else {
+                $this.wrap($wrapper);
+            }
+
+            $this
+                .before($label)
+                .before($arrow)
+                .on('change', function (e) {
+                    $label.text($this.find(':selected').text());
+                });
+
+            $label.text($this.find(':selected').text());
+
+            markup += '<div class="card-wrapper"><ul>';
+
+            $this.find('option').each(function () {
+                let $that = $(this);
+
+                if ($that.is(':selected')) {
+                    markup += '<li class="active"><button>' + $that.text() + '</button></li>';
+                } else {
+                    markup += '<li><button>' + $that.text() + '</button></li>';
+                }
+            });
+
+            markup += '</ul></div>';
+
+            $this.after(markup);
+
+            $this.parent().on('click', '.material-label', function () {
+                let $this = $(this),
+                    $parent = $this.parent(),
+                    $card = $this.parent().find('.card-wrapper');
+
+                if ($parent.hasClass('native') && isMobileDevice) {
+                    return false;
+                }
+
+                if ($this.hasClass('active')) {
+                    TweenLite.to($card, 0.25, {
+                        autoAlpha: 0,
+                        scale: 0.75,
+                        ease: Expo.easeOut
+                    });
+                } else {
+                    let activeInd = $card.find('.active').index(),
+                        materialDropPos = $('.material-select-wrapper .card-wrapper li').outerHeight() * activeInd;
+
+                    TweenLite.to($card, 0.25, {
+                        autoAlpha: 1,
+                        scale: 1,
+                        top: -materialDropPos,
+                        ease: Expo.easeOut
+                    });
+                }
+
+                $this.toggleClass('active');
+
+                $card.addClass('active').mCustomScrollbar('scrollTo', 0);
+
+                $window.on('resize scroll', debounce(listener, 250));
+            }).on('click', 'button', function (e) {
+                e.preventDefault();
+
+                let $this = $(this),
+                    $cardWrapper = $this.parents('.card-wrapper'),
+                    $materialSelectWrapper = $this.parents('.material-select-wrapper'),
+                    $parent = $this.parent(),
+                    ind = $parent.index() + 1,
+                    selectedValue = $materialSelectWrapper.find('select option:nth-child(' + ind + ')').val();
+
+                if ($parent.hasClass('native') && isMobileDevice) {
+                    return false;
+                }
+
+                $materialSelectWrapper.find('.active').removeClass('active');
+                $parent.addClass('active');
+
+                TweenLite.to($cardWrapper, 0.25, {
+                    autoAlpha: 0,
+                    scale: 0,
+                    ease: Expo.easeIn
+                });
+
+                $materialSelectWrapper
+                    .find('select').val(selectedValue).trigger('change').end()
+                    .find('.material-label').text($this.text());
+
+                $window.off('resize scroll', listener, 250);
+            });
+
+            $this.next().mCustomScrollbar({
+                setTop: 0,
+                setHeight: 250,
+                theme: 'minimal-dark',
+                scrollbarPosition: 'outside'
+                // SET SCROLLABALE
+            });
+
+            $body.on('click', function (e) {
+                let $eTarget = $(e.target),
+                    $materialSelectWrapper = $('.material-select-wrapper'),
+                    $cardWrapper = $('.material-select-wrapper .card-wrapper');
+
+                if (!$eTarget.hasClass('material-select-wrapper') && !$eTarget.parents('.material-select-wrapper').length && $materialSelectWrapper.find('.material-label').hasClass('active')) {
+                    $materialSelectWrapper.find('.material-label').removeClass('active');
+
+                    $cardWrapper.removeClass('active');
+
+                    TweenLite.to($cardWrapper, 0.25, {
+                        autoAlpha: 0,
+                        scale: 0,
+                        top: 0,
+                        ease: Expo.easeInOut
+                    });
+
+                    $window.off('resize scroll', debounce(listener, 250));
+                }
+            });
+
+            function listener() {
+                $('.material-select-wrapper').find('.material-label').removeClass('active');
+
+                TweenLite.to('.material-select-wrapper .card-wrapper', 0.25, {
+                    autoAlpha: 0,
+                    scale: 0,
+                    top: 0,
+                    ease: Expo.easeIn
+                });
+
+                $window.off('resize scroll', debounce(listener, 250));
+            };
+        });
+    };
 
 
     // Ripple Effect

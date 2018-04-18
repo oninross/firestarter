@@ -3,7 +3,7 @@ mixin navigation(spec)
 
     #navigation
         nav.nav
-            ul.lvl1
+            ol.lvl1
                 - var nav = site.data.navigation
 
                 each lvl1, index in nav
@@ -12,13 +12,13 @@ mixin navigation(spec)
                             if lvl1.link == '#'
                                 a.no-link(href='#')=lvl1.label
                                 if navLvl2 != null
-                                    ul.lvl2
+                                    ol.lvl2
                                         each lvl2, index in navLvl2
                                             - var navLvl3 = lvl2.lvl3
                                                 li
                                                     a(href=lvl2.link)=lvl2.label
                                                     if navLvl3 != null
-                                                        ul.lvl3
+                                                        ol.lvl3
                                                             each lvl3, index in navLvl3
                                                                 li
                                                                     a(href=lvl3.link)=lvl3.label
@@ -26,13 +26,13 @@ mixin navigation(spec)
                             else
                                 a(href=lvl1.link)=lvl1.label
                                 if navLvl2 != null
-                                    ul.lvl2
+                                    ol.lvl2
                                         each lvl2, index in navLvl2
                                             - var navLvl3 = lvl2.lvl3
                                                 li
                                                     a(href=lvl2.link)=lvl2.label
                                                     if navLvl3 != null
-                                                        ul.lvl3
+                                                        ol.lvl3
                                                             each lvl3, index in navLvl3
                                                                 li
                                                                     a(href=lvl3.link)=lvl3.label

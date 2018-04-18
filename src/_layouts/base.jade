@@ -1,4 +1,4 @@
-include ../_modules/organisms/header/header
+include ../_modules/header/header
 
 //- Custom Configuration
 block config
@@ -44,6 +44,8 @@ html.no-js(lang='en')
             link(rel='stylesheet', href='/assets/firestarter/css/main.css')
 
     body
+        a.skip-link(href='#main') Skip to content
+
         if !isTablePreview
             +header()
 

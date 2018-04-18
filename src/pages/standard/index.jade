@@ -1,7 +1,7 @@
 extends ../../_layouts/base
 
-include ../../_modules/organisms/banner/banner
-include ../../_modules/organisms/breadcrumbs/breadcrumbs
+include ../../_modules/banner/banner
+include ../../_modules/breadcrumbs/breadcrumbs
 
 block config
     //- Correct base url pathing for this page
@@ -19,15 +19,16 @@ block content
         ]
     })
 
-    section.section
+    .section
         .container
             .wrap
                 article.col-12
-                    <a href="https://www.google.com">New tab</a>
 
-                    <a href="/pages/grid/">Same tab</a>
+                    a(href='https://www.google.com') New tab
 
-                    h1 Headers
+                    a(href='/pages/grid/') Same tab
+
+                    h2 Headers
                     h1 Header 1
                     h2 Header 2
                     h3 Header 3
@@ -1031,7 +1032,7 @@ block content
                             a(href='/') main page
                         li
                             a.external(href='http://www.unicode.org/versions/Unicode4.0.0/ch06.pdf', title='Writing Systems and Punctuation', type='application/pdf', target='_blank') Unicode Standard, chapter 6
-                    p This is a text paragraph that contains some inline links. Generally, inline links (as opposite to e.g. links lists) are problematic from the
+                    p This is a text paragraph that contains some inline links. Generally, inline links (as opposite to e.g. links lists) are problematic from the!{' '}
                         a.external(href='http://www.useit.com', target='_blank') usability
                         |  perspective, but they may have use as "incidental", less relevant links. See the document
                         cite

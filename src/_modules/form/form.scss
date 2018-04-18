@@ -20,14 +20,15 @@
         &:focus {
             border-bottom: 1px solid $black;
             color: $black;
-            outline: 0;
         }
 
-        &[disabled] {
+
+        &:disabled {
             background: none;
             border-bottom: 1px dotted $border-color;
 
-            &:hover {
+            &:hover,
+            &:focus {
                 cursor: not-allowed;
             }
         }

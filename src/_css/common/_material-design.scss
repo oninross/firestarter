@@ -227,7 +227,8 @@
             text-align: left;
             width: 100%;
 
-            &:hover {
+            &:hover,
+            &:focus {
                 background: lighten($grey, 25%);
             }
         }
