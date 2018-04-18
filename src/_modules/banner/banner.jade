@@ -3,6 +3,6 @@ mixin banner(spec)
   - spec.__class = spec.__class || ''
   - spec.__title = spec.__title || 'Standard Content'
 
-  header.banner.backstretch.lazy(data-original='/assets/firestarter/images/temp/background.jpg')
+  header.banner.backstretch.lazy(data-original='//placehold.it/1600x768')
     .container
-        h1!= spec.__title
+        h2!= spec.__title

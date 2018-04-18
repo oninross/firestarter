@@ -169,15 +169,6 @@ hr {
     margin: 40px 0;
 }
 
-button {
-    overflow: hidden;
-    position: relative;
-
-    &:focus {
-        outline: 0;
-    }
-}
-
 ::-ms-clear {
     height: 22px;
     width: 22px;

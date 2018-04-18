@@ -1,9 +1,7 @@
 'use strict';
 
 export default class Galisteners {
-    constructor() {
-        var that = this;
-    }
+    constructor() { }
 
     init() {
         (function (i,s,o,g,r,a,m) {

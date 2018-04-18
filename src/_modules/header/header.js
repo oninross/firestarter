@@ -1,6 +1,6 @@
 'use strict';
 
-import { debounce, isMobile } from '../../../_js/_helper';
+import { debounce, isMobile } from '../../_js/_util';
 
 export default class Header {
     constructor() {

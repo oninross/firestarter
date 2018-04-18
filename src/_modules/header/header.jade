@@ -1,18 +1,18 @@
-include ../../molecules/navigation/navigation
+include ../navigation/navigation
 
 mixin header(spec)
     - spec = spec || {}
     - spec.__class = spec.__class || ''
 
     header.header
+        h1.sr-only firestarter
         .logo
-            .container
-                h1
-                    a(href="/")|firestarter
+            a(href="/") firestarter
 
         button.menu.js-mobile-menu(name='Menu')
             span.line.top
             span.line.mid
             span.line.bot
+            span.sr-only Menu
 
         +navigation()

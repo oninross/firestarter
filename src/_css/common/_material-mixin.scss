@@ -19,22 +19,14 @@
             fill: $white;
         }
 
-        &:hover {
+        &:hover,
+        &:focus {
             background: darken( $red, 10%);
         }
     }
 
-    &.disabled {
-        background: lighten( $grey, 30%);
-        color: lighten( $grey, 10%);
-        cursor: default;
-
-        &:hover {
-            @include material-shadow(0);
-        }
-    }
-
-    &:hover {
+    &:hover,
+    &:focus {
         @include material-shadow(1);
     }
 
@@ -49,7 +41,8 @@
     padding: 10px;
     position: relative;
 
-    &:hover {
+    &:hover,
+    &:focus {
         text-decoration: underline;
     }
 }
@@ -65,7 +58,8 @@
     height: 45px;
     width: 45px;
 
-    &:hover {
+    &:hover,
+    &:focus {
         @include material-shadow(3);
     }
 }

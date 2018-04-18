@@ -29,16 +29,21 @@
 }
 
 .logo {
-    padding: 8px $gutter;
-    position: absolute;
-    z-index: 25;
+    @extend .container;
 
-    h1 {
-        margin: 0;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    position: absolute;
+    z-index: 5;
+
+    @include desktop {
+        padding-bottom: 15px;
+        padding-top: 15px;
     }
 
     a {
-        font-size: 0.8em;
+        @extend h1;
+
         color: $white;
         text-decoration: none;
     }

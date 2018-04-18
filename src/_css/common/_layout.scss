@@ -6,7 +6,7 @@ Layout
     position: relative;
 
     @include desktop {
-        margin-top: 90px;
+        margin-top: 105px;
     }
 }
 
@@ -25,6 +25,7 @@ Layout
         height: calc(100vh - 45px);
     }
 
+
     svg {
         width: 100px;
     }
@@ -36,15 +37,35 @@ Layout
     }
 }
 
-.skip-links {
+.skip-link {
+    background-color: $white;
+    font-size: 1.2em;
+    font-weight: bold;
+    left: 0px;
+    padding: 5px;
     position: absolute;
-    z-index: 99;
-    background-color: #fff;
+    top: 0px;
+    text-align: center;
+    width: 100%;
+    z-index: 15;
+
+    &:not(:focus) {
+        border: 0;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        white-space: nowrap;
+        width: 1px;
+    }
 }
 
 .backstretch {
     background-color: $grey;
     background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     position: relative;
 }
@@ -62,13 +83,18 @@ Layout
     text-decoration: none;
     width: auto;
 
-    &:hover {
-        background: lighten( $black, 10%);
+    &:hover,
+    &:focus {
+        background: lighten($black, 25%);
     }
 
-    &.disabled {
-        background: lighten( $grey, 30%);
-        color: lighten( $grey, 10%);
+    &:focus {
+        outline: 2px dotted $black;
+    }
+
+    &:disabled {
+        background: lighten($grey, 30%);
+        color: lighten($grey, 10%);
         cursor: not-allowed;
     }
 

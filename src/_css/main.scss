@@ -6,7 +6,8 @@
 @import 'common/_variables';
 @import 'common/_mixin';
 @import 'common/_material-mixin';
-@import 'common/_helpers';
+@import 'common/_util';
+
 @import 'common/_fonts';
 @import 'common/_base';
 @import 'common/_layout';
@@ -14,14 +15,14 @@
 @import 'common/_material-design';
 
 // Import Modules
-@import "../_modules/organisms/header/header";
-@import "../_modules/organisms/banner/banner";
-@import "../_modules/organisms/breadcrumbs/breadcrumbs";
-@import "../_modules/organisms/form/form";
+@import "../_modules/header/header";
+@import "../_modules/banner/banner";
+@import "../_modules/breadcrumbs/breadcrumbs";
+@import "../_modules/form/form";
 
-@import "../_modules/molecules/navigation/navigation";
+@import "../_modules/navigation/navigation";
 
-@import "../_modules/atoms/table-preview/table-preview";
+@import "../_modules/table-preview/table-preview";
 
 
 

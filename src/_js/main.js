@@ -16,38 +16,32 @@ import './_modernizr';
 import './tota11y.min';
 
 
-import { debounce, isMobile } from './_helper';
+import { debounce, isMobile } from './_util';
 import { toaster } from './_material';
 
-import Header from '../_modules/organisms/header/header';
-
-import Navigation from '../_modules/molecules/navigation/navigation';
-
-import Galisteners from '../_modules/atoms/galisteners/galisteners';
-import TablePreview from '../_modules/atoms/table-preview/table-preview';
+import Header from '../_modules/header/header';
+import Navigation from '../_modules/navigation/navigation';
+import Galisteners from '../_modules/galisteners/galisteners';
+import TablePreview from '../_modules/table-preview/table-preview';
 
 
 $(() => {
     // Variable declaration
-    let $window = $(window),
-        $body = $('body'),
-        $header = $('.header'),
-        isMobileDevice = isMobile(),
+    let isMobileDevice = isMobile(),
         lastScrollTop = 0;
 
     new Header();
     new Navigation();
     new TablePreview();
 
+
     // Init Google Analytics
     const ga = new Galisteners();
     ga.init();
 
 
-
     // Set framerate to 60fps
     TweenLite.ticker.fps(60);
-
 
 
     // Init Lazy Loading
@@ -57,6 +51,7 @@ $(() => {
     });
 
 
+    // JavaScript hack for opening links into new windows if target="_blank" is not set
     let a = new RegExp('/' + window.location.host + '/');
     $('a').click(function () {
         if (!a.test(this.href)) {
@@ -65,6 +60,8 @@ $(() => {
         }
     });
 
+
+    // Warning alert for leaving the page
     window.onbeforeunload = function (e) {
         e = e || window.event;
 
@@ -76,6 +73,7 @@ $(() => {
         // For Safari
         return 'Any string';
     };
+
 
     // toaster("I'm a firestarter!!!", 0, true);
     console.log("I'm a firestarter!!!");

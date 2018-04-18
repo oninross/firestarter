@@ -1,7 +1,7 @@
 extends ../../_layouts/base
 
-include ../../_modules/organisms/banner/banner
-include ../../_modules/organisms/breadcrumbs/breadcrumbs
+include ../../_modules/banner/banner
+include ../../_modules/breadcrumbs/breadcrumbs
 
 block config
     //- Correct base url pathing for this page
@@ -28,7 +28,7 @@ block content
                 .col-4
                     button.cta Button
                 .col-4
-                    button.cta.disabled Disabled
+                    button.cta(disabled) Disabled
                 .col-4
                     a.cta(href='#') Link
             hr
