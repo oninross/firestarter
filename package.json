@@ -1,6 +1,6 @@
 {
   "name": "firestarter",
-  "version": "1.5.3",
+  "version": "1.5.5",
   "dependencies": {
     "browserify-shim": "^3.8.12",
     "dot": "^1.1.2",
