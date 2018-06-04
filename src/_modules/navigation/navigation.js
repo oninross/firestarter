@@ -6,18 +6,18 @@ import { debounce, isMobile, easeOutExpo } from '../../_js/_util';
 export default class Navigation {
     constructor() {
 
-        const that = this,
-            $body = $('body'),
-            el = $('#navigation'),
-            $nav = el.find('.nav'),
-            $lvl1 = el.find('.lvl1'),
-            $lvl2 = el.find('.lvl2'),
-            $lvl3 = el.find('.lvl3'),
-            $set = $lvl1.add($lvl2).add($lvl3),
-            $dropdownList = el.find('ul li'),
-            $primaryNav = $('.js-mobile-menu'),
-            $subNav = $('.js-sub-nav'),
-            subNavMarkup = '<button class="sub-nav js-sub-nav icon-arrow" name="Sub-navigation"></button>';
+        const that = this;
+        const $body = $('body');
+        const el = $('#navigation');
+        const $nav = el.find('.nav');
+        const $lvl1 = el.find('.lvl1');
+        const $lvl2 = el.find('.lvl2');
+        const $lvl3 = el.find('.lvl3');
+        const $set = $lvl1.add($lvl2).add($lvl3);
+        const $dropdownList = el.find('ul li');
+        const $primaryNav = $('.js-mobile-menu');
+        const $subNav = $('.js-sub-nav');
+        const subNavMarkup = '<button class="sub-nav js-sub-nav icon-arrow" name="Sub-navigation"></button>';
 
         let isMobileDevice = isMobile();
 
@@ -56,9 +56,9 @@ export default class Navigation {
         });
 
         $subNav.on('touchend, click', function () {
-            const $this = $(this),
-                $grandParent = $this.parent().parent(),
-                $next = $this.next();
+            const $this = $(this);
+            const $grandParent = $this.parent().parent();
+            const $next = $this.next();
 
             if ($this.hasClass('active')) {
                 if ($next.hasClass('lvl2')) {
@@ -104,15 +104,15 @@ export default class Navigation {
         el.on('click', '.no-link', function (e) {
             e.preventDefault();
 
-            const $this = $(this),
-                $next = $this.next();
+            const $this = $(this);
+            const $next = $this.next();
 
             $next.trigger('click');
 
             ripple(e, $this);
         }).on('click', '.lvl2 a', function (e) {
-            const $this = $(this),
-                $next = $this.next();
+            const $this = $(this);
+            const $next = $this.next();
 
             if ($this.attr('src') === '#' && $this.parent().hasClass('no-link')) {
                 $next.trigger('click');
@@ -120,15 +120,15 @@ export default class Navigation {
 
             ripple(e, $this);
         }).on('mouseenter', '.lvl1 li', function () {
-            const $this = $(this),
-                $next = $this.find('> .lvl2');
+            const $this = $(this);
+            const $next = $this.find('> .lvl2');
 
             if (!isMobileDevice) {
                 $next.stop().slideDown(easeOutExpo);
             }
         }).on('mouseleave', '.lvl1 li', function () {
-            const $this = $(this),
-                $next = $this.find('> .lvl2');
+            const $this = $(this);
+            const $next = $this.find('> .lvl2');
 
             if (!isMobileDevice) {
                 $next.stop().slideUp(easeOutExpo);
@@ -178,8 +178,8 @@ export default class Navigation {
     }
 
     checkNavHeight() {
-        const that = this,
-            $navLvl1 = $('#navigation .lvl1');
+        const that = this;
+        const $navLvl1 = $('#navigation .lvl1');
 
         that.$visibleArea = that.$window.outerHeight() - $('.header').outerHeight();
 
