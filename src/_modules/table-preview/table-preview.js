@@ -71,8 +71,8 @@ export default class TablePreview {
 
     getTrWidth(el, table) {
         let width;
-        const totalWidth = 0;
-        const tableWrapWidth = el.width();
+        let totalWidth = 0;
+        let tableWrapWidth = el.width();
 
         return table.find('tr:first-child > *').each(function () {
             totalWidth += $(this).outerWidth()
@@ -82,7 +82,7 @@ export default class TablePreview {
     isLeftOrRight(el, tableResponsive, trTotalWidth) {
         let tableResponsiveScrollLeft = tableResponsive.scrollLeft();
 
-        tableResponsiveScrollLeft > 0 ? el.addClass('left') : el.removeClass('left');
-        const tableResponsiveScrollLeft < trTotalWidth ? el.addClass('right') : el.removeClass('right')
+        tableResponsiveScrollLeft > 0 ? el.addClass('left') : el.removeClass('left'),
+            tableResponsiveScrollLeft < trTotalWidth ? el.addClass('right') : el.removeClass('right');
     }
 }
