@@ -24,21 +24,21 @@
 // cache, then increment the CACHE_VERSION value. It will kick off the service worker update
 // flow and the old cache(s) will be purged as part of the activate event handler when the
 // updated service worker is activated.
-var version = '1.5.5',
-    now = Date.now(),
-    OFFLINE_URL = '/pages/offline/',
-    urlsToPrefetch = [
-        'assets/firestarter/css/main.css',
-        'assets/firestarter/js/main.js',
-        'assets/firestarter/css/fonts/icomoon.woff',
-        'manifest.json',
-        OFFLINE_URL,
-        'index.html?homescreen=1',
-        '/'
-    ],
-    CURRENT_CACHES = {
-        prefetch: 'prefetch-cache-v' + version
-    };
+var version = '1.5.5';
+var now = Date.now();
+var OFFLINE_URL = '/pages/offline/';
+var CURRENT_CACHES = {
+    prefetch: 'prefetch-cache-v' + version
+};
+var urlsToPrefetch = [
+    'assets/firestarter/css/main.css',
+    'assets/firestarter/js/main.js',
+    'assets/firestarter/css/fonts/icomoon.woff',
+    'manifest.json',
+    OFFLINE_URL,
+    'index.html?homescreen=1',
+    '/'
+];
 
 self.addEventListener('install', function (event) {
     // All of these logging statements should be visible via the "Inspect" interface

@@ -4,8 +4,8 @@ import { debounce } from '../../_js/_util';
 
 export default class TablePreview {
     constructor() {
-        const that = this,
-            $window = $(window);
+        const that = this;
+        const $window = $(window);
 
         $('table').each(function (i, v) {
             let $this = $(v);
@@ -18,10 +18,10 @@ export default class TablePreview {
         });
 
         $('.table-wrap').each(function () {
-            let $this = $(this),
-                $tableResponsive = $this.find('.table-responsive'),
-                $table = $this.find('table'),
-                trTotalWidth = that.getTrWidth($this, $table);
+            let $this = $(this);
+            const $tableResponsive = $this.find('.table-responsive');
+            const $table = $this.find('table');
+            const trTotalWidth = that.getTrWidth($this, $table);
 
             that.isLeftOrRight($this, $tableResponsive, trTotalWidth);
 
@@ -32,8 +32,8 @@ export default class TablePreview {
 
         $window.on('resize', debounce(function () {
             $('table').each(function (i, v) {
-                let $this = $(v),
-                    $tableWrap = $this.closest('.table-wrap');
+                let $this = $(v);
+                const $tableWrap = $this.closest('.table-wrap');
 
                 if (that.isTableWide(v)) {
                     $tableWrap.removeClass('-clean');
@@ -70,9 +70,9 @@ export default class TablePreview {
     }
 
     getTrWidth(el, table) {
-        let width,
-            totalWidth = 0,
-            tableWrapWidth = el.width();
+        let width;
+        let totalWidth = 0;
+        let tableWrapWidth = el.width();
 
         return table.find('tr:first-child > *').each(function () {
             totalWidth += $(this).outerWidth()
@@ -83,6 +83,6 @@ export default class TablePreview {
         let tableResponsiveScrollLeft = tableResponsive.scrollLeft();
 
         tableResponsiveScrollLeft > 0 ? el.addClass('left') : el.removeClass('left'),
-            tableResponsiveScrollLeft < trTotalWidth ? el.addClass('right') : el.removeClass('right')
+            tableResponsiveScrollLeft < trTotalWidth ? el.addClass('right') : el.removeClass('right');
     }
 }
