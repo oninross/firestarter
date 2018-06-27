@@ -5,7 +5,7 @@
     "browserify-shim": "^3.8.12",
     "dot": "^1.1.2",
     "gsap": "^1.19.1",
-    "jquery": "~2.2.0",
+    "jquery": "^3.3.1",
     "jquery-lazyload": "^1.9.7",
     "malihu-custom-scrollbar-plugin": "^3.1.5",
     "normalize.css": "~5.0.0",
