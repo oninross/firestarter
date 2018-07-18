@@ -16,9 +16,6 @@ import './common/_modernizr';
 // for testing a11y only.  Remove before integration
 import './common/tota11y.min';
 
-
-import { debounce, isMobile } from './common/_util';
-
 import MaterialDesign from './common/_material-design';
 
 import Header from '../_modules/header/header';

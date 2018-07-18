@@ -118,26 +118,25 @@ block content
             .wrap
                 .col-12
                     h2 Input
-                .col-6
-                    h3 Basic Placeholder
 
-                    .form-item
-                        input(type='text', placeholder='Label')
-                .col-6
+                .col-4
                     h3 Floating Placeholder
 
-                    .form-item
-                        input.floating-input(type='text', placeholder='Label')
-                .col-6
+                    .form-item.-input-field
+                        label(for="inputfield2") Label
+                        input#inputfield2(type='text', placeholder='Label')
+                .col-4
                     h3 Hints
 
-                    .form-item
-                        input.floating-input(type='text', placeholder='Label', data-hint='Lorem ipsum dolor')
-                .col-6
+                    .form-item.-input-field
+                        label(for="inputfield3") Label
+                        input#inputfield3(type='text', placeholder='Label', data-hint='Lorem ipsum dolor')
+                .col-4
                     h3 Disabled Input
 
-                    .form-item
-                        input(type='text', placeholder='Label', disabled='')
+                    .form-item.-input-field
+                        label(for="inputfield4") Label
+                        input#inputfield4(type='text', placeholder='Label', disabled='')
             hr
 
         section.container

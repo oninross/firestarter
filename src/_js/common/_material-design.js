@@ -16,12 +16,11 @@ export default class MaterialDesign {
 
 
         // Floating Label Input Box
-        $('.floating-input').each(function () {
+       $('.form-item input[type="text"]').each(function () {
             let $this = $(this);
 
             $this
-                .wrap('<div class="floating"></div>')
-                .before('<span class="placeholder">' + $this.attr('placeholder') + '</span>')
+                .parent().addClass('-floating-input').end()
                 .attr('placeholder', '')
                 .on('focus', function () {
                     let $this = $(this);
@@ -38,10 +37,6 @@ export default class MaterialDesign {
             if ($this.data('hint') !== undefined && $this.data('hint') !== '') {
                 $this.after('<span class="hint"><strong>*Hint: </strong>' + $this.data('hint') + '</span>');
             }
-
-            $('.placeholder').on('click', function () {
-                $(this).next().focus();
-            });
         });
 
 

@@ -1,4 +1,59 @@
 // material styles
+@mixin material-btn {
+    @include transition(background, $animTime, $easeOutExpo);
+
+    background: $black;
+    border: 0;
+    border-radius: 2px;
+    color: $white;
+    cursor: pointer;
+    font-size: $defaultFontSize;
+    overflow: hidden;
+    padding: 10px 15px;
+    position: relative;
+    text-decoration: none;
+    width: auto;
+
+    &:hover,
+    &:focus {
+        background: lighten($black, 25%);
+    }
+
+    &:focus {
+        outline: 2px dotted $black;
+    }
+
+    &:disabled {
+        background: lighten($grey, 30%);
+        color: lighten($grey, 10%);
+        cursor: not-allowed;
+    }
+
+    svg.ripple circle {
+        fill: $white;
+    }
+}
+
+@mixin material-shadow($ind) {
+    @if $ind == 0 {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+    @else if $ind == 1 {
+        box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 5px 8px 0 rgba(0, 0, 0, 0.14), 0 1px 14px 0 rgba(0, 0, 0, 0.12);
+    }
+    @else if $ind == 2 {
+        box-shadow: 0 6px 6px -3px rgba(0, 0, 0, 0.2), 0 10px 14px 1px rgba(0, 0, 0, 0.14), 0 4px 18px 3px rgba(0, 0, 0, 0.12);
+    }
+    @else if $ind == 3 {
+        box-shadow: 0 8px 9px -5px rgba(0, 0, 0, 0.2), 0 15px 22px 2px rgba(0, 0, 0, 0.14), 0 6px 28px 5px rgba(0, 0, 0, 0.12);
+    }
+    @else if $ind == 4 {
+        box-shadow: 0 10px 13px -6px rgba(0, 0, 0, 0.2), 0 20px 31px 3px rgba(0, 0, 0, 0.14), 0 8px 38px 7px rgba(0, 0, 0, 0.12);
+    }
+    @else if $ind == 5 {
+        box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12);
+    }
+}
 
 // Buttons
 .btn {
@@ -16,7 +71,6 @@ svg.ripple {
         opacity: 0;
     }
 }
-
 
 // Cards
 .card {
@@ -48,7 +102,6 @@ svg.ripple {
     }
 }
 
-
 // Shadows
 .shadow-z0 {
     @include material-shadow(0);
@@ -73,7 +126,6 @@ svg.ripple {
 .shadow-z5 {
     @include material-shadow(5);
 }
-
 
 // Toaster
 .toaster {
@@ -139,11 +191,23 @@ svg.ripple {
     }
 }
 
-
-.floating {
+.-floating-input {
     position: relative;
 
-    .placeholder {
+    &.focus {
+        label {
+            color: $black;
+            font-size: 1em;
+            top: -10px;
+        }
+
+        .hint {
+            opacity: 1;
+            top: 0;
+        }
+    }
+
+    label {
         @include transition((color, font-size, top), $animTime, $easeOutExpo);
 
         font-size: $defaultFontSize;
@@ -161,21 +225,7 @@ svg.ripple {
         top: -5px;
         width: 100%;
     }
-
-    &.focus {
-        .placeholder {
-            color: $black;
-            font-size: 1em;
-            top: -10px;
-        }
-
-        .hint {
-            opacity: 1;
-            top: 0;
-        }
-    }
 }
-
 
 // Progress Bar
 .progress {
@@ -194,7 +244,6 @@ svg.ripple {
     }
 }
 
-
 // Select
 select {
     border: 0;
@@ -204,9 +253,7 @@ select {
     width: 100%;
 }
 
-
 .material-select-wrapper {
-
     &.native {
         select {
             display: block !important;
@@ -380,7 +427,6 @@ select {
     width: 75%;
 }
 
-
 // Loader
 .path {
     stroke-dasharray: 1,200;
@@ -388,7 +434,6 @@ select {
     animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
     stroke-linecap: round;
 }
-
 
 // Keyframe animations
 @keyframes rotate {
