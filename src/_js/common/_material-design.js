@@ -6,6 +6,7 @@ export default class MaterialDesign {
     constructor() {
         const self = this;
 
+        self.inc = 0;
         self.toasterInd = 0;
 
         $('body').on('click', '.js-refresh', function () {
@@ -14,13 +15,16 @@ export default class MaterialDesign {
     }
 
     init() {
+        const self = this;
+
+
         // Ripple Effect
         const $rippleEffect = $('button, .btn');
         $rippleEffect.on('click', function (e) {
             let $this = $(this);
 
             if (!$this.hasClass('disabled')) {
-                ripple(e, $this);
+                self.ripple(e, $this);
             }
         });
 
@@ -69,6 +73,8 @@ export default class MaterialDesign {
     }
 
     toaster(msg = "Toaster message", ttl = 5, isReload = false) {
+        const self = this;
+
         // Alert Toaster
         let popupAlert = doT.template($('#toaster-template').html()),
             obj = {
@@ -118,12 +124,8 @@ export default class MaterialDesign {
 
         self.toasterInd++;
     }
-}
 
-
-// Ripple Effect
-let inc = 0,
-    ripple = function (e, el) {
+    ripple(e, el) {
         if ($('.no-svg').length || el.find('svg').length) {
             return false;
         }
@@ -139,7 +141,7 @@ let inc = 0,
             return false;
         }
 
-        svg.setAttributeNS(null, 'class', 'ripple ripple' + inc);
+        svg.setAttributeNS(null, 'class', 'ripple ripple' + self.inc);
         g.setAttributeNS(null, 'transform', 'translate(' + x + ', ' + y + ')');
         circle.setAttributeNS(null, 'r', (parseInt(el.outerWidth()) + x));
 
@@ -147,7 +149,7 @@ let inc = 0,
         g.appendChild(circle);
         el.append(svg);
 
-        let $ripple = el.find('.ripple' + inc);
+        let $ripple = el.find('.ripple' + self.inc);
         TweenLite.from($ripple.find('circle'), 1.5, {
             attr: { r: 0 },
             opacity: 0.75,
@@ -157,7 +159,6 @@ let inc = 0,
             }
         });
 
-        inc++;
-    };
-
-export { ripple };
+        self.inc++;
+    }
+}

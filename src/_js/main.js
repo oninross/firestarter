@@ -79,6 +79,6 @@ $(() => {
     // new ServiceWorker();
 
 
-    material.toaster("I'm a firestarter!!!", 0, true);
+    material.toaster("I'm a firestarter!!!", 0);
     console.log("I'm a firestarter!!!");
 });
