@@ -20,11 +20,7 @@
     @include desktop {
         height: auto;
 
-        &.hide { top: -92px !important; }
-
-        &.compact {
-            &.hide { top: -45px !important; }
-        }
+        &.hide { top: -105px !important; }
     }
 }
 

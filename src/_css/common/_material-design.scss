@@ -235,9 +235,12 @@ svg.ripple {
 
 // Select
 select {
+    background: none;
     border: 0;
+    border-radius: 0;
     border-bottom: 2px solid $border-color;
     font-size: $defaultFontSize;
+    height: 35px;
     padding: 10px 0;
     width: 100%;
 }
