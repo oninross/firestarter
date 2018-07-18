@@ -6,6 +6,15 @@
     position: relative;
     width: 100%;
 
+    ::-webkit-scrollbar {
+        height: 8px;
+        width: 4px
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: $grey;
+    }
+
     &:before,
     &:after {
         @include transition(opacity, 0.3s, $easeOutExpo);
@@ -64,7 +73,7 @@
 
         .table-responsive {
             border: 0;
-            overflow: visible
+            overflow: visible;
         }
     }
 }
@@ -77,12 +86,16 @@
     overflow-y: hidden;
     overflow-x: scroll;
     width: 100%;
+
+    table {
+        margin-bottom: 0;
+    }
 }
 
 .btn-print-table {
     @include transition(position, $animTime, $easeOutExpo);
 
-    @extend .cta;
+    @extend .btn;
 
     font-size: $defaultFontSize;
     max-width: 200px;

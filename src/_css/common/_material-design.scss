@@ -1,3 +1,77 @@
+// material styles
+@mixin material-btn {
+    @include transition(background, $animTime, $easeOutExpo);
+
+    background: $black;
+    border: 0;
+    border-radius: 2px;
+    color: $white;
+    cursor: pointer;
+    font-size: $defaultFontSize;
+    overflow: hidden;
+    padding: 10px 15px;
+    position: relative;
+    text-decoration: none;
+    width: auto;
+
+    &:hover,
+    &:focus {
+        background: lighten($black, 25%);
+    }
+
+    &:focus {
+        outline: 2px dotted $black;
+    }
+
+    &:disabled {
+        background: lighten($grey, 30%);
+        color: lighten($grey, 10%);
+        cursor: not-allowed;
+    }
+
+    svg.ripple circle {
+        fill: $white;
+    }
+}
+
+@mixin material-shadow($ind) {
+    @if $ind == 0 {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+    @else if $ind == 1 {
+        box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    }
+    @else if $ind == 2 {
+        box-shadow: 0 6px 6px -3px rgba(0, 0, 0, 0.2), 0 10px 14px 1px rgba(0, 0, 0, 0.14), 0 4px 18px 3px rgba(0, 0, 0, 0.12);
+    }
+    @else if $ind == 3 {
+        box-shadow: 0 8px 9px -5px rgba(0, 0, 0, 0.2), 0 15px 22px 2px rgba(0, 0, 0, 0.14), 0 6px 28px 5px rgba(0, 0, 0, 0.12);
+    }
+    @else if $ind == 4 {
+        box-shadow: 0 10px 13px -6px rgba(0, 0, 0, 0.2), 0 20px 31px 3px rgba(0, 0, 0, 0.14), 0 8px 38px 7px rgba(0, 0, 0, 0.12);
+    }
+    @else if $ind == 5 {
+        box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12);
+    }
+}
+
+// Buttons
+.btn {
+    @include material-btn;
+}
+
+svg.ripple {
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+
+    circle {
+        fill: $white;
+        opacity: 0;
+    }
+}
+
 // Cards
 .card {
     @include transition((opacity, top), 1s, $easeOutExpo);
@@ -6,16 +80,18 @@
     position: relative;
     top: 150px;
 
-    &.show {
+    &.-show {
         opacity: 1;
         top: 0;
     }
 
-    &.up {
+    &.-up {
         top: -150px;
     }
 
     &__wrapper {
+        @include material-shadow(1);
+
         background: $white;
         border-radius: 2px;
         min-height: 100px;
@@ -27,240 +103,7 @@
     }
 }
 
-.floating {
-    position: relative;
-
-    .placeholder {
-        @include transition((color, font-size, top), $animTime, $easeOutExpo);
-
-        font-size: $defaultFontSize;
-        position: absolute;
-        top: 8px;
-    }
-
-    .hint {
-        @include transition((opacity, top), $animTime, $easeOutExpo);
-
-        display: block;
-        opacity: 0;
-        padding: 5px 0;
-        position: relative;
-        top: -5px;
-        width: 100%;
-    }
-
-    &.focus {
-        .placeholder {
-            color: $black;
-            font-size: 1em;
-            top: -10px;
-        }
-
-        .hint {
-            opacity: 1;
-            top: 0;
-        }
-    }
-}
-
-
-// Progress Bar
-.progress {
-    background: lighten($black, 75%);
-    border-radius: 0;
-    height: 4px;
-    width: 100%;
-
-    .progress-bar {
-        @include transition(all, $animTime, $easeOutExpo);
-
-        background: $black;
-        height: 100%;
-        margin-left: 0;
-        width: 0;
-    }
-}
-
-// Select
-.material-select-wrapper {
-    border-bottom: 2px solid $border-color;
-    font-size: $defaultFontSize !important;
-    position: relative;
-    width: 100%;
-
-    &.native {
-        select {
-            display: block !important;
-
-            @include desktop {
-                display: none !important;
-            }
-        }
-    }
-
-    select {
-        height: inherit;
-        left: 0;
-        opacity: 0;
-        padding: 6px;
-        position: absolute;
-        top: 20px;
-        width: 100%;
-        z-index: 10;
-
-        &.material {
-            display: none;
-        }
-    }
-
-    .icon {
-        bottom: 0;
-        color: #bdbdbd;
-        font-size: 1.5em;
-        height: 26px;
-        margin: auto;
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
-
-    .material-label {
-        cursor: pointer;
-        display: block;
-        overflow: hidden;
-        padding: 15px 0;
-        position: relative;
-        text-overflow: ellipsis;
-        vertical-align: top;
-        white-space: nowrap;
-        width: 100%;
-        z-index: 5;
-    }
-
-    .card-wrapper {
-        @include material-shadow(1);
-
-        background: $white;
-        height: 275px;
-        overflow: hidden;
-        opacity: 0;
-        padding: 0;
-        position: absolute;
-        right: 0;
-        top: 0;
-        transform: scale(0);
-        transform-origin: right top;
-        visibility: hidden;
-        width: 75%;
-        z-index: 10;
-
-        &:before,
-        &:after {
-            content: '';
-            display: block;
-            height: 10px;
-            position: absolute;
-            width: 100%;
-            z-index: 5;
-        }
-
-        &:before {
-            @include background-gradient($white, rgba(0, 0, 0, 0), vertical);
-
-            top: 0;
-        }
-
-        &:after {
-            @include background-gradient(rgba(0, 0, 0, 0), $white, vertical);
-
-            bottom: 0;
-        }
-
-        @include desktop {
-            width: 50%;
-        }
-
-
-        &.active {
-            li {
-                opacity: 1;
-                top: 0;
-            }
-        }
-
-        ul {
-            @include normalise-list;
-
-            font-size: inherit;
-        }
-
-        li {
-            @include transition(all, 0.75s, $easeOutExpo);
-
-            font-size: 1em;
-            opacity: 0;
-            position: relative;
-            top: -20px;
-
-            @for $i from 1 through 10 {
-                &:nth-child(#{$i}) {
-                    transition-delay: 0.1s * $i, 0.1s * $i;
-                }
-            }
-
-            &.active {
-                button {
-                    background: lighten($grey, 25%);
-                }
-            }
-        }
-
-        button {
-            @include transition(all, $animTime, $easeOutExpo);
-
-            background: none;
-            border: 0;
-            border-bottom: 1px solid $border-color;
-            font-size: 1em;
-            padding: 15px 25px;
-            position: relative;
-            text-align: left;
-            width: 100%;
-
-            &:hover,
-            &:focus {
-                background: lighten($grey, 25%);
-            }
-        }
-    }
-}
-
-.loader {
-    @include material-shadow(1);
-
-    background: $white;
-    border-radius: 50%;
-    height: 50px;
-    position: relative;
-    width: 50px;
-
-    &:before {
-        content: '';
-        display: block;
-        padding-top: 100%;
-    }
-}
-
-.circular {
-    @include absolute-center;
-
-    animation: rotate 2s linear infinite;
-    height: 75%;
-    margin: auto;
-    transform-origin: center center;
-    width: 75%;
-}
-
+// Shadows
 .shadow-z0 {
     @include material-shadow(0);
 }
@@ -285,14 +128,155 @@
     @include material-shadow(5);
 }
 
-// Loader
-.path {
-    stroke-dasharray: 1,200;
-    stroke-dashoffset: 0;
-    animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
-    stroke-linecap: round;
+// Toaster
+.toaster {
+    &__wrap {
+        bottom: 25px;
+        left: 25px;
+        max-width: 440px;
+        position: fixed;
+        width: 100%;
+        z-index: 25;
+
+        @include mobile {
+            max-width: 260px;
+        }
+    }
+
+    &__card {
+        @include material-shadow(1);
+
+        background: #323232;
+        border-radius: 2px;
+        color: $white;
+        margin-bottom: 10px;
+        opacity: 0;
+        padding: 15px 24px;
+        padding-right: 50px;
+        transform: scale(0.75);
+        transform-origin: left bottom;
+
+        &:only-child,
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &.-refresh {
+            padding-right: 135px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        button {
+            @include absolute-center;
+
+            background: none;
+            border: 0;
+            color: $white;
+            cursor: pointer;
+            height: 20px;
+            left: auto;
+            padding: 0;
+            right: 10px;
+            width: 20px;
+        }
+
+        .btn-refresh {
+            color: $yellow;
+            font-size: 1.3em;
+            right: 50px;
+            width: auto;
+        }
+
+        .icon {
+            display: block;
+            font-size: 20px;
+        }
+    }
 }
 
+.-floating-input {
+    position: relative;
+
+    &.focus {
+        label {
+            color: $black;
+            font-size: 1em;
+            top: -10px;
+        }
+
+        .hint {
+            opacity: 1;
+            top: 0;
+        }
+    }
+
+    label {
+        @include transition((color, font-size, top), $animTime, $easeOutExpo);
+
+        font-size: $defaultFontSize;
+        position: absolute;
+        top: 8px;
+    }
+
+    .hint {
+        @include transition((opacity, top), $animTime, $easeOutExpo);
+
+        display: block;
+        opacity: 0;
+        padding: 5px 0;
+        position: relative;
+        top: -5px;
+        width: 100%;
+    }
+}
+
+// Select
+select {
+    border: 0;
+    border-bottom: 2px solid $border-color;
+    font-size: $defaultFontSize;
+    padding: 10px 0;
+    width: 100%;
+}
+
+// Loader
+.loader {
+    @include material-shadow(1);
+
+    background: $white;
+    border-radius: 50%;
+    height: 50px;
+    position: relative;
+    width: 50px;
+
+    &:before {
+        content: '';
+        display: block;
+        padding-top: 100%;
+    }
+
+    .circular {
+        @include absolute-center;
+
+        animation: rotate 2s linear infinite;
+        height: 75%;
+        margin: auto;
+        transform-origin: center center;
+        width: 75%;
+    }
+
+    .path {
+        stroke-dasharray: 1,200;
+        stroke-dashoffset: 0;
+        animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+        stroke-linecap: round;
+    }
+}
+
+// Keyframe animations
 @keyframes rotate {
     100% {
         transform: rotate(360deg);
@@ -332,68 +316,4 @@
     // 80%, 90%{
     //     stroke: $yellow;
     // }
-}
-
-// Toaster
-.toaster {
-    &__wrap {
-        bottom: 30px;
-        left: 30px;
-        max-width: 440px;
-        position: fixed;
-        width: 100%;
-        z-index: 25;
-
-        @include mobile {
-            max-width: 260px;
-        }
-    }
-
-    &__card {
-        @include material-shadow(1);
-
-        background: #323232;
-        border-radius: 4px;
-        color: $white;
-        margin-bottom: 10px;
-        opacity: 0;
-        padding: 20px;
-        transform: scale(0.75);
-        transform-origin: left bottom;
-
-        &:only-child,
-        &:last-child {
-            margin-bottom: 0;
-        }
-
-        p {
-            margin: 0;
-        }
-
-        button {
-            @include absolute-center;
-
-            background: none;
-            border: 0;
-            color: $white;
-            cursor: pointer;
-            height: 20px;
-            left: auto;
-            padding: 0;
-            right: 10px;
-            width: 20px;
-        }
-
-        .btn-refresh {
-            color: $yellow;
-            font-size: 1.3em;
-            right: 50px;
-            width: auto;
-        }
-
-        .icon {
-            display: block;
-            font-size: 20px;
-        }
-    }
 }

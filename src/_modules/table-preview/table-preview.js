@@ -1,6 +1,6 @@
 'use strict';
 
-import { debounce } from '../../_js/_util';
+import { debounce } from '../../_js/common/_util';
 
 export default class TablePreview {
     constructor() {
