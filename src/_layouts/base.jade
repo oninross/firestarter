@@ -60,11 +60,17 @@ html.no-js(lang='en')
 
             if !isTablePreview
                 script#toaster-template(type='text/template')
-                    .toaster__card(class='toaster{{= it.ind }}')
+                    | {{? it.isReload }}
+                    .toaster__card.-refresh(class='toaster{{= it.ind }}')
                         p {{! it.message }}
-                        | {{? it.isReload }}
                         button.btn-refresh.js-refresh REFRESH
-                        | {{? }}
                         button.js-dismiss
                             span.sr-only Close
                             i.icon.icon-cross
+                    | {{?? }}
+                    .toaster__card(class='toaster{{= it.ind }}')
+                        p {{! it.message }}
+                        button.js-dismiss
+                            span.sr-only Close
+                            i.icon.icon-cross
+                    | {{? }}

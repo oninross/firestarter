@@ -1,7 +1,7 @@
 'use strict';
 
-import { ripple } from '../../_js/_material';
-import { debounce, isMobile, easeOutExpo } from '../../_js/_util';
+import { ripple } from '../../_js/common/_material-design';
+import { debounce, isMobile, easeOutExpo } from '../../_js/common/_util';
 
 export default class Navigation {
     constructor() {

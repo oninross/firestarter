@@ -1,7 +1,7 @@
 
 'use strict';
 
-import { toaster } from "../../_js/_material";
+import { toaster } from "../../_js/common/_material-design";
 
 export default class ServiceWorker {
   constructor() {

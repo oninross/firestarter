@@ -1,11 +1,8 @@
 // Normalize Styles
 // @import "node_modules/normalize.css/normalize";
-@import "node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar";
 
 // Import all needed help
 @import 'common/_variables';
-@import 'common/_mixin';
-@import 'common/_material-mixin';
 @import 'common/_util';
 
 @import 'common/_fonts';

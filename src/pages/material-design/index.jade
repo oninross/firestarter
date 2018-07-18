@@ -26,11 +26,11 @@ block content
                     h2 Buttons
                     h3 Normal Buttons
                 .col-4
-                    button.cta Button
+                    button.btn Button
                 .col-4
-                    button.cta(disabled) Disabled
+                    button.btn(disabled) Disabled
                 .col-4
-                    a.cta(href='#') Link
+                    a.btn(href='#') Link
             hr
 
         section.container
@@ -87,6 +87,7 @@ block content
                         input#radio4(type='radio', name='name', value='value')
                         label(for='radio4') Radio Button
 
+                .col-4
                     h2 Checkbox
                     .form-item.-checkbox
                         input#checkbox1(type='checkbox', name='name', value='value')
@@ -100,23 +101,12 @@ block content
                     .form-item.-checkbox
                         input#checkbox4(type='checkbox', name='name', value='value')
                         label(for='checkbox4') Checkbox Button
-                .col-8
-                    h2 Dropdown with Material Design
-                    .form-item
-                        select.material
-                            option.active(value='Select an option') Select an option
-                            option(value='Option 1') Option 1
-                            option(value='Option 2') Option 2
-                            option(value='Option 3') Option 3
-                            option(value='Option 4') Option 4
-                            option(value='Option 5') Option 5
 
-                    h2
-                        | Dropdown with Material Design (with native select on mobile)
-
+                .col-4
+                    h2 Dropdown
                     .form-item
-                        select.material.native
-                            option.active(value='Select an option') Select an option
+                        select
+                            option(value='Select an option') Select an option
                             option(value='Option 1') Option 1
                             option(value='Option 2') Option 2
                             option(value='Option 3') Option 3
@@ -128,37 +118,30 @@ block content
             .wrap
                 .col-12
                     h2 Input
-                .col-6
-                    h3 Basic Placeholder
 
-                    .form-item
-                        input(type='text', placeholder='Label')
-                .col-6
+                .col-4
                     h3 Floating Placeholder
 
-                    .form-item
-                        input.floating-input(type='text', placeholder='Label')
-                .col-6
+                    .form-item.-input-field
+                        label(for="inputfield2") Label
+                        input#inputfield2(type='text', placeholder='Label')
+                .col-4
                     h3 Hints
 
-                    .form-item
-                        input.floating-input(type='text', placeholder='Label', data-hint='Lorem ipsum dolor')
-                .col-6
+                    .form-item.-input-field
+                        label(for="inputfield3") Label
+                        input#inputfield3(type='text', placeholder='Label', data-hint='Lorem ipsum dolor')
+                .col-4
                     h3 Disabled Input
 
-                    .form-item
-                        input(type='text', placeholder='Label', disabled='')
+                    .form-item.-input-field
+                        label(for="inputfield4") Label
+                        input#inputfield4(type='text', placeholder='Label', disabled='')
             hr
 
         section.container
             .wrap
                 .col-12
-                    h2 Progress Bar
-                .col-6
-                    h3 Basic Progress Bar
-                    .progress
-                        .progress-bar(data-value='75')
-                .col-6
                     h3 Loader
                     .loader
                         svg.circular(viewbox='25 25 50 50')

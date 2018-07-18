@@ -10,14 +10,13 @@ import 'EasePack';
 import 'AttrPlugin';
 import 'CSSPlugin';
 import 'doT';
-import './_modernizr';
+
+import './common/_modernizr';
 
 // for testing a11y only.  Remove before integration
-import './tota11y.min';
+import './common/tota11y.min';
 
-
-import { debounce, isMobile } from './_util';
-import { toaster } from './_material';
+import MaterialDesign from './common/_material-design';
 
 import Header from '../_modules/header/header';
 import Navigation from '../_modules/navigation/navigation';
@@ -30,6 +29,10 @@ $(() => {
     new Header();
     new Navigation();
     new TablePreview();
+
+    // Init Material Design
+    const material = new MaterialDesign();
+    material.init();
 
 
     // Init Google Analytics
@@ -76,6 +79,6 @@ $(() => {
     new ServiceWorker();
 
 
-    // toaster("I'm a firestarter!!!", 0, true);
+    material.toaster("I'm a firestarter!!!", 0);
     console.log("I'm a firestarter!!!");
 });

@@ -1,6 +1,6 @@
 'use strict';
 
-import { debounce, isMobile } from '../../_js/_util';
+import { debounce, isMobile } from '../../_js/common/_util';
 
 export default class Header {
     constructor() {
@@ -24,14 +24,12 @@ export default class Header {
             if (st > lastScrollTop) {
                 // scroll down
                 if (st > $headerHeight) {
-                    $header.addClass('hide').removeClass('compact');
+                    $header.addClass('hide');
                 }
             } else {
                 // scroll up
                 if (st <= $headerHeight) {
-                    $header.removeClass('compact hide');
-                } else {
-                    $header.addClass('compact');
+                    $header.removeClass('hide');
                 }
             }
         }
