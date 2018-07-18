@@ -6,8 +6,8 @@ import mCustomScrollbar from 'mCustomScrollbar';
 import { debounce, isMobile } from './_util';
 
 $(() => {
-    const $body = $('body'),
-        $window = $(window);
+    const $body = $('body');
+    const $window = $(window);
 
     let isMobileDevice = isMobile();
 
@@ -216,22 +216,18 @@ $(() => {
 
 
     // cards
-    const $card = $('.card');
-    if ($card.length) {
-        $card.each(function (i, el) {
-            let $this = $(el);
-
+    const card = document.getElementsByClassName('card');
+    if (card.length > 0) {
+        for (let i = 0, l = card.length; i < l; i++) {
+            let el = card[i];
             let cardWatcher = scrollMonitor.create(el);
+
             cardWatcher.enterViewport(function () {
-                $this.addClass('show', this.isInViewport);
-                $this.removeClass('up', this.isAboveViewport);
+                el.classList.add('-show', this.isInViewport);
             });
 
-            cardWatcher.exitViewport(function () {
-                $this.removeClass('show', this.isInViewport);
-                $this.toggleClass('up', this.isAboveViewport);
-            });
-        });
+            cardWatcher.exitViewport(function () { });
+        }
 
         scrollMonitor.recalculateLocations();
     }

@@ -23,12 +23,12 @@ svg.ripple {
     position: relative;
     top: 150px;
 
-    &.show {
+    &.-show {
         opacity: 1;
         top: 0;
     }
 
-    &.up {
+    &.-up {
         top: -150px;
     }
 
