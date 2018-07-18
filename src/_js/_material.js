@@ -161,7 +161,7 @@ $(() => {
 
 
     // Ripple Effect
-    const $rippleEffect = $('button, .cta');
+    const $rippleEffect = $('button, .btn');
 
     $rippleEffect.on('click', function (e) {
         let $this = $(this);
