@@ -10,14 +10,16 @@ import 'EasePack';
 import 'AttrPlugin';
 import 'CSSPlugin';
 import 'doT';
-import './_modernizr';
+
+import './common/_modernizr';
 
 // for testing a11y only.  Remove before integration
-import './tota11y.min';
+import './common/tota11y.min';
 
 
-import { debounce, isMobile } from './_util';
-import { toaster } from './_material';
+import { debounce, isMobile } from './common/_util';
+
+import MaterialDesign from './common/_material-design';
 
 import Header from '../_modules/header/header';
 import Navigation from '../_modules/navigation/navigation';
@@ -27,6 +29,7 @@ import ServiceWorker from '../_modules/serviceworker/serviceworker';
 
 
 $(() => {
+    new MaterialDesign();
     new Header();
     new Navigation();
     new TablePreview();
