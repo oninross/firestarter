@@ -39,7 +39,7 @@
         box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
     }
     @else if $ind == 1 {
-        box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 5px 8px 0 rgba(0, 0, 0, 0.14), 0 1px 14px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
     }
     @else if $ind == 2 {
         box-shadow: 0 6px 6px -3px rgba(0, 0, 0, 0.2), 0 10px 14px 1px rgba(0, 0, 0, 0.14), 0 4px 18px 3px rgba(0, 0, 0, 0.12);
@@ -90,9 +90,10 @@ svg.ripple {
     }
 
     &__wrapper {
+        @include material-shadow(1);
+
         background: $white;
         border-radius: 2px;
-        box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
         min-height: 100px;
         padding: 15px 20px;
     }
@@ -227,23 +228,6 @@ svg.ripple {
     }
 }
 
-// Progress Bar
-.progress {
-    background: lighten($black, 75%);
-    border-radius: 0;
-    height: 4px;
-    width: 100%;
-
-    .progress-bar {
-        @include transition(all, $animTime, $easeOutExpo);
-
-        background: $black;
-        height: 100%;
-        margin-left: 0;
-        width: 0;
-    }
-}
-
 // Select
 select {
     border: 0;
@@ -253,154 +237,7 @@ select {
     width: 100%;
 }
 
-.material-select-wrapper {
-    &.native {
-        select {
-            display: block !important;
-
-            @include desktop {
-                display: none !important;
-            }
-        }
-    }
-
-    select {
-        height: inherit;
-        left: 0;
-        opacity: 0;
-        padding: 6px;
-        position: absolute;
-        top: 20px;
-        width: 100%;
-        z-index: 10;
-
-        &.material {
-            display: none;
-        }
-    }
-
-    .icon {
-        bottom: 0;
-        color: #bdbdbd;
-        font-size: 1.5em;
-        height: 26px;
-        margin: auto;
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
-
-    .material-label {
-        cursor: pointer;
-        display: block;
-        overflow: hidden;
-        padding: 15px 0;
-        position: relative;
-        text-overflow: ellipsis;
-        vertical-align: top;
-        white-space: nowrap;
-        width: 100%;
-        z-index: 5;
-    }
-
-    .card-wrapper {
-        @include material-shadow(1);
-
-        background: $white;
-        height: 275px;
-        overflow: hidden;
-        opacity: 0;
-        padding: 0;
-        position: absolute;
-        right: 0;
-        top: 0;
-        transform: scale(0);
-        transform-origin: right top;
-        visibility: hidden;
-        width: 75%;
-        z-index: 10;
-
-        &:before,
-        &:after {
-            content: '';
-            display: block;
-            height: 10px;
-            position: absolute;
-            width: 100%;
-            z-index: 5;
-        }
-
-        &:before {
-            @include background-gradient($white, rgba(0, 0, 0, 0), vertical);
-
-            top: 0;
-        }
-
-        &:after {
-            @include background-gradient(rgba(0, 0, 0, 0), $white, vertical);
-
-            bottom: 0;
-        }
-
-        @include desktop {
-            width: 50%;
-        }
-
-
-        &.active {
-            li {
-                opacity: 1;
-                top: 0;
-            }
-        }
-
-        ul {
-            @include normalise-list;
-
-            font-size: inherit;
-        }
-
-        li {
-            @include transition(all, 0.75s, $easeOutExpo);
-
-            font-size: 1em;
-            opacity: 0;
-            position: relative;
-            top: -20px;
-
-            @for $i from 1 through 10 {
-                &:nth-child(#{$i}) {
-                    transition-delay: 0.1s * $i, 0.1s * $i;
-                }
-            }
-
-            &.active {
-                button {
-                    background: lighten($grey, 25%);
-                }
-            }
-        }
-
-        button {
-            @include transition(all, $animTime, $easeOutExpo);
-
-            background: none;
-            border: 0;
-            border-bottom: 1px solid $border-color;
-            font-size: 1em;
-            padding: 15px 25px;
-            position: relative;
-            text-align: left;
-            width: 100%;
-
-            &:hover,
-            &:focus {
-                background: lighten($grey, 25%);
-            }
-        }
-    }
-}
-
+// Loader
 .loader {
     @include material-shadow(1);
 
@@ -415,24 +252,23 @@ select {
         display: block;
         padding-top: 100%;
     }
-}
 
-.circular {
-    @include absolute-center;
+    .circular {
+        @include absolute-center;
 
-    animation: rotate 2s linear infinite;
-    height: 75%;
-    margin: auto;
-    transform-origin: center center;
-    width: 75%;
-}
+        animation: rotate 2s linear infinite;
+        height: 75%;
+        margin: auto;
+        transform-origin: center center;
+        width: 75%;
+    }
 
-// Loader
-.path {
-    stroke-dasharray: 1,200;
-    stroke-dashoffset: 0;
-    animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
-    stroke-linecap: round;
+    .path {
+        stroke-dasharray: 1,200;
+        stroke-dashoffset: 0;
+        animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+        stroke-linecap: round;
+    }
 }
 
 // Keyframe animations
