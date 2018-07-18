@@ -52,31 +52,31 @@ $(() => {
 
 
     // JavaScript hack for opening links into new windows if target="_blank" is not set
-    // let a = new RegExp('/' + window.location.host + '/');
-    // $('a').click(function () {
-    //     if (!a.test(this.href)) {
-    //         window.open($(this).attr('href'));
-    //         return false;
-    //     }
-    // });
+    let a = new RegExp('/' + window.location.host + '/');
+    $('a').click(function () {
+        if (!a.test(this.href)) {
+            window.open($(this).attr('href'));
+            return false;
+        }
+    });
 
 
     // Warning alert for leaving the page
-    // window.onbeforeunload = function (e) {
-    //     e = e || window.event;
+    window.onbeforeunload = function (e) {
+        e = e || window.event;
 
-    //     // For IE and Firefox prior to version 4
-    //     if (e) {
-    //         e.returnValue = 'Any string';
-    //     }
+        // For IE and Firefox prior to version 4
+        if (e) {
+            e.returnValue = 'Any string';
+        }
 
-    //     // For Safari
-    //     return 'Any string';
-    // };
+        // For Safari
+        return 'Any string';
+    };
 
 
     // Simple Service Worker to make App Install work (OPTIONAL)
-    // new ServiceWorker();
+    new ServiceWorker();
 
 
     material.toaster("I'm a firestarter!!!", 0);
