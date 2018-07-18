@@ -46,6 +46,7 @@ svg.ripple {
     }
 }
 
+
 // Shadows
 .shadow-z0 {
     @include material-shadow(0);
@@ -193,11 +194,16 @@ svg.ripple {
 
 
 // Select
-.material-select-wrapper {
+select {
+    border: 0;
     border-bottom: 2px solid $border-color;
-    font-size: $defaultFontSize !important;
-    position: relative;
+    font-size: $defaultFontSize;
+    padding: 10px 0;
     width: 100%;
+}
+
+
+.material-select-wrapper {
 
     &.native {
         select {

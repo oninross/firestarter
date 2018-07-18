@@ -7,7 +7,6 @@
     "gsap": "^1.19.1",
     "jquery": "^3.3.1",
     "jquery-lazyload": "^1.9.7",
-    "malihu-custom-scrollbar-plugin": "^3.1.5",
     "normalize.css": "~5.0.0",
     "scrollmonitor": "^1.2.3"
   },
@@ -70,12 +69,10 @@
     "EasePack": "./node_modules/gsap/src/uncompressed/easing/EasePack.js",
     "AttrPlugin": "./node_modules/gsap/src/uncompressed/plugins/AttrPlugin.js",
     "CSSPlugin": "./node_modules/gsap/src/uncompressed/plugins/CSSPlugin.js",
-    "mCustomScrollbar": "./node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
     "scrollMonitor": "./node_modules/scrollmonitor/scrollmonitor.js"
   },
   "browserify-shim": {
     "jquery": "jQuery",
-    "mCustomScrollbar": "mCustomScrollbar",
     "doT": "doT"
   },
   "engines": {
