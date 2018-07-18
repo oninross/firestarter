@@ -1,6 +1,6 @@
 // Buttons
 .btn {
-    @include material-btn();
+    @include material-btn;
 }
 
 svg.ripple {
@@ -14,6 +14,7 @@ svg.ripple {
         opacity: 0;
     }
 }
+
 
 // Cards
 .card {
@@ -44,6 +45,97 @@ svg.ripple {
         margin-bottom: 30px;
     }
 }
+
+// Shadows
+.shadow-z0 {
+    @include material-shadow(0);
+}
+
+.shadow-z1 {
+    @include material-shadow(1);
+}
+
+.shadow-z2 {
+    @include material-shadow(2);
+}
+
+.shadow-z3 {
+    @include material-shadow(3);
+}
+
+.shadow-z4 {
+    @include material-shadow(4);
+}
+
+.shadow-z5 {
+    @include material-shadow(5);
+}
+
+
+// Toaster
+.toaster {
+    &__wrap {
+        bottom: 30px;
+        left: 30px;
+        max-width: 440px;
+        position: fixed;
+        width: 100%;
+        z-index: 25;
+
+        @include mobile {
+            max-width: 260px;
+        }
+    }
+
+    &__card {
+        @include material-shadow(1);
+
+        background: #323232;
+        border-radius: 4px;
+        color: $white;
+        margin-bottom: 10px;
+        opacity: 0;
+        padding: 20px;
+        transform: scale(0.75);
+        transform-origin: left bottom;
+
+        &:only-child,
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        button {
+            @include absolute-center;
+
+            background: none;
+            border: 0;
+            color: $white;
+            cursor: pointer;
+            height: 20px;
+            left: auto;
+            padding: 0;
+            right: 10px;
+            width: 20px;
+        }
+
+        .btn-refresh {
+            color: $yellow;
+            font-size: 1.3em;
+            right: 50px;
+            width: auto;
+        }
+
+        .icon {
+            display: block;
+            font-size: 20px;
+        }
+    }
+}
+
 
 .floating {
     position: relative;
@@ -81,6 +173,7 @@ svg.ripple {
     }
 }
 
+
 // Progress Bar
 .progress {
     background: lighten($black, 75%);
@@ -97,6 +190,7 @@ svg.ripple {
         width: 0;
     }
 }
+
 
 // Select
 .material-select-wrapper {
@@ -278,29 +372,6 @@ svg.ripple {
     width: 75%;
 }
 
-.shadow-z0 {
-    @include material-shadow(0);
-}
-
-.shadow-z1 {
-    @include material-shadow(1);
-}
-
-.shadow-z2 {
-    @include material-shadow(2);
-}
-
-.shadow-z3 {
-    @include material-shadow(3);
-}
-
-.shadow-z4 {
-    @include material-shadow(4);
-}
-
-.shadow-z5 {
-    @include material-shadow(5);
-}
 
 // Loader
 .path {
@@ -310,6 +381,8 @@ svg.ripple {
     stroke-linecap: round;
 }
 
+
+// Keyframe animations
 @keyframes rotate {
     100% {
         transform: rotate(360deg);
@@ -349,68 +422,4 @@ svg.ripple {
     // 80%, 90%{
     //     stroke: $yellow;
     // }
-}
-
-// Toaster
-.toaster {
-    &__wrap {
-        bottom: 30px;
-        left: 30px;
-        max-width: 440px;
-        position: fixed;
-        width: 100%;
-        z-index: 25;
-
-        @include mobile {
-            max-width: 260px;
-        }
-    }
-
-    &__card {
-        @include material-shadow(1);
-
-        background: #323232;
-        border-radius: 4px;
-        color: $white;
-        margin-bottom: 10px;
-        opacity: 0;
-        padding: 20px;
-        transform: scale(0.75);
-        transform-origin: left bottom;
-
-        &:only-child,
-        &:last-child {
-            margin-bottom: 0;
-        }
-
-        p {
-            margin: 0;
-        }
-
-        button {
-            @include absolute-center;
-
-            background: none;
-            border: 0;
-            color: $white;
-            cursor: pointer;
-            height: 20px;
-            left: auto;
-            padding: 0;
-            right: 10px;
-            width: 20px;
-        }
-
-        .btn-refresh {
-            color: $yellow;
-            font-size: 1.3em;
-            right: 50px;
-            width: auto;
-        }
-
-        .icon {
-            display: block;
-            font-size: 20px;
-        }
-    }
 }

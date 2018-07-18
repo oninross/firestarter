@@ -1,5 +1,5 @@
 // form styles
-.form { }
+.form {}
 
 .form-item {
     margin-bottom: 15px;
@@ -21,7 +21,6 @@
             border-bottom: 1px solid $black;
             color: $black;
         }
-
 
         &:disabled {
             background: none;
@@ -47,23 +46,23 @@
         &:before {
             @include transition((border, background), $animTime, $easeOutExpo);
 
-            border: 2px solid $grey;
+            border: 2px solid #6f6f6f;
             content: "";
             display: inline-block;
-            height: 20px;
+            height: 18px;
             left: 0;
             position: absolute;
-            width: 20px;
+            width: 18px;
         }
 
         &:after {
-            @include transition(all, $animTime, $easeOutExpo);
+            @include transition((border, top, transform), $animTime, $easeOutExpo);
 
-            height: 20px;
+            height: 18px;
             position: absolute;
             margin: auto;
             transform: scale(0);
-            width: 20px;
+            width: 18px;
         }
     }
 
@@ -95,7 +94,7 @@
         label {
             &:before {
                 border-radius: 50%;
-                margin-right: 20px;
+                margin-right: 18px;
                 position: absolute;
             }
 
@@ -110,7 +109,6 @@
         }
 
         input[type="radio"] {
-
             &:checked + label {
                 &:after {
                     background: $black;
@@ -122,6 +120,10 @@
 
     &.-checkbox {
         label {
+            &:before {
+                border-radius: 2px;
+            }
+
             &:after {
                 @extend %icomoon;
 
@@ -130,14 +132,13 @@
                 display: inline-block;
                 font-size: 1em;
                 height: 10px;
-                left: 2px;
+                left: 1px;
                 top: 6px;
                 width: 10px;
             }
         }
 
         input[type="checkbox"] {
-
             &:checked + label {
                 &:before {
                     background: $black;
@@ -145,8 +146,7 @@
 
                 &:after {
                     color: $white;
-                    left: 1px;
-                    top: 1px;
+                    top: 0;
                     transform: scale(1);
                 }
             }
