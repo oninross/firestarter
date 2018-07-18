@@ -1,66 +1,35 @@
 @mixin material-btn() {
-    @include transition(all, $animTime, $easeOutExpo);
+    @include transition(background, $animTime, $easeOutExpo);
 
-    background: $white;
+    background: $black;
     border: 0;
-    border-radius: 3px;
-    color: $red;
+    border-radius: 2px;
+    color: $white;
+    cursor: pointer;
     font-size: $defaultFontSize;
     overflow: hidden;
-    padding: 10px;
+    padding: 10px 15px;
     position: relative;
+    text-decoration: none;
     width: auto;
-
-    &.colored {
-        background: $red;
-        color: $white;
-
-        svg.ripple circle {
-            fill: $white;
-        }
-
-        &:hover,
-        &:focus {
-            background: darken( $red, 10%);
-        }
-    }
 
     &:hover,
     &:focus {
-        @include material-shadow(1);
+        background: lighten($black, 25%);
+    }
+
+    &:focus {
+        outline: 2px dotted $black;
+    }
+
+    &:disabled {
+        background: lighten($grey, 30%);
+        color: lighten($grey, 10%);
+        cursor: not-allowed;
     }
 
     svg.ripple circle {
-        fill: $grey;
-    }
-}
-
-@mixin material-cta() {
-    color: $red;
-    display: block;
-    padding: 10px;
-    position: relative;
-
-    &:hover,
-    &:focus {
-        text-decoration: underline;
-    }
-}
-
-@mixin material-fab() {
-    @include material-shadow(2);
-    @include transition(all, $animTime, $easeOutExpo);
-
-    background: $red;
-    border: 0;
-    border-radius: 50%;
-    color: $white;
-    height: 45px;
-    width: 45px;
-
-    &:hover,
-    &:focus {
-        @include material-shadow(3);
+        fill: $white;
     }
 }
 

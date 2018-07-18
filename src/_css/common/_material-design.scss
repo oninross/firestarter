@@ -1,37 +1,6 @@
 // Buttons
 .btn {
-    @include transition(all, $animTime, $easeOutExpo);
-
-    background: $black;
-    border: 0;
-    border-radius: 2px;
-    color: $white;
-    cursor: pointer;
-    font-size: $defaultFontSize;
-    overflow: hidden;
-    padding: 10px 15px;
-    position: relative;
-    text-decoration: none;
-    width: auto;
-
-    &:hover,
-    &:focus {
-        background: lighten($black, 25%);
-    }
-
-    &:focus {
-        outline: 2px dotted $black;
-    }
-
-    &:disabled {
-        background: lighten($grey, 30%);
-        color: lighten($grey, 10%);
-        cursor: not-allowed;
-    }
-
-    svg.ripple circle {
-        fill: $white;
-    }
+    @include material-btn();
 }
 
 svg.ripple {
@@ -45,7 +14,6 @@ svg.ripple {
         opacity: 0;
     }
 }
-
 
 // Cards
 .card {
@@ -67,6 +35,7 @@ svg.ripple {
     &__wrapper {
         background: $white;
         border-radius: 2px;
+        box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
         min-height: 100px;
         padding: 15px 20px;
     }
@@ -111,7 +80,6 @@ svg.ripple {
         }
     }
 }
-
 
 // Progress Bar
 .progress {
