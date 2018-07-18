@@ -26,10 +26,13 @@ import ServiceWorker from '../_modules/serviceworker/serviceworker';
 
 
 $(() => {
-    new MaterialDesign();
     new Header();
     new Navigation();
     new TablePreview();
+
+    // Init Material Design
+    const material = new MaterialDesign();
+    material.init();
 
 
     // Init Google Analytics
@@ -76,6 +79,6 @@ $(() => {
     // new ServiceWorker();
 
 
-    // toaster("I'm a firestarter!!!", 0, true);
+    material.toaster("I'm a firestarter!!!", 0, true);
     console.log("I'm a firestarter!!!");
 });

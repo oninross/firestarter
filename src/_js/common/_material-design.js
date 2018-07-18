@@ -4,6 +4,16 @@ import scrollMonitor from 'scrollMonitor';
 
 export default class MaterialDesign {
     constructor() {
+        const self = this;
+
+        self.toasterInd = 0;
+
+        $('body').on('click', '.js-refresh', function () {
+            window.location.reload();
+        });
+    }
+
+    init() {
         // Ripple Effect
         const $rippleEffect = $('button, .btn');
         $rippleEffect.on('click', function (e) {
@@ -16,7 +26,7 @@ export default class MaterialDesign {
 
 
         // Floating Label Input Box
-       $('.form-item input[type="text"]').each(function () {
+        $('.form-item input[type="text"]').each(function () {
             let $this = $(this);
 
             $this
@@ -40,17 +50,6 @@ export default class MaterialDesign {
         });
 
 
-        // Progress Bar
-        $('.progress').each(function () {
-            let $this = $(this),
-                $progressBar = $this.find('.progress-bar');
-
-            if ($progressBar.data('value') !== undefined) {
-                $progressBar.css({ width: $progressBar.data('value') + '%' });
-            }
-        });
-
-
         // cards
         const card = document.getElementsByClassName('card');
         if (card.length > 0) {
@@ -68,69 +67,59 @@ export default class MaterialDesign {
             scrollMonitor.recalculateLocations();
         }
     }
+
+    toaster(msg = "Toaster message", ttl = 5, isReload = false) {
+        // Alert Toaster
+        let popupAlert = doT.template($('#toaster-template').html()),
+            obj = {
+                ind: self.toasterInd,
+                message: msg,
+                isReload: isReload
+            };
+
+        if (!$('.toaster__wrap').length) {
+            $('#main').after('<div class="toaster__wrap" />');
+        }
+
+        $('.toaster__wrap').append(popupAlert(obj));
+
+        let toaster = '.toaster' + self.toasterInd;
+
+        TweenLite.to(toaster, 0.75, {
+            opacity: 1,
+            scale: 1,
+            ease: Expo.easeOut
+        });
+
+        if (ttl !== 0) {
+            TweenLite.to(toaster, 0.75, {
+                opacity: 0,
+                scale: 0.75,
+                ease: Expo.easeOut,
+                delay: ttl,
+                onComplete: function () {
+                    $(toaster).remove();
+                }
+            });
+        }
+
+        $(toaster).on('click', '.js-dismiss', function (e) {
+            e.preventDefault();
+
+            TweenLite.to($(this).parent(), 0.75, {
+                opacity: 0,
+                scale: 0.75,
+                ease: Expo.easeOut,
+                onComplete: function () {
+                    $(toaster).remove();
+                }
+            });
+        });
+
+        self.toasterInd++;
+    }
 }
 
-
-
-
-/////////////
-// Toaster  //
-//////////////
-$('body').on('click', '.js-refresh', function () {
-    window.location.reload();
-});
-
-let toasterInd = 0;
-let toaster = function (msg = "Toaster message", ttl = 5, isReload = false) {
-    // Alert Toaster
-    let popupAlert = doT.template($('#toaster-template').html()),
-        obj = {
-            ind: toasterInd,
-            message: msg,
-            isReload: isReload
-        };
-
-    if (!$('.toaster__wrap').length) {
-        $('#main').after('<div class="toaster__wrap" />');
-    }
-
-    $('.toaster__wrap').append(popupAlert(obj));
-
-    let toaster = '.toaster' + toasterInd;
-
-    TweenLite.to(toaster, 0.75, {
-        opacity: 1,
-        scale: 1,
-        ease: Expo.easeOut
-    });
-
-    if (ttl !== 0) {
-        TweenLite.to(toaster, 0.75, {
-            opacity: 0,
-            scale: 0.75,
-            ease: Expo.easeOut,
-            delay: ttl,
-            onComplete: function () {
-                $(toaster).remove();
-            }
-        });
-    }
-
-    $(toaster).on('click', '.js-dismiss', function (e) {
-        e.preventDefault();
-
-        TweenLite.to($(this).parent(), 0.75, {
-            opacity: 0,
-            scale: 0.75,
-            ease: Expo.easeOut,
-            onComplete: function () {
-                $(toaster).remove();
-            }
-        });
-    });
-
-    toasterInd++;
-};
 
 // Ripple Effect
 let inc = 0,
@@ -171,4 +160,4 @@ let inc = 0,
         inc++;
     };
 
-export { toaster, ripple };
+export { ripple };
