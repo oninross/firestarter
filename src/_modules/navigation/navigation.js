@@ -14,7 +14,6 @@ export default class Navigation {
         const $lvl2 = el.find('.lvl2');
         const $lvl3 = el.find('.lvl3');
         const $set = $lvl1.add($lvl2).add($lvl3);
-        const $dropdownList = el.find('ul li');
         const $primaryNav = $('.js-mobile-menu');
         const $subNav = $('.js-sub-nav');
         const subNavMarkup = '<button class="sub-nav js-sub-nav icon-arrow" name="Sub-navigation"></button>';
