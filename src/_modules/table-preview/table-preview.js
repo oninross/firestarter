@@ -47,7 +47,7 @@ export default class TablePreview {
 
         // Click the button to open table in new tab
         $('body').on('click', '.js-print-table', function () {
-            let $table = $(this).prev();
+            let $table = $(this).next();
 
             localStorage.tablePreview = $table[0].innerHTML;
             window.open('/table-preview/', '_blank').focus();
