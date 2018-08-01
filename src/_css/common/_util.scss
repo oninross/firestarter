@@ -1,3 +1,7 @@
+@function em($pixels, $base: 10) {
+    @return #{$pixels / $base}em;
+}
+
 @mixin mobile {
     @media (max-width: #{$bpMaxMobile}) {
         @content;
