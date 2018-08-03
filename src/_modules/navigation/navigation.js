@@ -15,7 +15,6 @@ export default class Navigation {
         const $lvl3 = el.find('.lvl3');
         const $set = $lvl1.add($lvl2).add($lvl3);
         const $primaryNav = $('.js-mobile-menu');
-        const $subNav = $('.js-sub-nav');
         const subNavMarkup = '<button class="sub-nav js-sub-nav icon-arrow" name="Sub-navigation"></button>';
 
         let isMobileDevice = isMobile();
@@ -24,7 +23,7 @@ export default class Navigation {
         that.$visibleArea = 0;
 
         // Insert Subnav Markup after Level 1 menu items
-        $lvl1.find('ul').each(function () {
+        $lvl1.find('ol').each(function () {
             $(this).before(subNavMarkup);
         });
 
@@ -54,7 +53,7 @@ export default class Navigation {
             }
         });
 
-        $subNav.on('touchend, click', function () {
+        $body.on('touchend, click', '.js-sub-nav', function () {
             const $this = $(this);
             const $grandParent = $this.parent().parent();
             const $next = $this.next();
@@ -95,7 +94,16 @@ export default class Navigation {
                     $next.addClass('active');
                 }, 200);
 
-                $next.slideDown(easeOutExpo);
+                $next.slideDown({
+                    duration: 500,
+                    easing: 'easeOutExpo',
+                    queue: false,
+                    complete: function () {
+                        $next.css({
+                            height: 'auto'
+                        });
+                    }
+                });
             }
         });
 
