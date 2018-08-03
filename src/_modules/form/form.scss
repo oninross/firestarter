@@ -12,7 +12,7 @@
 
         border: none;
         border-bottom: 1px solid $border-color;
-        font-size: $defaultFontSize;
+        font-size: em(16);
         font-weight: $light;
         padding: 10px 0;
         width: 100%;
@@ -62,7 +62,7 @@
         label {
             cursor: pointer;
             display: block;
-            font-size: $defaultFontSize;
+            font-size: em(16);
             line-height: 1.3;
             padding-left: 30px;
             position: relative;
@@ -133,7 +133,6 @@
                 color: transparent;
                 content: "\e28a";
                 display: inline-block;
-                font-size: 1em;
                 height: 10px;
                 left: 1px;
                 top: 6px;

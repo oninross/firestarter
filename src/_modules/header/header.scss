@@ -38,9 +38,10 @@
     }
 
     a {
-        @extend h1;
-
         color: $white;
+        font-size: em(30);
+        font-weight: $bold;
+        line-height: 1;
         text-decoration: none;
     }
 
@@ -65,6 +66,7 @@
     height: 45px;
     padding: 8px;
     width: 45px;
+    overflow: hidden;
     position: absolute;
     right: 0;
     z-index: 10;
@@ -114,6 +116,7 @@
     color: $white;
     display: block;
     height: 45px;
+    overflow: hidden;
     padding: 0;
     position: absolute;
     right: 0;

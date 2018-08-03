@@ -1,5 +1,5 @@
-@function em($pixels, $base: 10) {
-    @return #{$pixels / $base}em;
+@function em($pixels) {
+    @return #{$pixels / $baseFontSize}em;
 }
 
 @mixin mobile {

@@ -16,11 +16,8 @@ html {
 }
 
 body {
-    font: 62.5%/1.618 sans-serif;
-    font-family:
-/* 1 */ -apple-system, BlinkMacSystemFont,
-/* 2 */ "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-/* 3 */ "Helvetica Neue", sans-serif;
+    font: 16px/1.618 sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     margin: 0 !important;
 
     @include tablet {
@@ -32,64 +29,52 @@ h1, h2, h3, h4, h5, h6,
 address {
     word-break: break-word;
     font-weight: bold;
-    line-height: 1;
-    margin: 0;
-    margin-bottom: 10px;
-
-    a {
-        font-size: 1em;
-    }
 }
 
 h1 {
-    font-size: 3em;
+    font-size: em(48);
+    line-height: 1.05em;
 }
 
 h2 {
-    font-size: 2.6em;
+    font-size: em(36);
+    line-height: 1.25;
 }
 
 h3 {
-    font-size: 2.4em;
+    font-size: em(28);
+    line-height: 1.25em;
 }
 
 h4 {
-    font-size: 2.2em;
+    font-size: em(18);
+    line-height: 1.222222em;
 }
 
 h5 {
-    font-size: 2em;
+    font-size: em(17);
     font-style: italic;
 }
 
 h6 {
-    font-size: 1.8em;
+    font-size: em(16);
     font-style: italic;
+}
+
+blockquote {
+    font-weight: $light;
+    font-size: em(24);
+    font-style: italic;
+    line-height: 1.458333em;
 }
 
 menu, ol, ul {
     margin-bottom: 20px;
     padding: 0 0 0 40px;
-
-    li {
-        font-size: $defaultFontSize;
-
-        li {
-            font-size: 1em;
-        }
-
-        a {
-            font-size: 1em;
-        }
-    }
 }
 
 ol, ul {
     margin: auto;
-}
-
-dl {
-    font-size: $defaultFontSize;
 }
 
 table {
@@ -100,28 +85,25 @@ table {
     margin-bottom: 20px;
     width: 100%;
 
+    tr {
+        background-color: #efefef;
+    }
+
     tr:nth-child(even) {
-        background: lighten( $grey, 25%);
+        background-color: darken(#efefef, 5%);
     }
 
     th, td {
+        border: 1px solid #fff;
         padding: 5px 10px;
         vertical-align: top;
     }
 
     th {
-        background: darken( $grey, 10% );
+        background: #757575;
+        font-size: em(20);
         color: $white;
-        font-size: 1.8em;
         text-align: left;
-    }
-
-    td {
-        font-size: $defaultFontSize;
-    }
-
-    p, a {
-        font-size: 1em;
     }
 }
 
@@ -139,29 +121,16 @@ img {
 }
 
 address {
-    font-size: $defaultFontSize;
     margin: 0 0 10px;
     word-break: break-word;
 }
 
-blockquote {
-    font-size: 1.8em;
-    font-weight: $light;
-    line-height: 1.25;
-}
-
 p {
-    font-size: $defaultFontSize;
     word-break: break-word;
-
-    a {
-        font-size: 1em;
-    }
 }
 
 a {
     color: $black;
-    font-size: $defaultFontSize;
     margin-bottom: 10px;
 }
 
