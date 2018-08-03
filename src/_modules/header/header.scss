@@ -38,9 +38,10 @@
     }
 
     a {
-        @extend h1;
-
         color: $white;
+        font-size: em(30);
+        font-weight: $bold;
+        line-height: 1;
         text-decoration: none;
     }
 

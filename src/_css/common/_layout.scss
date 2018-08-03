@@ -6,13 +6,13 @@ Layout
     position: relative;
 
     @include desktop {
-        margin-top: 105px;
+        margin-top: 108px;
     }
 }
 
 .intro {
     p {
-        font-size: 1.8em;
+        font-size: em(18);
         font-weight: bold;
     }
 }
@@ -39,7 +39,7 @@ Layout
 
 .skip-link {
     background-color: $white;
-    font-size: 1.2em;
+    font-size: em(12);
     font-weight: bold;
     left: 0px;
     padding: 5px;

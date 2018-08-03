@@ -7,7 +7,6 @@
     border-radius: 2px;
     color: $white;
     cursor: pointer;
-    font-size: $defaultFontSize;
     overflow: hidden;
     padding: 10px 15px;
     position: relative;
@@ -185,7 +184,7 @@ svg.ripple {
 
         .btn-refresh {
             color: $yellow;
-            font-size: 1.3em;
+            font-size: em(13);
             right: 50px;
             width: auto;
         }
@@ -203,7 +202,7 @@ svg.ripple {
     &.focus {
         label {
             color: $black;
-            font-size: 1em;
+            font-size: em(10);
             top: -10px;
         }
 
@@ -216,7 +215,6 @@ svg.ripple {
     label {
         @include transition((color, font-size, top), $animTime, $easeOutExpo);
 
-        font-size: $defaultFontSize;
         position: absolute;
         top: 8px;
     }
@@ -239,8 +237,8 @@ select {
     border: 0;
     border-radius: 0;
     border-bottom: 2px solid $border-color;
-    font-size: $defaultFontSize;
-    height: 35px;
+    font-size: em(16);
+    height: 40px;
     padding: 10px 0;
     width: 100%;
 }
