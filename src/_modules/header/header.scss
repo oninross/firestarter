@@ -13,14 +13,19 @@
         @include transition(top, 1s, $easeOutExpo);
 
         .top-nav {
-            ul { padding-right: 0; }
+            ul {
+                padding-right: 0;
+            }
         }
     }
+
 
     @include desktop {
         height: auto;
 
-        &.hide { top: -105px !important; }
+        &.hide {
+            top: -108px !important;
+        }
     }
 }
 
@@ -36,6 +41,7 @@
         padding-bottom: 15px;
         padding-top: 15px;
     }
+
 
     a {
         color: $white;
