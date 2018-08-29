@@ -6,7 +6,7 @@
     height: 45px;
     position: absolute;
     right: 0;
-    top: 45px;;
+    top: 45px;
     width: 100%;
     z-index: 5;
 
@@ -22,6 +22,7 @@
             display: none;
         }
     }
+
 
     &.active {
         z-index: 25;
@@ -118,6 +119,7 @@
             max-width: 960px;
         }
 
+
         @include large-desktop {
             max-width: 1160px;
         }
@@ -172,6 +174,7 @@
             max-width: none;
         }
 
+
         &.active {
             @include material-shadow(2);
 
@@ -179,7 +182,6 @@
 
             & > li {
                 transform: none;
-
                 opacity: 1;
             }
         }
@@ -220,7 +222,7 @@
     }
 
     .lvl2 {
-        background: lighten( $black, 30%);
+        background: lighten($black, 30%);
 
         a {
             color: $white;
@@ -234,10 +236,10 @@
     }
 
     .lvl3 {
-        background: lighten( $black, 20%);
+        background: lighten($black, 20%);
 
         li {
-            border-top: 1px solid lighten( $black, 40%);
+            border-top: 1px solid lighten($black, 40%);
         }
 
         a {
