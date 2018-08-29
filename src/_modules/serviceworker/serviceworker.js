@@ -1,17 +1,21 @@
 
 'use strict';
 
-import { toaster } from "../../_js/common/_material-design";
+import MaterialDesign from '../../_js/common/_material-design';
 
 export default class ServiceWorker {
   constructor() {
 
+    const material = new MaterialDesign();
+
     /*
-     * https://developers.google.com/web/fundamentals/app-install-banners/
-     * Look out for this link when Chrome 68 rolls out
-     */
+    * https://developers.google.com/web/fundamentals/app-install-banners/
+    * Look out for this link when Chrome 68 rolls out
+    */
 
     if ('serviceWorker' in navigator) {
+      let deferredPrompt;
+
       window.addEventListener('load', function () {
         if ('serviceWorker' in navigator) {
           navigator.serviceWorker.register('/service-worker.js', { scope: './' })
@@ -27,7 +31,7 @@ export default class ServiceWorker {
                   switch (installingWorker.state) {
                     case 'installed':
                       if (!navigator.serviceWorker.controller) {
-                        toaster('Caching complete!');
+                        material.toaster('Caching complete!');
                       }
                       break;
 
@@ -57,7 +61,7 @@ export default class ServiceWorker {
         }
       });
 
-      window.addEventListener('beforeinstallprompt', function (e) {
+      window.addEventListener('beforeinstallprompt', (e) => {
         // Prevent Chrome 67 and earlier from automatically showing the prompt
         e.preventDefault();
         // Stash the event so it can be triggered later.
@@ -74,7 +78,7 @@ export default class ServiceWorker {
         console.log("navigator.serviceWorker.controller.onstatechange:: " + navigator.serviceWorker.controller.onstatechange)
         navigator.serviceWorker.controller.onstatechange = function (event) {
           if (event.target.state === 'redundant') {
-            toaster('A new version of this app is available.'); // duration 0 indications shows the toast indefinitely.
+            material.toaster('A new version of this app is available.'); // duration 0 indications shows the toast indefinitely.
             window.location.reload();
           }
         };

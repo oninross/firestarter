@@ -33,7 +33,7 @@ var CURRENT_CACHES = {
 var urlsToPrefetch = [
     'assets/firestarter/css/main.css',
     'assets/firestarter/js/main.js',
-    'assets/firestarter/css/fonts/icomoon.woff',
+    'assets/firestarter/fonts/icomoon.woff',
     'manifest.json',
     OFFLINE_URL,
     'index.html?homescreen=1',
@@ -125,29 +125,52 @@ self.addEventListener('fetch', function (event) {
     console.log('Handling fetch event for', event.request.url);
 
     event.respondWith(
-        // caches.match() will look for a cache entry in all of the caches available to the service worker.
-        // It's an alternative to first opening a specific named cache and then matching on self.
-        caches.match(event.request).then(function (response) {
-            if (response) {
-                console.log('Found response in cache:', response);
+        caches.open(CURRENT_CACHES.prefetch).then(function (cache) {
+            return cache.match(event.request).then(function (response) {
+                if (response) {
+                    // If there is an entry in the cache for event.request, then response will be defined
+                    // and we can just return it.
+                    console.log(' Found response in cache:', response);
 
-                return response;
-            }
+                    return response;
+                }
 
-            console.log('No response found in cache. About to fetch from network...');
+                // Otherwise, if there is no entry in the cache for event.request, response will be
+                // undefined, and we need to fetch() the resource.
+                console.log(' No response for %s found in cache. ' +
+                    'About to fetch from network...', event.request.url);
 
-            // event.request will always have the proper mode set ('cors, 'no-cors', etc.) so we don't
-            // have to hardcode 'no-cors' like we do when fetch()ing in the install handler.
-            return fetch(event.request).then(function (response) {
-                console.log('Response from network is:', response);
+                // We call .clone() on the request since we might use it in the call to cache.put() later on.
+                // Both fetch() and cache.put() "consume" the request, so we need to make a copy.
+                // (see https://fetch.spec.whatwg.org/#dom-request-clone)
+                return fetch(event.request.clone()).then(function (response) {
+                    console.log('  Response for %s from network is: %O',
+                        event.request.url, response);
 
-                return response;
+                    // Optional: add in extra conditions here, e.g. response.type == 'basic' to only cache
+                    // responses from the same domain. See https://fetch.spec.whatwg.org/#concept-response-type
+                    if (response.status < 400) {
+                        // This avoids caching responses that we know are errors (i.e. HTTP status code of 4xx or 5xx).
+                        // One limitation is that, for non-CORS requests, we get back a filtered opaque response
+                        // (https://fetch.spec.whatwg.org/#concept-filtered-response-opaque) which will always have a
+                        // .status of 0, regardless of whether the underlying HTTP call was successful. Since we're
+                        // blindly caching those opaque responses, we run the risk of caching a transient error response.
+                        //
+                        // We need to call .clone() on the response object to save a copy of it to the cache.
+                        // (https://fetch.spec.whatwg.org/#dom-request-clone)
+                        cache.put(event.request, response.clone());
+                    }
+
+                    // Return the original response object, which will be used to fulfill the resource request.
+                    return response;
+                });
             }).catch(function (error) {
-                // This catch() will handle exceptions thrown from the fetch() operation.
+                // This catch() will handle exceptions that arise from the match() or fetch() operations.
                 // Note that a HTTP error response (e.g. 404) will NOT trigger an exception.
                 // It will return a normal response object that has the appropriate error code set.
-                console.error('Fetching failed:', error);
+                console.error('  Read-through caching failed:', error);
 
+                // throw error;
                 return caches.match(OFFLINE_URL);
             });
         })
