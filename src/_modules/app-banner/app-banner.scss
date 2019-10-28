@@ -1,0 +1,51 @@
+// app-banner styles
+// app-banner styles
+#app-banner {
+    @include material-shadow(1);
+    @include transition(all, 0.5s, $easeOutExpo);
+
+    background: $white;
+    bottom: 40px;
+    display: none;
+    left: 0;
+    margin: auto;
+    max-width: 320px;
+    opacity: 0;
+    padding: 0 $gutter 20px;
+    position: fixed;
+    transition-delay: 1s;
+    right: 0;
+    width: 100%;
+    z-index: 5;
+
+    &.show {
+        opacity: 1;
+        bottom: 60px;
+    }
+
+    .iOS & {
+        display: block;
+
+        @include tablet {
+            bottom: auto;
+            left: auto;
+            right: 10px;
+            top: 10px;
+        }
+    }
+
+    p {
+        font-size: 1.5em;
+    }
+
+    .icon {
+        color: #2e62ec;
+        font-size: 1.6em;
+    }
+
+    .btn {
+        background: $blue;
+        float: right;
+        padding: 5px 20px;
+    }
+}

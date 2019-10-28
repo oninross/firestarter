@@ -6,6 +6,7 @@
     "dot": "^1.1.2",
     "gsap": "^1.19.1",
     "jquery": "^3.4.1",
+    "jquery.cookie": "^1.4.1",
     "jquery-lazyload": "^1.9.7",
     "normalize.css": "~5.0.0",
     "scrollmonitor": "^1.2.3"
@@ -69,7 +70,8 @@
     "EasePack": "./node_modules/gsap/src/uncompressed/easing/EasePack.js",
     "AttrPlugin": "./node_modules/gsap/src/uncompressed/plugins/AttrPlugin.js",
     "CSSPlugin": "./node_modules/gsap/src/uncompressed/plugins/CSSPlugin.js",
-    "scrollMonitor": "./node_modules/scrollmonitor/scrollmonitor.js"
+    "scrollMonitor": "./node_modules/scrollmonitor/scrollmonitor.js",
+    "jquery.cookie": "./node_modules/jquery.cookie/jquery.cookie.js"
   },
   "browserify-shim": {
     "jquery": "jQuery",

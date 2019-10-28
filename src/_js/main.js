@@ -76,7 +76,7 @@ $(() => {
 
 
     // Simple Service Worker to make App Install work (OPTIONAL)
-    // new ServiceWorker();
+    new ServiceWorker();
 
 
     material.toaster("I'm a firestarter!!!", 0);
