@@ -57,21 +57,27 @@ html.no-js(lang='en')
 
         block scripts
             // The core Firebase JS SDK is always required and must be listed first
-            script(src='/__/firebase/7.2.2/firebase-app.js')
-
+            script(src='https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js')
             //
                 TODO: Add SDKs for Firebase products that you want to use
                 https://firebase.google.com/docs/web/setup#available-libraries
-            // Initialize Firebase
-            script(src='/__/firebase/init.js')
+            script(src='https://www.gstatic.com/firebasejs/7.2.2/init.js')
 
             script(src= baseUrl + 'assets/firestarter/js/main.js')
+
+            script#a2hs-template(type='text/template')
+                .toaster__card.-install(class='toaster{{= it.ind }}')
+                    p Would you like to install the web app on your device?
+                    button.btn-install.-js-install-a2hs Install
+                    button.-js-dismiss-a2hs
+                        span.sr-only Close
+                        i.icon.icon-cross
 
             script#toaster-template(type='text/template')
                 | {{? it.isReload }}
                 .toaster__card.-refresh(class='toaster{{= it.ind }}')
                     p {{! it.message }}
-                    button.btn-refresh.js-refresh REFRESH
+                    button.btn-refresh.js-refresh Refresh
                     button.js-dismiss
                         span.sr-only Close
                         i.icon.icon-cross

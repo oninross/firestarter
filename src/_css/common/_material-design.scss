@@ -160,8 +160,12 @@ svg.ripple {
             margin-bottom: 0;
         }
 
-        &.-refresh {
+        &.-refresh{
             padding-right: 135px;
+        }
+
+        &.-install {
+            padding-right: 125px;
         }
 
         p {
@@ -182,10 +186,12 @@ svg.ripple {
             width: 20px;
         }
 
-        .btn-refresh {
+        .btn-refresh,
+        .btn-install {
             color: $yellow;
             font-size: em(13);
             right: 50px;
+            text-transform: uppercase;
             width: auto;
         }
 

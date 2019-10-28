@@ -125,6 +125,30 @@ export default class MaterialDesign {
         self.toasterInd++;
     }
 
+    a2hs() {
+        const self = this;
+
+        // Alert Toaster
+        let popupAlert = doT.template($('#a2hs-template').html()),
+            obj = {
+                ind: self.toasterInd
+            };
+
+        if (!$('.toaster__wrap').length) {
+            $('#main').after('<div class="toaster__wrap" />');
+        }
+
+        $('.toaster__wrap').append(popupAlert(obj));
+
+        let toaster = '.toaster' + self.toasterInd;
+
+        TweenLite.to(toaster, 0.75, {
+            opacity: 1,
+            scale: 1,
+            ease: Expo.easeOut
+        });
+    }
+
     ripple(e, el) {
         if ($('.no-svg').length || el.find('svg').length) {
             return false;

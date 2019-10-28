@@ -1,15 +1,18 @@
 
 'use strict';
 
+import 'jquery.cookie';
 import MaterialDesign from '../../_js/common/_material-design';
 
 export default class ServiceWorker {
   constructor() {
-
+    const self = this;
     const material = new MaterialDesign();
 
     if ('serviceWorker' in navigator) {
-      let deferredPrompt;
+      self.deferredPrompt;
+
+      let isA2hs = $.cookie('addToHomeScreeen') == undefined ? $.cookie('addToHomeScreeen', true, { path: '/' }) : JSON.parse($.cookie('addToHomeScreeen'));
 
       window.addEventListener('load', function () {
         if ('serviceWorker' in navigator) {
@@ -47,22 +50,44 @@ export default class ServiceWorker {
         // Prevent Chrome 76 and later from showing the mini-infobar
         e.preventDefault();
 
+        if (!isA2hs) {
+          return false;
+        }
+
         // Stash the event so it can be triggered later.
-        deferredPrompt = e;
+        self.deferredPrompt = e;
 
-        // Show the prompt
-        deferredPrompt.prompt();
+        material.a2hs();
 
-        // Wait for the user to respond to the prompt
-        deferredPrompt.userChoice
-          .then((choiceResult) => {
-            if (choiceResult.outcome === 'accepted') {
-              console.log('User accepted the A2HS prompt');
-            } else {
-              console.log('User dismissed the A2HS prompt');
+        $('.-js-install-a2hs').on('click', function () {
+          let $a2hs = $(this).parent();
+
+          self.showInstallPromotion();
+
+          TweenLite.to($a2hs, 0.75, {
+            opacity: 0,
+            scale: 0.75,
+            ease: Expo.easeOut,
+            onComplete: function () {
+              $a2hs.remove();
             }
-            deferredPrompt = null;
           });
+        });
+
+        $('.-js-dismiss-a2hs').on('click', function () {
+          let $a2hs = $(this).parent();
+
+          $.cookie('addToHomeScreeen', false, { expires: 7, path: '/' });
+
+          TweenLite.to($a2hs, 0.75, {
+            opacity: 0,
+            scale: 0.75,
+            ease: Expo.easeOut,
+            onComplete: function () {
+              $a2hs.remove();
+            }
+          });
+        });
       });
 
       window.addEventListener('appinstalled', (evt) => {
@@ -75,8 +100,8 @@ export default class ServiceWorker {
         console.log("navigator.serviceWorker.controller.onstatechange:: " + navigator.serviceWorker.controller.onstatechange)
         navigator.serviceWorker.controller.onstatechange = function (event) {
           if (event.target.state === 'redundant') {
-            material.toaster('A new version of this app is available.'); // duration 0 indications shows the toast indefinitely.
-            window.location.reload();
+            material.toaster('A new version of this app is available.', 0); // duration 0 indications shows the toast indefinitely.
+            // window.location.reload();
           }
         };
       }
@@ -85,5 +110,20 @@ export default class ServiceWorker {
 
   showInstallPromotion() {
     const self = this;
+
+    // Show the prompt
+    self.deferredPrompt.prompt();
+
+    // Wait for the user to respond to the prompt
+    self.deferredPrompt.userChoice
+      .then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the A2HS prompt');
+        } else {
+          console.log('User dismissed the A2HS prompt');
+        }
+
+        self.deferredPrompt = null;
+      });
   }
 }

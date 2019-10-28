@@ -16,8 +16,6 @@ import './common/_modernizr';
 // for testing a11y only.  Remove before integration
 import './common/tota11y.min';
 
-import MaterialDesign from './common/_material-design';
-
 import Header from '../_modules/header/header';
 import Navigation from '../_modules/navigation/navigation';
 import Galisteners from '../_modules/galisteners/galisteners';
@@ -29,11 +27,6 @@ $(() => {
     new Header();
     new Navigation();
     new TablePreview();
-
-    // Init Material Design
-    const material = new MaterialDesign();
-    material.init();
-
 
     // Init Google Analytics
     const ga = new Galisteners();
@@ -78,7 +71,5 @@ $(() => {
     // Simple Service Worker to make App Install work (OPTIONAL)
     new ServiceWorker();
 
-
-    material.toaster("I'm a firestarter!!!", 0);
     console.log("I'm a firestarter!!!");
 });
