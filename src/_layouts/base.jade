@@ -61,7 +61,19 @@ html.no-js(lang='en')
             //
                 TODO: Add SDKs for Firebase products that you want to use
                 https://firebase.google.com/docs/web/setup#available-libraries
-            script(src='https://www.gstatic.com/firebasejs/7.2.2/init.js')
+            script.
+                // Your web app's Firebase configuration
+                var firebaseConfig = {
+                apiKey: "AIzaSyDXFnxAZrJGjwm9zAo73BnXQYRuOhX4CpQ",
+                authDomain: "firestarter-6a5d4.firebaseapp.com",
+                databaseURL: "https://firestarter-6a5d4.firebaseio.com",
+                projectId: "firestarter-6a5d4",
+                storageBucket: "firestarter-6a5d4.appspot.com",
+                messagingSenderId: "735170630921",
+                appId: "1:735170630921:web:d785f6803ea3b72f5eefd8"
+                };
+                // Initialize Firebase
+                firebase.initializeApp(firebaseConfig);
 
             script(src= baseUrl + 'assets/firestarter/js/main.js')
 
