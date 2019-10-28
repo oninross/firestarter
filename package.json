@@ -1,5 +1,5 @@
 {
-  "name": "mtaa",
+  "name": "firestarter",
   "version": "1.8.0",
   "dependencies": {
     "browserify-shim": "^3.8.12",
@@ -86,7 +86,7 @@
     "baseUrl": "./",
     "directories": {
       "source": "src",
-      "assets": "assets/mtaa",
+      "assets": "assets/firestarter",
       "destination": "build",
       "temporary": "tmp",
       "//": "Directories relative to `source` directory",
