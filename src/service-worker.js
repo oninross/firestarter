@@ -24,7 +24,7 @@
 // cache, then increment the CACHE_VERSION value. It will kick off the service worker update
 // flow and the old cache(s) will be purged as part of the activate event handler when the
 // updated service worker is activated.
-var version = '1.8.0';
+var version = '1.8.1';
 var now = Date.now();
 var OFFLINE_URL = '/pages/offline/';
 var CURRENT_CACHES = {
