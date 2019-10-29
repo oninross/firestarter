@@ -41,19 +41,32 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
             .pipe(gulp.dest('./src'));
     }
 
+    function base(importance) {
+        // get all the files to bump version in
+        return gulp.src(['./src/_layouts/base.jade'])
+            // bump the version number in those files
+            .pipe(bump({type: importance}))
+
+            // save it back to filesystem
+            .pipe(gulp.dest('./src/_layouts'));
+    }
+
     gulp.task('patch', function() {
         pack('patch');
         sw('patch');
+        base('patch');
     });
 
     gulp.task('feature', function() {
         pack('minor');
         sw('minor');
+        base('minor');
     });
 
     gulp.task('release', function() {
         pack('major');
         sw('major');
+        base('major');
     });
 
 
