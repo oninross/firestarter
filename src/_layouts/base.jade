@@ -2,101 +2,74 @@ include ../_modules/header/header
 
 //- Custom Configuration
 block config
-    //- Setup site's base URL to match the "baseUrl" key within `package.json`
-    //- Otherwise default to relative pathing
-    - var baseUrl = config.baseUrl || './'
-    - var isTablePreview = config.isTablePreview || false
+  //- Setup site's base URL to match the "baseUrl" key within `package.json`
+  //- Otherwise default to relative pathing
+  - var baseUrl = config.baseUrl || './'
+  - var isTablePreview = config.isTablePreview || false
 
 doctype html
 html.no-js(lang='en')
-    head
-        meta(charset='utf-8')
-        meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge,chrome=1')
 
-        title firestarter
+    title firestarter
 
-        meta(name='description', content= 'A quick, easy front-end framework and setup for any project')
-        meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=5.0')
+    meta(name='description', content= 'A quick, easy front-end framework and setup for any project')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=5.0')
 
-        link(rel='manifest', href='/manifest.json')
-        meta(name='mobile-web-app-capable', content='yes')
-        meta(name='apple-mobile-web-app-capable', content='yes')
-        meta(name='msapplication-TileColor', content='#000000')
-        meta(name='msapplication-TileImage', content= baseUrl + 'assets/firestarter/images/favicon/ms-icon-144x144.png')
-        meta(name='theme-color', content='#000000')
+    link(rel='manifest' href='/manifest.json')
+    meta(name='mobile-web-app-capable' content='yes')
+    meta(name='apple-mobile-web-app-capable' content='yes')
+    meta(name='msapplication-TileColor' content='#000000')
+    meta(name='msapplication-TileImage', content= baseUrl + 'assets/firestarter/images/favicon/ms-icon-144x144.png')
+    meta(name='theme-color' content='#000000')
 
-        link(rel='apple-touch-icon', sizes='57x57', href= baseUrl + 'assets/firestarter/images/favicon/apple-icon-57x57.png')
-        link(rel='apple-touch-icon', sizes='60x60', href= baseUrl + 'assets/firestarter/images/favicon/apple-icon-60x60.png')
-        link(rel='apple-touch-icon', sizes='72x72', href= baseUrl + 'assets/firestarter/images/favicon/apple-icon-72x72.png')
-        link(rel='apple-touch-icon', sizes='76x76', href= baseUrl + 'assets/firestarter/images/favicon/apple-icon-76x76.png')
-        link(rel='apple-touch-icon', sizes='114x114', href= baseUrl + 'assets/firestarter/images/favicon/apple-icon-114x114.png')
-        link(rel='apple-touch-icon', sizes='120x120', href= baseUrl + 'assets/firestarter/images/favicon/apple-icon-120x120.png')
-        link(rel='apple-touch-icon', sizes='144x144', href= baseUrl + 'assets/firestarter/images/favicon/apple-icon-144x144.png')
-        link(rel='apple-touch-icon', sizes='152x152', href= baseUrl + 'assets/firestarter/images/favicon/apple-icon-152x152.png')
-        link(rel='apple-touch-icon', sizes='180x180', href= baseUrl + 'assets/firestarter/images/favicon/apple-icon-180x180.png')
-        link(rel='icon', type='image/png', sizes='192x192', href= baseUrl + 'assets/firestarter/images/favicon/android-icon-192x192.png')
+    link(rel='apple-touch-icon' sizes='57x57', href= baseUrl + 'assets/firestarter/images/favicon/apple-icon-57x57.png')
+    link(rel='apple-touch-icon' sizes='60x60', href= baseUrl + 'assets/firestarter/images/favicon/apple-icon-60x60.png')
+    link(rel='apple-touch-icon' sizes='72x72', href= baseUrl + 'assets/firestarter/images/favicon/apple-icon-72x72.png')
+    link(rel='apple-touch-icon' sizes='76x76', href= baseUrl + 'assets/firestarter/images/favicon/apple-icon-76x76.png')
+    link(rel='apple-touch-icon' sizes='114x114', href= baseUrl + 'assets/firestarter/images/favicon/apple-icon-114x114.png')
+    link(rel='apple-touch-icon' sizes='120x120', href= baseUrl + 'assets/firestarter/images/favicon/apple-icon-120x120.png')
+    link(rel='apple-touch-icon' sizes='144x144', href= baseUrl + 'assets/firestarter/images/favicon/apple-icon-144x144.png')
+    link(rel='apple-touch-icon' sizes='152x152', href= baseUrl + 'assets/firestarter/images/favicon/apple-icon-152x152.png')
+    link(rel='apple-touch-icon' sizes='180x180', href= baseUrl + 'assets/firestarter/images/favicon/apple-icon-180x180.png')
+    link(rel='icon' type='image/png' sizes='192x192', href= baseUrl + 'assets/firestarter/images/favicon/android-icon-192x192.png')
 
-        link(rel='icon', type='image/png', sizes='32x32', href= baseUrl + 'assets/firestarter/images/favicon/favicon-32x32.png')
-        link(rel='icon', type='image/png', sizes='96x96', href= baseUrl + 'assets/firestarter/images/favicon/favicon-96x96.png')
-        link(rel='icon', type='image/png', sizes='16x16', href= baseUrl + 'assets/firestarter/images/favicon/favicon-16x16.png')
+    link(rel='icon' type='image/png' sizes='32x32', href= baseUrl + 'assets/firestarter/images/favicon/favicon-32x32.png')
+    link(rel='icon' type='image/png' sizes='96x96', href= baseUrl + 'assets/firestarter/images/favicon/favicon-96x96.png')
+    link(rel='icon' type='image/png' sizes='16x16', href= baseUrl + 'assets/firestarter/images/favicon/favicon-16x16.png')
 
-        block stylesheets
-            link(rel='stylesheet', href= baseUrl + 'assets/firestarter/css/main.css')
+    block stylesheets
+      link(rel='stylesheet', href= baseUrl + 'assets/firestarter/css/main.css')
 
-    body
-        a.skip-link(href='#main') Skip to content
+  body
+    a.skip-link(href='#main') Skip to content
 
-        if !isTablePreview
-            +header()
+    if !isTablePreview
+      +header()
 
-        if isTablePreview
-            block content
-        else
-            main#main
-                block content
+    if isTablePreview
+      block content
+    else
+      main#main
+        block content
 
-        block scripts
-            // The core Firebase JS SDK is always required and must be listed first
-            script(src='https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js')
-            //
-                TODO: Add SDKs for Firebase products that you want to use
-                https://firebase.google.com/docs/web/setup#available-libraries
-            script.
-                // Your web app's Firebase configuration
-                var firebaseConfig = {
-                apiKey: "AIzaSyDXFnxAZrJGjwm9zAo73BnXQYRuOhX4CpQ",
-                authDomain: "firestarter-6a5d4.firebaseapp.com",
-                databaseURL: "https://firestarter-6a5d4.firebaseio.com",
-                projectId: "firestarter-6a5d4",
-                storageBucket: "firestarter-6a5d4.appspot.com",
-                messagingSenderId: "735170630921",
-                appId: "1:735170630921:web:d785f6803ea3b72f5eefd8"
-                };
-                // Initialize Firebase
-                firebase.initializeApp(firebaseConfig);
+    block scripts
+      script(src= baseUrl + 'assets/firestarter/js/main.js')
 
-            script(src= baseUrl + 'assets/firestarter/js/main.js')
-
-            script#a2hs-template(type='text/template')
-                .toaster__card.-install(class='toaster{{= it.ind }}')
-                    p Would you like to install the web app on your device?
-                    button.btn-install.-js-install-a2hs Install
-                    button.-js-dismiss-a2hs
-                        span.sr-only Close
-                        i.icon.icon-cross
-
-            script#toaster-template(type='text/template')
-                | {{? it.isReload }}
-                .toaster__card.-refresh(class='toaster{{= it.ind }}')
-                    p {{! it.message }}
-                    button.btn-refresh.js-refresh Refresh
-                    button.js-dismiss
-                        span.sr-only Close
-                        i.icon.icon-cross
-                | {{?? }}
-                .toaster__card(class='toaster{{= it.ind }}')
-                    p {{! it.message }}
-                    button.js-dismiss
-                        span.sr-only Close
-                        i.icon.icon-cross
-                | {{? }}
+      script#toaster-template(type='text/template')
+        | {{? it.isReload }}
+        .toaster__card.-refresh(class='toaster{{= it.ind }}')
+          p {{! it.message }}
+          button.btn-refresh.js-refresh Refresh
+          button.js-dismiss
+            span.sr-only Close
+            i.icon.icon-cross
+        | {{?? }}
+        .toaster__card(class='toaster{{= it.ind }}')
+          p {{! it.message }}
+          button.js-dismiss
+            span.sr-only Close
+            i.icon.icon-cross
+        | {{? }}
