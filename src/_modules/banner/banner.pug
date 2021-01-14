@@ -1,6 +1,8 @@
 mixin banner(spec)
-  - spec = spec || {}
-  - spec.__class = spec.__class || ''
+    - spec = spec || {}
+    - spec.__class = spec.__class || ''
+    - spec.__title = spec.__title || 'Standard Content'
 
-  div(class=spec.__class)&attributes(attributes)
-    p This is an example paragraph for the banner module
+    header.banner.backstretch.lazy(data-original='//placehold.it/1600x768')
+        .container
+            h2!= spec.__title

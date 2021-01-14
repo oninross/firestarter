@@ -1,1 +1,14 @@
 // banner styles
+.banner {
+    color: $white;
+    height: 150px;
+    margin-bottom: 20px;
+
+    h2 {
+        margin-top: 20px;
+    }
+
+    @include tablet {
+        height: 180px;
+    }
+}
