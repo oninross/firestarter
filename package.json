@@ -2,7 +2,7 @@
   "name": "firestarter",
   "version": "0.0.1",
   "dependencies": {
-    "jquery": "~3.4.1",
+    "jquery": "^3.5.1",
     "normalize.css": "~8.0.1"
   },
   "devDependencies": {
@@ -54,7 +54,7 @@
     "imagemin-pngquant": "~7.0.0",
     "js-yaml": "~3.13.0",
     "watchify": "~3.11.0 ",
-    "browserify" : "~16.3.0",
+    "browserify": "~16.3.0",
     "karma": "~4.2.0",
     "karma-browserify": "~6.1.0",
     "karma-chrome-launcher": "~3.0.0",
@@ -75,16 +75,19 @@
   "engines": {
     "node": ">=8.16.0"
   },
-  "browserslist": ["last 2 version", "> 5%", "safari 5", "ios 6", "android 4"],
+  "browserslist": [
+    "last 2 version",
+    "> 5%",
+    "safari 5",
+    "ios 6",
+    "android 4"
+  ],
   "//": "CUSTOM CONFIGURATION",
   "config": {
-    "//": "Local Server Settings",
+    "//": "Entry files",
     "host": "127.0.0.1",
     "port": "3000",
     "baseUrl": "./",
-    "//": "Gulp Task Directories",
-    "//": "NOTE: folders prefixed with an underscore (_) will have it removed when moved to build target (ex: src/_images -> build/images)",
-    "//": "NOTE: folders NOT prefixed with underscore (_) will be copied to build target 1 to 1 (ex: src/fonts -> build/fonts)",
     "directories": {
       "source": "src",
       "destination": "build",
@@ -97,7 +100,6 @@
       "scripts": "_scripts",
       "data": "_data"
     },
-    "//": "Entry files",
     "entries": {
       "js": "main**.js",
       "css": "main**.{sass,scss}"
