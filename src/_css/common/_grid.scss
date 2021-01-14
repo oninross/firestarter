@@ -1,0 +1,82 @@
+.grid {
+    [class^="col-"], [class*=" col-"] {
+        background: lighten( $grey, 25% );
+        border: 1px solid $grey;
+        text-align: center;
+    }
+}
+
+[class^="col-"], [class*=" col-"] {
+    margin-bottom: 20px;
+    padding: 0 $gutter;
+    width: 100%;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    @include tablet {
+        float: left;
+        margin-bottom: 0;
+        padding: 0 $gutterTablet;
+    }
+}
+
+@include tablet {
+    .col-1 { width: 8.333333%; }
+    .col-2 { width: 16.666667%; }
+    .col-3 { width: 25%; }
+    .col-4 { width: 33.333333%; }
+    .col-5 { width: 41.666667%; }
+    .col-6 { width: 50%; }
+    .col-7 { width: 58.333333%; }
+    .col-8 { width: 66.666667%; }
+    .col-9 { width: 75%; }
+    .col-10 { width: 83.333333%; }
+    .col-11 { width: 91.666667%; }
+    .col-12 { width: 100%; }
+
+    .col-offset-1 { margin-left: 8.333333%; }
+    .col-offset-2 { margin-left: 16.666667%; }
+    .col-offset-3 { margin-left: 25%; }
+    .col-offset-4 { margin-left: 33.333333%; }
+    .col-offset-5 { margin-left: 41.666667%; }
+    .col-offset-6 { margin-left: 50%; }
+    .col-offset-7 { margin-left: 58.333333%; }
+    .col-offset-8 { margin-left: 66.666667%; }
+    .col-offset-9 { margin-left: 75%; }
+    .col-offset-10 { margin-left: 83.333333%; }
+    .col-offset-11 { margin-left: 91.666667%; }
+    .col-offset-12 { margin-left: 100%; }
+}
+
+.container {
+    @include clearfix;
+
+    height: 100%;
+    margin: auto;
+    max-width: 960px;
+    padding: 0 $gutter;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+
+    @include desktop {
+        padding: 0 $gutterTablet;
+    }
+
+    @include large-desktop {
+        max-width: 1160px;
+    }
+
+    .wrap {
+        @include clearfix;
+
+        margin: 0 (-$gutter);
+        padding: 0;
+
+        @include tablet {
+            margin: 0 (-$gutterTablet);
+        }
+    }
+}

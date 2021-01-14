@@ -1,0 +1,211 @@
+@function em($pixels) {
+    @return #{$pixels / $baseFontSize}em;
+}
+
+@mixin mobile {
+    @media (max-width: #{$bpMaxMobile}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media screen and (min-width: $bpMinTablet), print {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media screen and (min-width: $bpMinDesktop), print {
+        @content;
+    }
+}
+
+@mixin large-desktop {
+    @media screen and (min-width: $bpMaxDesktop), print {
+        @content;
+    }
+}
+
+@mixin smallMobile {
+    @media (max-width: #{$bpSmallMobile}) {
+        @content;
+    }
+}
+
+@mixin no-desktop {
+    @media (max-width: unquote("#{$bpMinDesktop} - 1px")) {
+        @content;
+    }
+}
+
+@mixin transition($type, $duration, $easing) {
+    transition-property: $type;
+    transition-duration: $duration;
+    transition-timing-function: $easing;
+}
+
+@mixin background-gradient($color1, $color2, $direction) {
+    background: $color2;
+    background-repeat: repeat-x;
+
+    @if $direction == vertical {
+        background: linear-gradient(to bottom, $color1 0%, $color2 100%);
+    }
+    @else if $direction == diagonal {
+        background: linear-gradient(to bottom right, $color1, $color2);
+    }
+    @else if $direction == horizontal {
+        background: linear-gradient(to right, $color1, $color2);
+    }
+}
+
+@mixin clearfix {
+    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+
+    &:before,
+    &:after {
+        content: '';
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+@mixin normalise-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+// Absolute Center
+@mixin absolute-center {
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+@mixin centering-the-unknown {
+    transform: translate(-50%, -50%);
+    left: 50%;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    width: 50%;
+}
+
+@mixin vertically-centering-the-unknown {
+    transform: translate(0, -50%);
+    position: absolute;
+    top: 50%;
+}
+
+@mixin reset-centering {
+    position: static;
+    transform: none;
+    top: 0;
+}
+
+// Only display content to screen readers
+// See: http://a11yproject.com/posts/how-to-hide-content/
+.vh {
+    visibility: hidden;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+// Use in conjunction with .sr-only to only display content when it's focused.
+// Useful for "Skip to main content" links see http://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1
+// Credit: HTML5 Boilerplate
+.sr-only-focusable {
+    &:active, &:focus {
+        position: static;
+        width: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        clip: auto;
+    }
+}
+
+.desktop-only {
+    display: none !important;
+
+    @include desktop {
+        display: block !important;
+    }
+}
+
+.tablet-only {
+    display: none !important;
+
+    @include tablet {
+        display: block !important;
+    }
+}
+
+.mobile-only {
+    display: none !important;
+
+    @include mobile {
+        display: block !important;
+    }
+}
+
+.no-desktop {
+    @include desktop {
+        display: none !important;
+    }
+}
+
+.no-tablet {
+    @include tablet {
+        display: none !important;
+    }
+}
+
+.no-mobile {
+    @include mobile {
+        display: none !important;
+    }
+}
+
+.column-break {
+    margin-bottom: 100vh !important;
+}
+
+.align-left {
+    text-align: left !important;
+}
+
+.align-right {
+    text-align: right !important;
+}
+
+.pull-left {
+    float: left;
+    margin-right: 15px;
+}
+
+.pull-right {
+    float: right;
+    margin-left: 15px;
+}
+
+.no-border {
+    border-bottom: 0 !important;
+    border-top: 0 !important;
+}

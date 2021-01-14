@@ -1,0 +1,162 @@
+/* =======================================================================
+Global
+========================================================================== */
+// Box sizing partial styles:
+// Apply a natural box layout model to all elements
+*,
+*:before,
+*:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    font: 16px/1.618 sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    margin: 0 !important;
+
+    @include tablet {
+        font-family: 'HelveticaNeue';
+    }
+}
+
+h1, h2, h3, h4, h5, h6,
+address {
+    word-break: break-word;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: em(48);
+    line-height: 1.05em;
+}
+
+h2 {
+    font-size: em(36);
+    line-height: 1.25;
+}
+
+h3 {
+    font-size: em(28);
+    line-height: 1.25em;
+}
+
+h4 {
+    font-size: em(18);
+    line-height: 1.222222em;
+}
+
+h5 {
+    font-size: em(17);
+    font-style: italic;
+}
+
+h6 {
+    font-size: em(16);
+    font-style: italic;
+}
+
+blockquote {
+    font-weight: $light;
+    font-size: em(24);
+    font-style: italic;
+    line-height: 1.458333em;
+}
+
+menu, ol, ul {
+    margin-bottom: 20px;
+    padding: 0 0 0 40px;
+}
+
+ol, ul {
+    margin: auto;
+}
+
+table {
+    background-color: transparent;
+    border: 1px solid $grey;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 20px;
+    width: 100%;
+
+    tr {
+        background-color: #efefef;
+    }
+
+    tr:nth-child(even) {
+        background-color: darken(#efefef, 5%);
+    }
+
+    th, td {
+        border: 1px solid #fff;
+        padding: 5px 10px;
+        vertical-align: top;
+    }
+
+    th {
+        background: #757575;
+        font-size: em(20);
+        color: $white;
+        text-align: left;
+    }
+}
+
+img {
+    display: block;
+    height: auto;
+    margin: 0 auto 10px;
+    max-width: 100%;
+    width: 100%;
+
+    @include tablet {
+        margin: 0 0 10px;
+        width: auto;
+    }
+}
+
+address {
+    margin: 0 0 10px;
+    word-break: break-word;
+}
+
+p {
+    word-break: break-word;
+}
+
+a {
+    color: $black;
+    margin-bottom: 10px;
+}
+
+hr {
+    margin: 40px 0;
+}
+
+::-ms-clear {
+    height: 22px;
+    width: 22px;
+}
+
+::-webkit-input-placeholder { /* Chrome */
+    color: #a9a9a9;
+}
+
+:-ms-input-placeholder { /* IE 10+ */
+    color: #a9a9a9;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+    color: #a9a9a9;
+    opacity: 1;
+}
+
+:-moz-placeholder { /* Firefox 4 - 18 */
+    color: #a9a9a9;
+    opacity: 1;
+}

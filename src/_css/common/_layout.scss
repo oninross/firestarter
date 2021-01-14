@@ -1,0 +1,71 @@
+/* =======================================================================
+Layout
+========================================================================== */
+#main {
+    margin-top: 45px;
+    position: relative;
+
+    @include desktop {
+        margin-top: 108px;
+    }
+}
+
+.intro {
+    p {
+        font-size: em(18);
+        font-weight: bold;
+    }
+}
+
+.offline {
+    height: calc(100vh - 91px);
+    text-align: center;
+
+    @include mobile {
+        height: calc(100vh - 45px);
+    }
+
+
+    svg {
+        width: 100px;
+    }
+
+    .container {
+        .wrap {
+            @include centering-the-unknown;
+        }
+    }
+}
+
+.skip-link {
+    background-color: $white;
+    font-size: em(12);
+    font-weight: bold;
+    left: 0px;
+    padding: 5px;
+    position: absolute;
+    top: 0px;
+    text-align: center;
+    width: 100%;
+    z-index: 15;
+
+    &:not(:focus) {
+        border: 0;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        white-space: nowrap;
+        width: 1px;
+    }
+}
+
+.backstretch {
+    background-color: $grey;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
