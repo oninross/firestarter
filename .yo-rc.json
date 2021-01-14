@@ -1,7 +1,6 @@
 {
   "generator-yeogurt": {
     "config": {
-      "existingConfig": false,
       "projectName": "firestarter",
       "htmlOption": "pug",
       "cssOption": "sass",
