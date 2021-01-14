@@ -95,14 +95,16 @@
     "baseUrl": "./",
     "directories": {
       "source": "src",
+      "assets": "assets/firestarter",
       "destination": "build",
       "temporary": "tmp",
       "//": "Directories relative to `source` directory",
       "modules": "_modules",
       "layouts": "_layouts",
       "images": "_images",
-      "styles": "_styles",
-      "scripts": "_scripts",
+      "css": "_css",
+      "fonts": "_fonts",
+      "js": "_js",
       "data": "_data"
     },
     "entries": {
