@@ -56,5 +56,21 @@ html.no-js(lang='en')
       main#main
         block content
 
-    block stylesheets
-      link(rel='stylesheet', href= baseUrl + 'assets/firestarter/css/main.css?v=' + version)
+    block scripts
+      script(src= baseUrl + 'assets/firestarter/js/main.js?v=' + version)
+
+      script#toaster-template(type='text/template')
+        | {{? it.isReload }}
+        .toaster__card.-refresh(class='toaster{{= it.ind }}')
+          p {{! it.message }}
+          button.btn-refresh.js-refresh Refresh
+          button.js-dismiss
+            span.sr-only Close
+            i.icon.icon-cross
+        | {{?? }}
+        .toaster__card(class='toaster{{= it.ind }}')
+          p {{! it.message }}
+          button.js-dismiss
+            span.sr-only Close
+            i.icon.icon-cross
+        | {{? }}

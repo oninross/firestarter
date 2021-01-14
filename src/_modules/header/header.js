@@ -1,5 +1,6 @@
 "use strict";
 
+import $ from "jquery";
 import { debounce, isMobile } from "../../_js/common/_util";
 
 export default class Header {

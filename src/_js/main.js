@@ -7,8 +7,9 @@ import "core-js";
 import "regenerator-runtime/runtime";
 import $ from "jquery";
 
-import { MaterialDesign } from "./common/_material-design";
-import { Header } from "../_modules/header/header";
+import "./common/_modernizr";
+import MaterialDesign from "./common/_material-design";
+import Header from "../_modules/header/header";
 
 $(() => {
   new Header();
@@ -19,7 +20,7 @@ $(() => {
 
   // JavaScript hack for opening links into new windows if target="_blank" is not set
   let a = new RegExp("/" + window.location.host + "/");
-  $("a").click(function() {
+  $("a").on("click", function() {
     if (!a.test(this.href)) {
       window.open($(this).attr("href"));
       return false;
