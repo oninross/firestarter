@@ -8,8 +8,11 @@ import "regenerator-runtime/runtime";
 import $ from "jquery";
 
 import { MaterialDesign } from "./common/_material-design";
+import { Header } from "../_modules/header/header";
 
 $(() => {
+  new Header();
+
   // Init Material Design
   var material = new MaterialDesign();
   material.init();

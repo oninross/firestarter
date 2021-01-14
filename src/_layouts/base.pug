@@ -1,3 +1,5 @@
+include ../_modules/header/header
+
 //- Custom Configuration
 block config
   //- Setup site's base URL to match the "baseUrl" key within `package.json`
@@ -43,11 +45,16 @@ html.no-js(lang='en')
       link(rel='stylesheet', href= baseUrl + 'assets/firestarter/css/main.css?v=' + version)
 
   body
-    <!--[if lt IE 11]>
-    <p class='browsehappy'>You are using an <strong>outdated</strong> browser. Please <a href='http://browsehappy.com/'>upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+    a.skip-link(href='#main') Skip to content
 
-    block content
+    if !isTablePreview
+      +header()
 
-    block scripts
-      script(src= baseUrl + 'scripts/main.js')
+    if isTablePreview
+      block content
+    else
+      main#main
+        block content
+
+    block stylesheets
+      link(rel='stylesheet', href= baseUrl + 'assets/firestarter/css/main.css?v=' + version)

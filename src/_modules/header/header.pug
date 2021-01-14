@@ -1,6 +1,18 @@
-mixin header(spec)
-  - spec = spec || {}
-  - spec.__class = spec.__class || ''
+include ../navigation/navigation
 
-  div(class=spec.__class)&attributes(attributes)
-    p This is an example paragraph for the header module
+mixin header(spec)
+    - spec = spec || {}
+    - spec.__class = spec.__class || ''
+
+    header.header
+        h1.sr-only firestarter
+        .logo
+            a(href="/") firestarter
+
+        button.menu.js-mobile-menu(name='Menu')
+            span.line.top
+            span.line.mid
+            span.line.bot
+            span.sr-only Menu
+
+        +navigation()
