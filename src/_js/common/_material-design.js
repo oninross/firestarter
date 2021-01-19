@@ -1,6 +1,7 @@
 "use strict";
 
 import $ from "jquery";
+import gsap from "gsap";
 import scrollMonitor from "scrollMonitor";
 
 export default class MaterialDesign {
@@ -96,17 +97,17 @@ export default class MaterialDesign {
 
     let toaster = ".toaster" + self.toasterInd;
 
-    TweenLite.to(toaster, 0.75, {
+    gsap.to(toaster, 0.75, {
       opacity: 1,
       scale: 1,
-      ease: Expo.easeOut
+      ease: "expo.out"
     });
 
     if (ttl !== 0) {
-      TweenLite.to(toaster, 0.75, {
+      gsap.to(toaster, 0.75, {
         opacity: 0,
         scale: 0.75,
-        ease: Expo.easeOut,
+        ease: "expo.out",
         delay: ttl,
         onComplete: function() {
           $(toaster).remove();
@@ -117,10 +118,10 @@ export default class MaterialDesign {
     $(toaster).on("click", ".js-dismiss", function(e) {
       e.preventDefault();
 
-      TweenLite.to($(this).parent(), 0.75, {
+      gsap.to($(this).parent(), 0.75, {
         opacity: 0,
         scale: 0.75,
-        ease: Expo.easeOut,
+        ease: "expo.out",
         onComplete: function() {
           $(toaster).remove();
         }
@@ -155,10 +156,10 @@ export default class MaterialDesign {
     el.append(svg);
 
     let $ripple = el.find(".ripple" + self.inc);
-    TweenLite.from($ripple.find("circle"), 1.5, {
+    gsap.from($ripple.find("circle"), 1.5, {
       attr: { r: 0 },
       opacity: 0.75,
-      ease: Expo.easeOut,
+      ease: "expo.out",
       onComplete: function() {
         $ripple.remove();
       }
