@@ -10,11 +10,14 @@ import LazyLoad from "vanilla-lazyload";
 
 import "./common/_modernizr";
 import MaterialDesign from "./common/_material-design";
+
 import Header from "../_modules/header/header";
+import Navigation from "../_modules/navigation/navigation";
 import TablePreview from "../_modules/table-preview/table-preview";
 
 $(() => {
   new Header();
+  new Navigation();
   new TablePreview();
 
   // Init Material Design
