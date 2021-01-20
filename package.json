@@ -6,9 +6,9 @@
     "gsap": "^3.6.0",
     "gulp-bump": "^3.2.0",
     "jquery": "^3.5.1",
-    "jquery-lazyload": "^1.9.7",
     "normalize.css": "~8.0.1",
-    "scrollmonitor": "^1.2.4"
+    "scrollmonitor": "^1.2.4",
+    "vanilla-lazyload": "^17.3.0"
   },
   "devDependencies": {
     "@babel/core": "~7.0.0",
