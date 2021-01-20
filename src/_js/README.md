@@ -1,7 +1,7 @@
 # Scripts
 
-This "Scripts" folder is designated for all of your global stylesheet files.
-The key file in this folder is `main.js` as it is designated as your bootstrapping file (intializes all your scripts) and is included in the `base.jade` file
+This "Scripts" folder is designated for all of your global JavaScript files.
+The key file in this folder is `main.js` as it is designated as your bootstrapping file (intializes all your scripts) and is included in the `base.pug` file
 
 By default, ES6/2015 features are enabled in your scripts by using [Babel](https://babeljs.io)
 
@@ -18,14 +18,6 @@ Once installed, you can access scripts within your JavaScript files like so:
 ```js
 // Example using jquery
 
-// ES5
-var $ = require('jquery');
-
-$(function() {
-  console.log('Hello');
-});
-
-// ES6
 import $ from 'jquery';
 
 $(() => {
@@ -81,17 +73,9 @@ Add the following to your `package.json` file:
 Now you can include your desired module/lib within your `src/_scripts/main.js` file:
 
 ```js
-// ES5
-require('slick-carousel');
-
-// ES6
 import 'slick-carousel';
 
 ...
 
 $('#someId').slick(); // Activates slick plugin
 ```
-
-#### Using Bower
-
-Check out the instructions for using bower on the [Yeogurt README](https://github.com/larsonjj/generator-yeogurt#using-bower)

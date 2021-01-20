@@ -2,6 +2,7 @@
 .breadcrumbs {
     height: 100%;
     margin: auto;
+    margin-bottom: 20px;
     max-width: 960px;
     padding: 0 $gutter;
     position: relative;
@@ -11,9 +12,11 @@
         padding: 0 $gutterTablet;
     }
 
+
     @include large-desktop {
         max-width: 1160px;
     }
+
 
     ol {
         @include normalise-list;
