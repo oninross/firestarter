@@ -1,0 +1,123 @@
+extends _layouts/base
+
+include _modules/link/link
+
+block content
+  section.section
+    .container
+      article
+        h1.code-line(data-line-start='0' data-line-end='1')
+          a#Firestarter_readme_0
+          |!{' '}Firestarter readme
+        p.has-line-data(data-line-start='2' data-line-end='3')
+          |!{' '}Generated!{' '}
+          a(href='https://github.com/larsonjj/generator-yeogurt') generator-yeogurt@3.1.2
+        h2.code-line(data-line-start='4' data-line-end='5')
+          a#Description_4
+          |!{' '}Description
+        p.has-line-data(data-line-start='6' data-line-end='7')
+          |!{' '}A simple out of the box front-end templating base used for building new websites created and maintained by Nino Ross Rodriguez. Firestarter is not to compete with other frameworks, but more on to provide a very easy and structured framework for any developer to use.
+        h2.code-line(data-line-start='8' data-line-end='9')
+          a#Technologies_used_8
+          |!{' '}Technologies used
+        p.has-line-data(data-line-start='10' data-line-end='11') JavaScript
+        ul
+          li.has-line-data(data-line-start='12' data-line-end='13')
+            a(href='http://browserify.org/') Browserify
+            |!{' '}with ES6/2015 support through
+            a(href='https://babeljs.io/') Babel
+          li.has-line-data(data-line-start='13' data-line-end='15')
+            a(href='https://nodejs.org/') Node
+        p.has-line-data(data-line-start='15' data-line-end='16') Testing
+        ul
+          li.has-line-data(data-line-start='17' data-line-end='18')
+            a(href='http://karma-runner.github.io/4.0/index.html') Karma
+          li.has-line-data(data-line-start='18' data-line-end='20')
+            a(href='http://jasmine.github.io/') Jasmine
+        p.has-line-data(data-line-start='20' data-line-end='21') Styles
+        ul
+          li.has-line-data(data-line-start='22' data-line-end='24')
+            a(href='http://sass-lang.com/') Sass
+            |!{' '} via (
+            a(href='https://github.com/sass/node-sass') node-sass
+            |!{' '})
+        p.has-line-data(data-line-start='24' data-line-end='25') Markup
+        ul
+          li.has-line-data(data-line-start='26' data-line-end='28')
+            a(href='https://pugjs.org/api/reference.html') Pug
+        p.has-line-data(data-line-start='28' data-line-end='29') Optimization
+        ul
+          li.has-line-data(data-line-start='30' data-line-end='31')
+            a(href='https://github.com/imagemin/imagemin') Imagemin
+          li.has-line-data(data-line-start='31' data-line-end='33')
+            a(href='https://github.com/mishoo/UglifyJS') Uglify
+        p.has-line-data(data-line-start='33' data-line-end='34') Server
+        ul
+          li.has-line-data(data-line-start='35' data-line-end='37')
+            a(href='http://www.browsersync.io/') BrowserSync
+        p.has-line-data(data-line-start='37' data-line-end='38') Linting
+        ul
+          li.has-line-data(data-line-start='39' data-line-end='41')
+            a(href='http://eslint.org/') ESlint
+        p.has-line-data(data-line-start='41' data-line-end='42') Automation
+        ul
+          li.has-line-data(data-line-start='43' data-line-end='45')
+            a(href='http://gulpjs.com') Gulp
+        p.has-line-data(data-line-start='45' data-line-end='46') Code Management
+        ul
+          li.has-line-data(data-line-start='47' data-line-end='48')
+            a(href='http://editorconfig.org/') Editorconfig
+          li.has-line-data(data-line-start='48' data-line-end='50')
+            a(href='https://git-scm.com/') Git
+        h2.code-line(data-line-start='50' data-line-end='51')
+          a#Automated_tasks_50
+          |!{' '}Automated tasks
+        p.has-line-data(data-line-start='52' data-line-end='54')
+          |!{' '}This project uses
+          a(href='http://gulpjs.com') Gulp
+          |!{' '} and npm scripts (i.e.
+          code npm run...
+          |!{' '}) to run automated tasks for development and production builds.
+          br
+          |!{' '}The tasks are as follows:
+        p.has-line-data(data-line-start='55' data-line-end='56')
+          code npm run build
+          |!{' '}: Build a production version of your site/app
+        p.has-line-data(data-line-start='57' data-line-end='60')
+          code npm run serve
+          |!{' '}: Compiles preprocessors and boots up development server
+          br
+          code npm run serve -- --open
+          |!{' '}: Same as
+          code npm run serve
+          |!{' '} but will also open up site/app in your default browser
+          br
+          code npm run serve:prod
+          |!{' '}: Same as
+          code npm run serve
+          |!{' '} but will run all production tasks so you can view the site/app in it&rsquo;s final optimized form
+        p.has-line-data(data-line-start='61' data-line-end='63')
+          code npm test
+          |!{' '}: Lints all
+          code *.js
+          |!{' '} file in the
+          code source
+          |!{' '} folder using eslint and runs all
+          code *.test.js
+          |!{' '} file unit tests through
+          a(href='http://karma-runner.github.io/0.13/index.html') Karma
+          |!{' '} and Jasmine
+          br
+          code npm test -- --watch
+          |!{' '}: Same as
+          code npm test
+          |!{' '} but will constantly watch
+          code *.test.js
+          |!{' '} files and rerun tests when changes are detected
+        p.has-line-data(data-line-start='64' data-line-end='65')
+          strong
+            em
+              |!{' '}Adding the
+              code -- --debug
+              |!{' '} option to any npm script command to display extra debugging information (ex. data being loaded into your templates)
+

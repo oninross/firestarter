@@ -1,0 +1,9 @@
+mixin banner(spec)
+    - spec = spec || {}
+    - spec.__class = spec.__class || ''
+    - spec.__title = spec.__title || 'Banner'
+    - spec.__src = spec.__src || '//placehold.it/1600x768'
+
+    header.banner.backstretch.lazy(data-bg=spec.__src)
+        .container
+            h2!= spec.__title

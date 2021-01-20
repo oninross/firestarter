@@ -5,9 +5,11 @@ var path = require('path');
 var pjson = require('./package.json');
 var config = pjson.config;
 var dirs = config.directories;
-var testFiles = path.join(__dirname, dirs.source, '**/*.test.js');
+var testFiles = path.join(__dirname, dirs.source) + '/**/*.test.js';
 var preprocessors = {};
 preprocessors[testFiles] = ['browserify'];
+const puppeteer = require('puppeteer');
+process.env.CHROME_BIN = puppeteer.executablePath();
 
 var karmaConf = function(config) {
   config.set({
@@ -19,7 +21,6 @@ var karmaConf = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      './phantomjs-shims.js',
       testFiles
     ],
 
@@ -62,13 +63,14 @@ var karmaConf = function(config) {
 
     // Start these browsers, currently available:
     // - Chrome
+    // - ChromeHeadless
     // - ChromeCanary
     // - Firefox
     // - Opera
     // - Safari (only Mac)
     // - PhantomJS
     // - IE (only Windows)
-    browsers: ['PhantomJS'],
+    browsers: ['ChromeHeadless'],
 
     // If browser does not capture in given timeout [ms], kill it
     captureTimeout: 60000,

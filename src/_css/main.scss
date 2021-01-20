@@ -1,15 +1,15 @@
 // Normalize Styles
-// @import "node_modules/normalize.css/normalize";
+@import "node_modules/normalize.css/normalize";
 
 // Import all needed help
-@import 'common/_variables';
-@import 'common/_util';
+@import "common/_variables";
+@import "common/_util";
 
-@import 'common/_fonts';
-@import 'common/_base';
-@import 'common/_layout';
-@import 'common/_grid';
-@import 'common/_material-design';
+@import "common/_fonts";
+@import "common/_base";
+@import "common/_layout";
+@import "common/_grid";
+@import "common/_material-design";
 
 // Import Modules
 @import "../_modules/header/header";
@@ -20,6 +20,3 @@
 @import "../_modules/navigation/navigation";
 
 @import "../_modules/table-preview/table-preview";
-
-
-
