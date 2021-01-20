@@ -11,9 +11,11 @@ import LazyLoad from "vanilla-lazyload";
 import "./common/_modernizr";
 import MaterialDesign from "./common/_material-design";
 import Header from "../_modules/header/header";
+import TablePreview from "../_modules/table-preview/table-preview";
 
 $(() => {
   new Header();
+  new TablePreview();
 
   // Init Material Design
   var material = new MaterialDesign();
