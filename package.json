@@ -47,7 +47,7 @@
     "gulp-uglify": "~3.0.2",
     "gulp-sass": "~4.0.2",
     "gulp-pug": "~4.0.1",
-    "pug": "~2.0.4",
+    "pug": "~3.0.1",
     "vinyl-buffer": "~1.0.1",
     "vinyl-source-stream": "~2.0.0",
     "glob": "~7.1.4",
