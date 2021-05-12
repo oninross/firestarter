@@ -21,7 +21,7 @@
     "eslint": "6.1.0",
     "eslint-config-prettier": "~6.0.0",
     "prettier": "~1.16.4",
-    "lodash": "~4.17.4",
+    "lodash": "~4.17.21",
     "foldero": "~0.1.1",
     "minimist": "~1.2.0",
     "rimraf": "2.6.3",
